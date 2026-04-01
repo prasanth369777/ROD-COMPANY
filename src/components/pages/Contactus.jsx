@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, ShieldCheck, MessageCircle} from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ShieldCheck,} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Contact() {
@@ -10,11 +10,6 @@ export default function Contact() {
     productCategory: '',
     message: ''
   });
-
-  // WhatsApp Config
-  const whatsappNumber = "+918531985733";
-  const whatsappMsg = "Hello Sri Kumar Drill Rod Works, I am looking for rock drill spare parts and assistance.";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +40,7 @@ export default function Contact() {
                     <div className="h-[2px] w-16 bg-gradient-to-r from-orange-500 to-red-600"></div>
                     <span className="text-orange-600 font-black tracking-[0.4em] uppercase text-[10px]">Section 7: Visit Our Shop</span>
                 </div>
-                <h2 className="text-5xl md:text-8xl font-black text-slate-900 mb-8 uppercase tracking-tighter leading-[0.9] italic">
+                <h2 className="text-5xl md:text-8xl font-black text-slate-900 mb-8 uppercase tracking-tighter italic">
                     Building Lasting <br /> 
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">Relationships.</span>
                 </h2>
@@ -188,43 +183,21 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* --- SECTION 8: FINAL CTA WHATSAPP REDIRECTION --- */}
+        {/* --- SECTION 8: FINAL CTA --- */}
         <div className="relative z-10 bg-slate-900 rounded-[3rem] p-12 lg:p-20 text-center overflow-hidden">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
-                <MessageCircle size={300} className="text-orange-500" />
-            </div>
             <h3 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tighter italic leading-none">
                 Contact Sri Kumar <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">Drill Rod Works Today</span>
             </h3>
             <p className="text-slate-400 text-xl max-w-2xl mx-auto mb-12 italic font-medium">
-                If you are looking for a reliable partner to keep your operations running smoothly, your search ends here. Connect with us instantly.
+                If you are looking for a reliable partner to keep your operations running smoothly, your search ends here. Let us be your partner in keeping your operations running smoothly.
             </p>
-            <div className="flex flex-col md:flex-row justify-center items-center gap-6 relative z-10">
-                <a 
-                    href={whatsappLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-orange-500 to-red-600 text-white rounded-full font-black uppercase text-sm tracking-widest transition-all hover:scale-105 hover:shadow-2xl shadow-orange-500/20 active:scale-95"
-                >
-                    Chat with an Expert <MessageCircle size={20} />
-                </a>
+            <div className="flex justify-center relative z-10">
                 <Link to="/" className="text-slate-500 font-black uppercase text-xs tracking-widest border-b-2 border-slate-700 pb-1 hover:text-white transition-colors">
                     Back to Catalog
                 </Link>
             </div>
         </div>
       </div>
-
-      {/* Floating Action Button (WhatsApp) */}
-      <a 
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-10 right-10 z-[100] bg-[#25D366] text-white p-5 rounded-full shadow-[0_20px_40px_rgba(37,211,102,0.4)] hover:scale-110 active:scale-95 transition-all flex items-center justify-center group"
-      >
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap text-[10px] font-black uppercase tracking-widest group-hover:mr-3">WhatsApp Sales</span>
-        <MessageCircle size={28} />
-      </a>
     </section>
   );
 }

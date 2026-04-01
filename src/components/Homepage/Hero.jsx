@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ArrowRight, Settings,MessageCircle } from 'lucide-react';
+import { ArrowRight, Settings} from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import HeroImage from '../../assests/hero-image.png'; 
 
@@ -7,10 +7,7 @@ export default function Hero() {
   const containerRef = useRef(null);
   const navigate = useNavigate();
 
-  // WhatsApp Config
-  const whatsappNumber = "+918531985733";
-  const whatsappMessage = "Hello Sri Kumar Drill Rod Works, I am interested in a quotation for Drill Rods/Spare Parts.";
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -118,19 +115,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 3. FLOATING WHATSAPP BUTTON */}
-      <a 
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-10 right-10 z-[100] bg-[#25D366] text-white p-5 rounded-2xl shadow-[0_20px_40px_rgba(37,211,102,0.4)] hover:scale-110 active:scale-95 transition-all flex items-center gap-3 group"
-      >
-        <div className="hidden group-hover:block overflow-hidden transition-all whitespace-nowrap">
-            <p className="text-[10px] font-black uppercase tracking-widest leading-none">Chat with Expert</p>
-            <p className="text-[12px] font-bold">+91 85319 85733</p>
-        </div>
-        <MessageCircle size={28} />
-      </a>
+     
       
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-3">

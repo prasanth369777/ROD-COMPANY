@@ -7,6 +7,8 @@ import Homepage from './components/Homepage/Homepage';
 import Aboutus from './components/pages/Aboutus';
 import Contactus from './components/pages/Contactus';
 import BlogSectionClassic from './components/pages/Blog';
+import Buttontotop from './components/pages/buttontotop';
+import Whatsapp from './components/pages/whatsapp';
 
 // Product Group 1: Tapper Button Bits
 import Pulanka from './components/productpage/Tapper button bits/Pulanka';
@@ -42,7 +44,9 @@ import DrillonHoseProductPage from './components/productpage/Hose/Drillon';
 function App() {
   return (
     <Router>
+      
       <Navigation />
+      <Buttontotop />
       
 
 
@@ -79,6 +83,7 @@ function App() {
         <Route path="/hoses/standard" element={<StandardHoseProductPage />} />
         <Route path="/hoses/drillon" element={<DrillonHoseProductPage />} />
       </Routes>
+      <Whatsapp />
       <Footer />
     </Router>
   );

@@ -208,16 +208,7 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Floating WhatsApp Action Button remains Brand Green as standard for UX */}
-      <a 
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-10 right-10 z-50 p-5 bg-[#25D366] text-white rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group"
-      >
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap text-[10px] font-black uppercase tracking-widest group-hover:mr-3">Chat Now</span>
-        <MessageCircle size={28} />
-      </a>
+    
     </section>
   );
 }

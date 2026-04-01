@@ -17,9 +17,11 @@ export default function Home() {
     <div className="bg-slate-900 text-white">
       <Navigation />
       <Hero />
+
        <Infintyscroll />
+       <Products />
       <About />
-      <Products />
+      
       <Industry />
       <Process />
       <Blogsec />
