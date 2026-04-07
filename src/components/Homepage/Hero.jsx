@@ -1,126 +1,167 @@
-import { useEffect, useRef } from 'react';
-import { ArrowRight, Settings} from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
-import HeroImage from '../../assests/hero-image.png'; 
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Hero() {
-  const containerRef = useRef(null);
+// Import your assets
+import HeroImage1 from '../../assests/hero-image.png'; 
+// Add your other carousel images here
+// import HeroImage2 from '../../assests/hero-2.png';
+
+export default function ProfessionalHero() {
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
 
-
+  const slides = [
+    {
+      title: "Drill Rod Dealers",
+      subtitle: "Industrial Excellence // Since 2025",
+      highlight: "in Tamilnadu",
+      description: "Sri Kumar Drill Rod Works: Your trusted partner for mining, construction, and infrastructure sectors across the state.",
+      image: HeroImage1,
+      accent: "from-blue-600 via-blue-800 to-slate-900",
+      tag: "President's Choice Deal"
+    },
+    {
+      title: "Premium Alloy Steel",
+      subtitle: "High Impact Resistance",
+      highlight: "Global Standards",
+      description: "Engineered for the toughest terrains. Our drill rods ensure 30% more durability in high-pressure environments.",
+      image: HeroImage1, // Replace with HeroImage2
+      accent: "from-slate-800 via-gray-900 to-black",
+      tag: "Limited Time Offer"
+    },
+    {
+      title: "TN Wide Network",
+      subtitle: "Fastest Logistics",
+      highlight: "24HR Dispatch",
+      description: "Strategic distribution hubs across Tamilnadu ensuring your project never stops. B2B pricing guaranteed.",
+      image: HeroImage1, // Replace with HeroImage3
+      accent: "from-orange-600 via-red-700 to-slate-900",
+      tag: "New Arrival"
+    }
+  ];
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!containerRef.current || window.innerWidth < 1024) return;
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth - 0.5) * 20;
-      const y = (clientY / window.innerHeight - 0.5) * 20;
-      containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    let interval;
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+      }, 5000);
+    }
+    return () => clearInterval(interval);
+  }, [isPlaying, slides.length]); // Added missing dependencies to clear ESLint warning
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
 
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-24 pb-12 lg:pt-20 lg:pb-0 font-['Inter']"
-    >
-      {/* 1. BACKGROUND WATERMARK */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center">
-        <div className="opacity-[0.03] lg:opacity-[0.05] select-none pointer-events-none text-center">
-          <h2 
-            className="text-[25vw] lg:text-[20vw] font-black uppercase tracking-tighter text-transparent leading-none" 
-            style={{ WebkitTextStroke: '2px #0f172a' }}
-          >
-            TAMILNADU
-          </h2>
-        </div>
-      </div>
-
-      {/* 2. MAIN CONTENT GRID */}
-      <div className="relative z-10 max-w-[1800px] mx-auto px-6 lg:px-16 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full">
-        
-        {/* Left Column: Content */}
-        <div className="order-2 lg:order-1 lg:col-span-7 text-center lg:text-left">
-          <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-            <div className="h-[2px] w-12 bg-orange-500"></div>
-            <span className="text-slate-400 font-black tracking-[0.4em] uppercase text-[10px] lg:text-xs">
-              Industrial Excellence // Since 2025
-            </span>
+    <section className="relative h-[85vh] min-h-[600px] w-full overflow-hidden bg-[#0a0a0a] font-['Inter']">
+      
+      {/* Main Slide Container */}
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+        >
+          {/* Background Gradient */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${slide.accent} opacity-90`}></div>
+          
+          {/* Decorative Stars/Elements */}
+          <div className="absolute top-10 left-10 opacity-20">
+             <svg width="100" height="100" viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-7xl xl:text-8xl font-black text-slate-900 leading-[0.95] tracking-tighter mb-8 uppercase italic">
-            Drill Rod Dealers <br /> 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-red-600 to-slate-900">
-              in Tamilnadu
-            </span>
-          </h1>
+          <div className="relative max-w-[1400px] mx-auto h-full px-6 lg:px-16 flex items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
+              
+              {/* Left Content */}
+              <div className={`transition-all duration-700 delay-300 transform ${index === currentSlide ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+                <span className="inline-block px-4 py-1 rounded-full bg-white/10 backdrop-blur-md text-white text-xs font-bold tracking-widest mb-6 border border-white/20">
+                  {slide.tag}
+                </span>
+                
+                <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-4">
+                  {slide.title} <br/>
+                  <span className="text-blue-400">{slide.highlight}</span>
+                </h1>
+                
+                <p className="text-lg text-gray-300 max-w-lg mb-8 leading-relaxed">
+                  {slide.description}
+                </p>
 
-          <p className="max-w-2xl mx-auto lg:mx-0 text-slate-500 text-lg lg:text-2xl leading-relaxed mb-10 lg:border-l-4 lg:border-orange-500/20 lg:pl-8 font-medium italic">
-            Sri Kumar Drill Rod Works, your trusted drill rod dealers in Tamilnadu and a reliable partner for the mining, construction, and infrastructure sectors across the state.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
-            {/* Redirect to Products */}
-            <button 
-              onClick={() => navigate('/drill-rods')}
-              className="group px-10 py-6 bg-slate-900 text-white font-black uppercase text-xs tracking-[0.3em] transition-all hover:bg-orange-600 active:scale-95 shadow-2xl flex items-center justify-center gap-4"
-            >
-              Browse Inventory <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-            </button>
-
-            {/* Redirect to Contact Page */}
-            <Link 
-              to="/contactus"
-              className="px-10 py-6 border-2 border-slate-200 text-slate-900 font-black uppercase text-xs tracking-[0.3em] hover:bg-slate-50 transition-all text-center flex items-center justify-center"
-            >
-              Request Quotation
-            </Link>
-          </div>
-
-          {/* Quick Support Stats */}
-          <div className="mt-16 grid grid-cols-3 gap-8 border-t border-slate-100 pt-10 max-w-lg mx-auto lg:mx-0">
-            {[
-              { val: '24HR', label: 'Dispatch' },
-              { val: 'TN Wide', label: 'Network' },
-              { val: 'B2B', label: 'Pricing' }
-            ].map((stat, i) => (
-              <div key={i}>
-                <p className="text-2xl font-black text-slate-900 italic tracking-tighter">{stat.val}</p>
-                <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">{stat.label}</p>
+                <div className="flex flex-wrap gap-4">
+                  <button 
+                    onClick={() => navigate('/drill-rods')}
+                    className="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-blue-500 hover:text-white transition-all transform hover:scale-105"
+                  >
+                    Buy now
+                  </button>
+                  <button 
+                    onClick={() => navigate('/contactus')}
+                    className="px-8 py-3 border border-white/50 text-white font-bold rounded-full hover:bg-white/10 transition-all"
+                  >
+                    View deals
+                  </button>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Right Column: Interactive Image */}
-        <div className="order-1 lg:order-2 lg:col-span-5 relative group perspective-1000">
-          <div ref={containerRef} className="relative z-20 transition-transform duration-500 ease-out flex justify-center">
-            <div className="absolute inset-0 bg-orange-500/10 blur-[120px] rounded-full scale-90 opacity-40"></div>
-            
-            <img 
-              src={HeroImage} 
-              alt="Sri Kumar Drill Rod Works Tamilnadu" 
-              className="relative z-10 w-[80%] lg:w-full drop-shadow-[0_50px_100px_rgba(0,0,0,0.15)] transition-transform duration-700 group-hover:scale-105"
-            />
-            
-            {/* Badges */}
-            <div className="hidden xl:block absolute top-10 -right-12 bg-white p-6 rounded-2xl shadow-2xl border border-slate-100">
-              <Settings className="text-orange-500 mb-2" size={24} />
-              <p className="text-[10px] text-slate-400 uppercase font-black tracking-widest">Alloy Grade</p>
-              <p className="text-slate-900 font-black text-sm italic">High Impact Steel</p>
+              {/* Right Image Container */}
+              <div className={`relative transition-all duration-1000 delay-500 transform ${index === currentSlide ? "scale-100 opacity-100" : "scale-90 opacity-0"}`}>
+                <div className="absolute inset-0 bg-blue-500/20 blur-[120px] rounded-full"></div>
+                <img 
+                  src={slide.image} 
+                  alt="Industrial Product" 
+                  className="relative z-10 w-full h-auto drop-shadow-2xl object-contain max-h-[500px]"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ))}
 
-     
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-3">
-        <div className="w-[1px] h-12 bg-gradient-to-b from-slate-200 to-transparent"></div>
-        <span className="text-[9px] text-slate-400 font-bold uppercase tracking-[0.5em]">Explore Catalog</span>
+      {/* Navigation Arrows */}
+      <button 
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/20 hover:bg-black/50 text-white backdrop-blur-sm transition-all"
+      >
+        <ChevronLeft size={32} />
+      </button>
+      <button 
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/20 hover:bg-black/50 text-white backdrop-blur-sm transition-all"
+      >
+        <ChevronRight size={32} />
+      </button>
+
+      {/* Progress Indicators & Controls */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-6">
+        <div className="flex gap-3">
+          {slides.map((_, i) => (
+            <div 
+              key={i} 
+              onClick={() => setCurrentSlide(i)}
+              className="group cursor-pointer py-4"
+            >
+              <div className="w-16 lg:w-24 h-[2px] bg-white/20 relative overflow-hidden">
+                <div 
+                  className={`absolute top-0 left-0 h-full bg-white transition-all duration-[5000ms] ease-linear ${
+                    i === currentSlide && isPlaying ? "w-full" : "w-0"
+                  } ${i < currentSlide ? "w-full" : ""}`}
+                ></div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <button 
+          onClick={() => setIsPlaying(!isPlaying)}
+          className="text-white hover:text-blue-400 transition-colors"
+        >
+          {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+        </button>
       </div>
     </section>
   );

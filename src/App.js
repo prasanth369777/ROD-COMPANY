@@ -9,6 +9,7 @@ import Contactus from './components/pages/Contactus';
 import BlogSectionClassic from './components/pages/Blog';
 import Buttontotop from './components/pages/buttontotop';
 import Whatsapp from './components/pages/whatsapp';
+import Products from './components/pages/Productspage';
 
 // Product Group 1: Tapper Button Bits
 import Pulanka from './components/productpage/Tapper button bits/Pulanka';
@@ -55,6 +56,8 @@ function App() {
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/blog" element={<BlogSectionClassic />} />
         <Route path="/contactus" element={<Contactus />} />
+
+        <Route path="/products" element={<Products />} />
 
         {/* --- Product Routes --- */}
         <Route path="/tapper-bits/pulanka" element={<Pulanka />} />

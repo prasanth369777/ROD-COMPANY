@@ -10,7 +10,7 @@ import FAQ from './FAQ';
 import Testimonials from './Testimonials';
 import Contact from './Contact';
 
-import Infintyscroll from '../Homepage/infinityscolling';
+// import Infintyscroll from '../Homepage/infinityscolling';
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
       <Navigation />
       <Hero />
 
-       <Infintyscroll />
+       {/* <Infintyscroll /> */}
        <Products />
       <About />
       

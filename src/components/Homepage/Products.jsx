@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drill, Hammer, Wind, Cog, Droplets, Box, ChevronRight, HardHat, MapPin, Search } from 'lucide-react';
+import { Drill, Hammer, Wind, Cog, Droplets, Box, ChevronRight, HardHat, MapPin, Search} from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const categories = [
@@ -8,54 +8,77 @@ const categories = [
     name: 'Drill Rods',
     icon: Cog,
     title: 'Drill Rod Dealers in Tamilnadu',
-    description: 'Sri Kumar Drill Rod Works, your trusted drill rod dealers in Tamilnadu. We offer a full range of high-performance rods for mining, construction, and infrastructure projects across the state.',
-    items: ['Sandco Tapper Drill Rods', 'Blue Tapper Drill Rods', 'Imported Drill Rods', 'Precision Heat-Treated Rods'],
-    path: '/drill-rods/sandco'
+    description: 'Sri Kumar Drill Rod Works, your trusted drill rod dealers in Tamilnadu.',
+    items: [
+      { name: 'Sandco Tapper Drill Rods', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' },
+      { name: 'Blue Tapper Drill Rods', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
+      { name: 'Imported Drill Rods', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' }
+    ],
+    path: '/drill-rods'
   },
   {
-    id: 'taper-bits',
+    id: 'tapered-bits',
     name: 'Tapered Button Bits',
     icon: Drill,
     title: 'Quality Tapered Button Bits Suppliers',
-    description: 'As a leading tapered button bits supplier in Tamilnadu, we offer a variety of sizes and angles to match different rock conditions. Perfect for granite quarrying and road construction.',
-    items: ['Pulanka Series', 'LT Button Bits', 'Nanchang +', 'PLKS', '7 Degree 34mm Taper Bit'],
-    path: '/tapper-bits/pulanka'
+    description: 'Variety of sizes and angles to match different rock conditions.',
+    items: [
+      { name: 'Pulanka', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' },
+      { name: 'LT', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
+      { name: 'Nanchang', img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' },
+      { name: 'PLKS', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' },
+      { name: '7 Degree 34mm Taper Button Bit', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' }
+    ],
+    path: '/tapper-bits'
   },
   {
-    id: 'jackhammer',
-    name: 'Jackhammer Spares',
+    id: 'jack-hammer',
+    name: 'Jack Hammer Spares',
     icon: Hammer,
-    title: 'Jackhammer Spare Parts Distributor',
-    description: 'Dedicated jackhammer spare parts distributor in Tamilnadu. We stock critical components for MDS and PSI models to ensure your equipment gets back to the site quickly.',
-    items: ['Pistons', 'Bush Kits', 'Ranger Box', 'Side Bolt', 'Retainer Lock', 'Valve Assemblies'],
-    path: '/jack-hammer/bush'
+    items: [
+      { name: 'PSI/MDS Jack Hammer', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
+      { name: 'Bush', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
+      { name: 'Ranger Box', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' },
+      { name: 'Piston', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
+      { name: 'Side Bolt', img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' },
+      { name: 'Retainer Lock', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' }
+    ],
+    path: '/jack-hammer'
   },
   {
     id: 'compressor',
     name: 'Compressor Parts',
     icon: Wind,
-    title: 'Atlas Copco VT 4 Spares',
-    description: 'Preferred source for rock drill spare parts in Tamilnadu. We maintain a strong stock of genuine compressor spares to minimize downtime and maximize productivity.',
-    items: ['Liner Set', 'Piston Rings', 'Valve Sets', 'Air Filters', 'Oil Filters', 'Connect Rods'],
-    path: '/compressor/liner-set'
+    items: [
+      { name: 'Atlas Copco VT 4 Compressor Parts', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' },
+      { name: 'Liner Set', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
+      { name: 'Rings', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
+      { name: 'Valves', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' },
+      { name: 'Air Filters', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
+      { name: 'Oil Filters', img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' }
+    ],
+    path: '/compressor'
   },
   {
     id: 'hoses',
-    name: 'Hose Systems',
+    name: 'Hoses',
     icon: Droplets,
-    title: 'Durlon & Standard Hoses',
-    description: 'High-pressure rock drill hoses designed for extreme pneumatic environments. Our shelves are always stocked with durable assemblies for professional execution.',
-    items: ['Durlon Rock Drill Hose', 'Standard Hoses', 'High-Pressure Assemblies', 'Abrasive Resistant Hoses'],
-    path: '/hoses/durlon'
+    items: [
+      { name: 'Durlon Rock Drill Hose', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' },
+      { name: 'Standard Hoses', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' }
+    ],
+    path: '/hoses'
   },
   {
     id: 'pneumatic',
     name: 'Pneumatic Tools',
     icon: Box,
-    title: 'Heavy Duty Pneumatic Tools',
-    description: 'Catering to a diverse clientele from individual owners to mining contractors. Quality tools designed for durability, performance, and safety on every job site.',
-    items: ['Chipping Hammer', 'Pavement Breaker Spares', 'Pneumatic Rammer', 'Technical Identification Support'],
-    path: '/contactus'
+    items: [
+      { name: 'Chipping Hammer', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
+      { name: 'Pavement Breaker Spares', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
+      { name: 'Pneumatic Rammer', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' }
+    ],
+    path: '/pneumatic'
   }
 ];
 
@@ -64,128 +87,135 @@ export default function IndustrialSolutions() {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-white min-h-screen flex font-['Inter']">
+    <section className="bg-slate-100 min-h-screen flex font-['Inter']">
       
-      {/* LEFT SIDEBAR - Matching the Image */}
-      <aside className="w-80 border-r border-gray-100 p-8 hidden xl:flex flex-col sticky top-0 h-screen">
+      {/* LEFT SIDEBAR - MASTER TOPICS */}
+      <aside className="w-80 bg-white border-r border-gray-200 p-8 hidden xl:flex flex-col sticky top-0 h-screen">
         <div className="mb-10">
-          <h2 className="text-2xl font-black text-slate-900 tracking-tighter">
+          <h2 className="text-2xl font-black text-slate-900 tracking-tighter uppercase italic">
             SRI KUMAR<span className="text-orange-600">.</span>
           </h2>
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">Industrial Tech 2026</p>
         </div>
 
-        {/* Sidebar Search */}
         <div className="relative mb-8">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" size={16} />
           <input 
             type="text" 
-            placeholder="Search catalogue..." 
-            className="w-full bg-slate-50 border border-slate-100 rounded-lg py-2.5 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
+            placeholder="Filter categories..." 
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-10 pr-4 text-xs focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
           />
         </div>
 
-        {/* Sidebar Navigation */}
         <nav className="space-y-1 overflow-y-auto pr-2">
-          <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Product Inventory</p>
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat)}
-              className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-200 group flex items-center justify-between
+              className={`w-full text-left px-5 py-4 rounded-2xl transition-all duration-300 group flex items-center justify-between
               ${activeTab.id === cat.id 
-                ? 'bg-orange-50 text-orange-600 shadow-sm' 
-                : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
+                ? 'bg-slate-900 text-white shadow-xl translate-x-2' 
+                : 'text-slate-400 hover:bg-slate-50 hover:text-slate-900'}`}
             >
-              <span className="text-xs font-bold uppercase tracking-wider">{cat.name}</span>
-              {activeTab.id === cat.id && <div className="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse"></div>}
+              <div className="flex items-center gap-3">
+                <cat.icon size={16} className={activeTab.id === cat.id ? 'text-orange-500' : 'text-slate-300'} />
+                <span className="text-[11px] font-black uppercase tracking-wider">{cat.name}</span>
+              </div>
+              <ChevronRight size={14} className={activeTab.id === cat.id ? 'opacity-100' : 'opacity-0'} />
             </button>
           ))}
         </nav>
 
-        {/* Sidebar Footer Info */}
-        <div className="mt-auto pt-8 border-t border-gray-100">
-            <div className="flex items-center gap-3 text-slate-400">
-                <MapPin size={14} />
-                <span className="text-[10px] font-bold uppercase tracking-widest">Coimbatore, TN</span>
-            </div>
+        <div className="mt-auto pt-8 border-t border-gray-100 flex items-center gap-3 text-slate-400">
+          <MapPin size={14} />
+          <span className="text-[10px] font-bold uppercase tracking-widest">Coimbatore, TN</span>
         </div>
       </aside>
 
-      {/* MAIN CONTENT AREA */}
-      <main className="flex-1 p-8 lg:p-16 bg-slate-50/50">
+      {/* RIGHT SIDE - SUBTOPICS GRID */}
+      <main className="flex-1 p-8 lg:p-16 bg-[#F2F4F7] overflow-y-auto">
         
-        {/* Catalog Header */}
-        <header className="mb-16">
-          <div className="flex items-baseline gap-4">
-             <h1 className="text-6xl font-black text-slate-900 tracking-tighter">
-                All <span className="font-light italic text-slate-300">Products.</span>
-             </h1>
+        {/* Dynamic Header */}
+        <header className="mb-12">
+          <div className="flex items-center gap-3 mb-4">
+             <div className="h-[2px] w-8 bg-orange-600"></div>
+             <p className="text-orange-600 font-black uppercase text-[10px] tracking-[0.4em]">Current Selection</p>
           </div>
-          <div className="flex items-center gap-3 mt-4">
-              <div className="h-[1px] w-8 bg-orange-600"></div>
-              <p className="text-orange-600 font-black uppercase text-[10px] tracking-[0.3em]">
-                {activeTab.name} — {activeTab.items.length} units in stock
-              </p>
-          </div>
+          <h1 className="text-6xl font-black text-slate-900 tracking-tighter">
+            {activeTab.name.split(' ')[0]} <span className="font-light italic text-slate-300">{activeTab.name.split(' ').slice(1).join(' ')}</span>
+          </h1>
         </header>
 
-        {/* Dynamic Product Detail Card */}
-        <div className="bg-white rounded-[2rem] border border-gray-100 shadow-xl overflow-hidden p-8 lg:p-12 mb-12 relative">
-            <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none">
-                <activeTab.icon size={350} />
-            </div>
-
-            <div className="max-w-4xl relative z-10">
-                <h2 className="text-3xl lg:text-5xl font-black text-slate-900 mb-6 uppercase tracking-tighter italic">
-                    {activeTab.title}
-                </h2>
-                <p className="text-slate-500 text-lg leading-relaxed mb-10 font-medium italic">
-                    {activeTab.description}
-                </p>
-
-                {/* Sub-item Grid with Bullet UI */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-                    {activeTab.items.map((item, index) => (
-                        <div key={index} className="flex items-center gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-100 hover:border-orange-200 transition-all">
-                            <div className="w-2 h-2 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.5)]"></div>
-                            <span className="text-xs font-black text-slate-700 uppercase tracking-widest">{item}</span>
-                        </div>
-                    ))}
+       {/* SUBTOPICS GRID (SMALLER CARD VARIANT) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {activeTab.items.map((subItem, index) => (
+            <div 
+              key={index} 
+              className="group relative bg-white rounded-[2rem] p-3 pb-4 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col cursor-pointer hover:-translate-y-1.5"
+              onClick={() => navigate(activeTab.path)}
+            >
+              {/* Product Info Header - Reduced Spacing/Size */}
+              <div className="px-4 py-5 text-center">
+                <h3 className="text-lg font-bold text-slate-900 tracking-tight leading-tight mb-1 line-clamp-1">
+                  {subItem.name}
+                </h3>
+                <div className="flex items-center justify-center gap-1.5 text-slate-400">
+                   <div className="w-1 h-1 rounded-full bg-green-500"></div>
+                   <span className="text-[8px] font-black uppercase tracking-widest">In Stock</span>
                 </div>
+              </div>
 
-                <button 
-                  onClick={() => navigate(activeTab.path)}
-                  className="flex items-center gap-4 px-12 py-5 bg-orange-600 text-white rounded-full font-black uppercase text-xs tracking-[0.3em] hover:bg-slate-900 transition-all shadow-xl active:scale-95 group"
-                >
-                  Explore Detailed Solutions <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
+              {/* Image Container - Adjusted Aspect Ratio for Compactness */}
+              <div className="aspect-[4/5] bg-[#E8EAEF] rounded-[1.5rem] flex items-center justify-center p-6 relative overflow-hidden transition-all group-hover:bg-[#E2E4E9]">
+                <img 
+                  src={subItem.img} 
+                  alt={subItem.name} 
+                  className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                />
+                <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-48 h-48 bg-white opacity-20 blur-3xl rounded-full"></div>
+              </div>
+
+              {/* Bottom Action Bar - Scaled Down Elements */}
+              <div className="mt-4 px-2 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white shrink-0">
+                    <activeTab.icon size={12} />
+                  </div>
+                  <div className="hidden sm:block">
+                    <p className="text-[9px] font-black text-slate-900 uppercase leading-none">SP-0{index + 1}</p>
+                    <p className="text-[8px] text-slate-400 font-medium">12m ago</p>
+                  </div>
+                </div>
+                
+                <button className="bg-slate-900 hover:bg-orange-600 text-white px-4 py-2 rounded-xl transition-all">
+                  <span className="text-[9px] font-bold uppercase tracking-tight">Details</span>
                 </button>
+              </div>
             </div>
+          ))}
         </div>
 
-        {/* Technical Footer Branding */}
-        <footer className="grid lg:grid-cols-2 gap-8 mt-20">
-            <div className="bg-slate-900 p-8 rounded-3xl flex items-center gap-6 group hover:bg-slate-800 transition-all cursor-default text-left">
-                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 group-hover:border-orange-500 transition-all shrink-0">
-                    <HardHat className="text-orange-500" />
+        {/* Footer Interaction */}
+        <footer className="mt-20 border-t border-slate-200 pt-12 grid lg:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-[3rem] shadow-sm flex items-center gap-6 group hover:shadow-xl transition-all">
+                <div className="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-900">
+                    <HardHat size={24} />
                 </div>
                 <div>
-                    <h4 className="text-white font-black uppercase tracking-widest text-xs mb-1">Technical Consultation</h4>
-                    <p className="text-slate-400 text-[11px] leading-relaxed italic">Our professionals listen to your requirements and provide rock-drill solutions that fit your budget.</p>
+                    <h4 className="text-slate-900 font-black uppercase tracking-widest text-[10px] mb-1">Consultation Available</h4>
+                    <p className="text-slate-400 text-[10px] italic">Expert support for {activeTab.name} sizing and application.</p>
                 </div>
             </div>
-
-            <button className="bg-orange-600 p-8 rounded-3xl flex items-center gap-6 group hover:brightness-110 transition-all text-left w-full" onClick={() => navigate('/contactus')}>
-                <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center border border-white/20 shrink-0">
-                    <Box className="text-white" />
+            <button className="bg-slate-900 p-8 rounded-[3rem] flex items-center gap-6 group hover:bg-orange-600 transition-all text-left">
+                <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center text-white">
+                    <Box size={24} />
                 </div>
                 <div>
-                    <h4 className="text-white font-black uppercase tracking-widest text-xs mb-1">Bulk Sourcing Assistance</h4>
-                    <p className="text-white/80 text-[11px] leading-relaxed italic underline decoration-white/30 underline-offset-4">Inquiries from contractors and government agencies are welcome.</p>
+                    <h4 className="text-white font-black uppercase tracking-widest text-[10px] mb-1">Bulk Sourcing</h4>
+                    <p className="text-white/60 text-[10px] italic">Inquire about volume pricing for industrial contracts.</p>
                 </div>
             </button>
         </footer>
-
       </main>
     </section>
   );
