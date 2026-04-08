@@ -1,6 +1,22 @@
 import React, { useState } from 'react';
-import { Drill, Hammer, Wind, Cog, Droplets, Box, ChevronRight, HardHat, MapPin, Search} from 'lucide-react';
+import { Drill, Hammer, Wind, Cog, Droplets, Box, ChevronRight, HardHat, MapPin, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+
+// PRODUCT IMAGE IMPORTS (Adjusting to your folder structure)
+import PulakanaImg from "../../assests/productimg/Pulakana/1.webp";
+import LTImg from "../../assests/productimg/LT (1)/1.webp";
+import NanchangImg from "../../assests/productimg/Nanchang +/1.webp";
+import PLKSImg from "../../assests/productimg/PLKS/1.webp";
+import BushImg from "../../assests/productimg/Bush/1.webp";
+import PistonImg from "../../assests/productimg/Piston/1.webp";
+import SideBoldImg from "../../assests/productimg/Side bold-/1.webp";
+import RetainerLockImg from "../../assests/productimg/Piston-/1.webp";
+import LinerSetImg from "../../assests/productimg/Liner set/1.webp";
+import ConnectRodImg from "../../assests/productimg/Connect Rod/1.webp";
+import FiltersImg from "../../assests/productimg/Air filter and Oil filter/1.webp";
+import RingsImg from "../../assests/productimg/Rings/1.webp";
+import ValvesImg from "../../assests/productimg/Valves/1.webp";
+import SandcoRodsImg from "../../assests/productimg/Sandco Tapper drill rods/1.webp";
 
 const categories = [
   {
@@ -10,9 +26,9 @@ const categories = [
     title: 'Drill Rod Dealers in Tamilnadu',
     description: 'Sri Kumar Drill Rod Works, your trusted drill rod dealers in Tamilnadu.',
     items: [
-      { name: 'Sandco Tapper Drill Rods', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' },
-      { name: 'Blue Tapper Drill Rods', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
-      { name: 'Imported Drill Rods', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' }
+      { name: 'Sandco Tapper Drill Rods', img: SandcoRodsImg },
+      { name: 'Blue Tapper Drill Rods', img: SandcoRodsImg }, 
+      { name: 'Imported Drill Rods', img: SandcoRodsImg } // DUPLICATE AS REQUESTED
     ],
     path: '/drill-rods'
   },
@@ -23,11 +39,11 @@ const categories = [
     title: 'Quality Tapered Button Bits Suppliers',
     description: 'Variety of sizes and angles to match different rock conditions.',
     items: [
-      { name: 'Pulanka', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' },
-      { name: 'LT', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
-      { name: 'Nanchang', img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' },
-      { name: 'PLKS', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' },
-      { name: '7 Degree 34mm Taper Button Bit', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' }
+      { name: 'Pulanka', img: PulakanaImg },
+      { name: 'LT', img: LTImg },
+      { name: 'Nanchang', img: NanchangImg },
+      { name: 'PLKS', img: PLKSImg },
+      { name: '7 Degree 34mm Taper Button Bit', img: PulakanaImg }
     ],
     path: '/tapper-bits'
   },
@@ -36,12 +52,12 @@ const categories = [
     name: 'Jack Hammer Spares',
     icon: Hammer,
     items: [
-      { name: 'PSI/MDS Jack Hammer', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
-      { name: 'Bush', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
-      { name: 'Ranger Box', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' },
-      { name: 'Piston', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
-      { name: 'Side Bolt', img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' },
-      { name: 'Retainer Lock', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' }
+      { name: 'PSI/MDS Jack Hammer', img: BushImg },
+      { name: 'Bush', img: BushImg },
+      { name: 'Ranger Box', img: BushImg }, // DUPLICATE AS REQUESTED
+      { name: 'Piston', img: PistonImg },
+      { name: 'Side Bolt', img: SideBoldImg },
+      { name: 'Retainer Lock', img: RetainerLockImg }
     ],
     path: '/jack-hammer'
   },
@@ -50,12 +66,12 @@ const categories = [
     name: 'Compressor Parts',
     icon: Wind,
     items: [
-      { name: 'Atlas Copco VT 4 Compressor Parts', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' },
-      { name: 'Liner Set', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
-      { name: 'Rings', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
-      { name: 'Valves', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' },
-      { name: 'Air Filters', img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
-      { name: 'Oil Filters', img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' }
+      { name: 'Atlas Copco VT 4 Compressor Parts', img: LinerSetImg },
+      { name: 'Liner Set', img: LinerSetImg },
+      { name: 'Connect Rod', img: ConnectRodImg },
+      { name: 'Air & Oil Filters', img: FiltersImg },
+      { name: 'Rings', img: RingsImg },
+      { name: 'Valves', img: ValvesImg }
     ],
     path: '/compressor'
   },
@@ -64,8 +80,9 @@ const categories = [
     name: 'Hoses',
     icon: Droplets,
     items: [
-      { name: 'Durlon Rock Drill Hose', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' },
-      { name: 'Standard Hoses', img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' }
+      { name: 'Durlon Rock Drill Hose', img: FiltersImg }, // DUPLICATE AS REQUESTED
+      { name: 'Standard Hoses', img: FiltersImg },      // DUPLICATE AS REQUESTED
+      { name: 'Drillon', img: FiltersImg }             // DUPLICATE AS REQUESTED
     ],
     path: '/hoses'
   },
@@ -74,9 +91,9 @@ const categories = [
     name: 'Pneumatic Tools',
     icon: Box,
     items: [
-      { name: 'Chipping Hammer', img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
-      { name: 'Pavement Breaker Spares', img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
-      { name: 'Pneumatic Rammer', img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' }
+      { name: 'Chipping Hammer', img: BushImg },
+      { name: 'Pavement Breaker Spares', img: SideBoldImg },
+      { name: 'Pneumatic Rammer', img: PistonImg }
     ],
     path: '/pneumatic'
   }
@@ -90,7 +107,7 @@ export default function IndustrialSolutions() {
     <section className="bg-slate-100 min-h-screen flex font-['Inter']">
       
       {/* LEFT SIDEBAR - MASTER TOPICS */}
-      <aside className="w-80 bg-white border-r border-gray-200 p-8 hidden xl:flex flex-col sticky top-0 h-screen">
+      <aside className="w-80 bg-white border-r border-gray-200 p-8 hidden xl:flex flex-col sticky top-0 h-screen shadow-sm">
         <div className="mb-10">
           <h2 className="text-2xl font-black text-slate-900 tracking-tighter uppercase italic">
             SRI KUMAR<span className="text-orange-600">.</span>
@@ -146,7 +163,7 @@ export default function IndustrialSolutions() {
           </h1>
         </header>
 
-       {/* SUBTOPICS GRID (SMALLER CARD VARIANT) */}
+        {/* SUBTOPICS GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {activeTab.items.map((subItem, index) => (
             <div 
@@ -154,7 +171,6 @@ export default function IndustrialSolutions() {
               className="group relative bg-white rounded-[2rem] p-3 pb-4 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col cursor-pointer hover:-translate-y-1.5"
               onClick={() => navigate(activeTab.path)}
             >
-              {/* Product Info Header - Reduced Spacing/Size */}
               <div className="px-4 py-5 text-center">
                 <h3 className="text-lg font-bold text-slate-900 tracking-tight leading-tight mb-1 line-clamp-1">
                   {subItem.name}
@@ -165,7 +181,6 @@ export default function IndustrialSolutions() {
                 </div>
               </div>
 
-              {/* Image Container - Adjusted Aspect Ratio for Compactness */}
               <div className="aspect-[4/5] bg-[#E8EAEF] rounded-[1.5rem] flex items-center justify-center p-6 relative overflow-hidden transition-all group-hover:bg-[#E2E4E9]">
                 <img 
                   src={subItem.img} 
@@ -175,7 +190,6 @@ export default function IndustrialSolutions() {
                 <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 w-48 h-48 bg-white opacity-20 blur-3xl rounded-full"></div>
               </div>
 
-              {/* Bottom Action Bar - Scaled Down Elements */}
               <div className="mt-4 px-2 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center text-white shrink-0">
@@ -183,7 +197,7 @@ export default function IndustrialSolutions() {
                   </div>
                   <div className="hidden sm:block">
                     <p className="text-[9px] font-black text-slate-900 uppercase leading-none">SP-0{index + 1}</p>
-                    <p className="text-[8px] text-slate-400 font-medium">12m ago</p>
+                    <p className="text-[8px] text-slate-400 font-medium">Updated 12m ago</p>
                   </div>
                 </div>
                 

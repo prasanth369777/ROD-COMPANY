@@ -2,6 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, ArrowRight, Package, Settings, Wind, Cog, Droplets, ShieldCheck, Truck, LayoutGrid, List, ChevronRight } from 'lucide-react';
 
+// Product Image Imports based on your folder structure
+import PulakanaImg from "../../assests/productimg/Pulakana/1.webp";
+import LTImg from "../../assests/productimg/LT (1)/1.webp";
+import NanchangImg from "../../assests/productimg/Nanchang +/1.webp";
+import PLKSImg from "../../assests/productimg/PLKS/1.webp";
+import BushImg from "../../assests/productimg/Bush/1.webp";
+import RangerBoxImg from "../../assests/productimg/Bush/2.webp"; // Used for Ranger Box
+import PistonImg from "../../assests/productimg/Piston/1.webp";
+import SideBoldImg from "../../assests/productimg/Side bold-/1.webp";
+import RetainerLockImg from "../../assests/productimg/Piston-/1.webp"; // Using Piston- as Retainer placeholder if needed
+import LinerSetImg from "../../assests/productimg/Liner set/1.webp";
+import ConnectRodImg from "../../assests/productimg/Connect Rod/1.webp";
+import FiltersImg from "../../assests/productimg/Air filter and Oil filter/1.webp";
+import RingsImg from "../../assests/productimg/Rings/1.webp";
+import ValvesImg from "../../assests/productimg/Valves/1.webp";
+import SandcoRodsImg from "../../assests/productimg/Sandco Tapper drill rods/1.webp";
+
 const ProductPage = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -11,62 +28,57 @@ const ProductPage = () => {
     {
       id: 'bits',
       category: 'Tapper button bits',
-      path: "/tapper-bits",
       icon: <Cog size={18} />,
       items: [
-        { name: 'Pulanka', code: 'SK-B1', path: "/tapper-bits/pulanka", img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' },
-        { name: 'LT', code: 'SK-B2', path: "/tapper-bits/lt", img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
-        { name: 'Nanchang +', code: 'SK-B3', path: "/tapper-bits/nanchang-plus", img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
-        { name: 'PLKS', code: 'SK-B4', path: "/tapper-bits/plks", img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' }
+        { name: 'Pulanka', code: 'SK-B1', path: "/tapper-bits/pulanka", img: PulakanaImg },
+        { name: 'LT', code: 'SK-B2', path: "/tapper-bits/lt", img: LTImg },
+        { name: 'Nanchang +', code: 'SK-B3', path: "/tapper-bits/nanchang-plus", img: NanchangImg },
+        { name: 'PLKS', code: 'SK-B4', path: "/tapper-bits/plks", img: PLKSImg }
       ]
     },
     {
       id: 'jack',
       category: 'PSI/MDS Jack Hammer',
-      path: "/jack-hammer",
       icon: <Settings size={18} />,
       items: [
-        { name: 'Bush', code: 'SK-J1', path: "/jack-hammer/bush", img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
-        { name: 'Ranger Box', code: 'SK-J2', path: "/jack-hammer/ranger-box", img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' },
-        { name: 'Piston', code: 'SK-J3', path: "/jack-hammer/piston", img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' },
-        { name: 'Side bold', code: 'SK-J4', path: "/jack-hammer/side-bolt", img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' },
-        { name: 'Retainer lock', code: 'SK-J5', path: "/jack-hammer/retainer-lock", img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' }
+        { name: 'Bush', code: 'SK-J1', path: "/jack-hammer/bush", img: BushImg },
+        { name: 'Ranger Box', code: 'SK-J2', path: "/jack-hammer/ranger-box", img: RangerBoxImg }, // Added Ranger Box
+        { name: 'Piston', code: 'SK-J3', path: "/jack-hammer/piston", img: PistonImg },
+        { name: 'Side bold', code: 'SK-J4', path: "/jack-hammer/side-bolt", img: SideBoldImg },
+        { name: 'Retainer lock', code: 'SK-J5', path: "/jack-hammer/retainer-lock", img: RetainerLockImg }
       ]
     },
     {
       id: 'comp',
-      category: 'atlas copco VT 4 Compressor',
-      path: "/compressor",
+      category: 'Atlas Copco VT 4 Compressor',
       icon: <Wind size={18} />,
       items: [
-        { name: 'Liner set', code: 'SK-C1', path: "/compressor/liner-set", img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
-        { name: 'Piston', code: 'SK-C2', path: "/compressor/piston", img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' },
-        { name: 'Connect Rod', code: 'SK-C3', path: "/compressor/connect-rod", img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
-        { name: 'Air filter and Oil filter', code: 'SK-C4', path: "/compressor/filters", img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' },
-        { name: 'Rings', code: 'SK-C5', path: "/compressor/rings", img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' },
-        { name: 'Valves', code: 'SK-C6', path: "/compressor/valves", img: 'https://images.unsplash.com/photo-1581094120913-20739c9081bc?q=80&w=400' }
+        { name: 'Liner set', code: 'SK-C1', path: "/compressor/liner-set", img: LinerSetImg },
+        { name: 'Piston', code: 'SK-C2', path: "/compressor/piston", img: PistonImg },
+        { name: 'Connect Rod', code: 'SK-C3', path: "/compressor/connect-rod", img: ConnectRodImg },
+        { name: 'Air & Oil filter', code: 'SK-C4', path: "/compressor/filters", img: FiltersImg },
+        { name: 'Rings', code: 'SK-C5', path: "/compressor/rings", img: RingsImg },
+        { name: 'Valves', code: 'SK-C6', path: "/compressor/valves", img: ValvesImg }
       ]
     },
     {
       id: 'rods',
       category: 'Drill Rods',
-      path: "/drill-rods",
       icon: <Package size={18} />,
       items: [
-        { name: 'Sandco Tapper drill rods', code: 'SK-R1', path: "/drill-rods/sandco", img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=400' },
-        { name: 'Blue Tapper drill rods', code: 'SK-R2', path: "/drill-rods/blue-tapper", img: 'https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?q=80&w=400' },
-        { name: 'Imported drill rods', code: 'SK-R3', path: "/drill-rods/imported", img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=400' }
+        { name: 'Sandco Tapper drill rods', code: 'SK-R1', path: "/drill-rods/sandco", img: SandcoRodsImg },
+        { name: 'Blue Tapper drill rods', code: 'SK-R2', path: "/drill-rods/blue-tapper", img: SandcoRodsImg },
+        { name: 'Imported drill rods', code: 'SK-R3', path: "/drill-rods/imported", img: SandcoRodsImg } // Duplicate of Sandco
       ]
     },
     {
       id: 'hose',
       category: 'Hose',
-      path: "/hoses",
       icon: <Droplets size={18} />,
       items: [
-        { name: 'Durlon Rock drill hose', code: 'SK-H1', path: "/hoses/durlon", img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=400' },
-        { name: 'Standard', code: 'SK-H2', path: "/hoses/standard", img: 'https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=400' },
-        { name: 'Drillon', code: 'SK-H3', path: "/hoses/drillon", img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400' }
+        { name: 'Durlon Rock drill hose', code: 'SK-H1', path: "/hoses/durlon", img: FiltersImg }, // Placeholder Duplicate
+        { name: 'Standard', code: 'SK-H2', path: "/hoses/standard", img: FiltersImg }, // Placeholder Duplicate
+        { name: 'Drillon', code: 'SK-H3', path: "/hoses/drillon", img: FiltersImg } // Placeholder Duplicate
       ]
     }
   ];
@@ -96,7 +108,7 @@ const ProductPage = () => {
   return (
     <div className="bg-white min-h-screen font-['Inter'] flex text-slate-900">
       
-      {/* LEFT SIDEBAR - TOPICS */}
+      {/* LEFT SIDEBAR */}
       <aside className="w-80 border-r border-slate-100 h-screen sticky top-0 hidden xl:flex flex-col bg-[#FDFDFD] pt-32">
         <div className="px-8 flex-1 overflow-y-auto">
           <div className="relative mb-8">
@@ -136,7 +148,6 @@ const ProductPage = () => {
 
       {/* RIGHT SIDE - PRODUCTS */}
       <main className="flex-1 bg-white pt-32 pb-32">
-        
         <header className="px-8 lg:px-12 mb-12 flex justify-between items-center">
             <div>
                 <h1 className="text-sm font-black uppercase tracking-[0.3em] flex items-center gap-3">
@@ -162,7 +173,7 @@ const ProductPage = () => {
                   <img 
                     src={product.img} 
                     alt={product.name} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" 
+                    className="w-full h-full object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" 
                   />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-2 py-1 rounded text-[8px] font-black tracking-widest border border-slate-100 uppercase shadow-sm">
                     {product.code}

@@ -16,7 +16,7 @@ export default function Navigation() {
   // Standard flat navigation links
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About Us", path: "/about-us" },
+    { name: "About Us", path: "/aboutus" },
     { name: "Products", path: "/products" },
     { name: "Industry We Serve", path: "/industries" },
     { name: "Contact Us", path: "/contactus" },
