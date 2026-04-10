@@ -37,28 +37,28 @@ const testimonials = [
 
 function TestimonialCard({ t }) {
   return (
-    <div className="flex-shrink-0 w-[350px] lg:w-[450px] group bg-[#111112] border border-white/5 p-8 relative overflow-hidden transition-all hover:border-yellow-400/30">
-      {/* Industrial Quote Icon - Correctly wrapped in braces */}
-      <Quote className="absolute -top-2 -right-2 w-20 h-20 text-white/5 group-hover:text-yellow-400/5 transition-colors" />
+    <div className="flex-shrink-0 w-[300px] md:w-[350px] lg:w-[450px] group bg-[#111112] border border-white/5 p-6 lg:p-8 relative overflow-hidden transition-all hover:border-yellow-400/30">
+      {/* Industrial Quote Icon */}
+      <Quote className="absolute -top-2 -right-2 w-16 h-16 lg:w-20 lg:h-20 text-white/5 group-hover:text-yellow-400/5 transition-colors" />
       
       <div className="relative z-10">
         <div className="flex items-center gap-1 mb-6">
           {[...Array(t.rating)].map((_, i) => (
             <Star key={i} className="w-3 h-3 text-yellow-400 fill-current" />
           ))}
-          <span className="ml-2 text-[10px] font-black uppercase tracking-widest text-gray-500 italic">
+          <span className="ml-2 text-[10px] font-bold uppercase tracking-widest text-gray-500 italic">
             {t.tag} Verified
           </span>
         </div>
 
-        <p className="text-gray-400 mb-8 leading-relaxed italic text-lg lg:text-xl">
+        <p className="text-gray-400 mb-8 leading-relaxed italic text-base md:text-lg lg:text-xl">
           &quot;{t.content}&quot;
         </p>
 
         <div className="flex items-center justify-between border-t border-white/5 pt-6">
           <div>
-            <h4 className="text-white font-black uppercase tracking-tighter text-sm italic">{t.name}</h4>
-            <p className="text-[10px] text-gray-600 uppercase font-bold tracking-widest">
+            <h4 className="text-white font-bold uppercase tracking-tighter text-sm italic">{t.name}</h4>
+            <p className="text-[10px] text-gray-600 uppercase font-semibold tracking-widest">
               {t.role} {`//`} {t.company}
             </p>
           </div>
@@ -71,7 +71,7 @@ function TestimonialCard({ t }) {
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-[#0a0a0b] relative overflow-hidden border-t border-white/5">
+    <section className="py-16 md:py-24 bg-[#0a0a0b] relative overflow-hidden border-t border-white/5">
       {/* Background Tech Lines */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
         <div className="absolute top-1/4 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
@@ -79,39 +79,39 @@ export default function Testimonials() {
       </div>
 
       <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-6 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-[2px] w-12 bg-yellow-400"></div>
-              <span className="text-yellow-400 font-bold tracking-[0.3em] uppercase text-xs">Field Reports</span>
+              <span className="text-yellow-400 font-semibold tracking-[0.3em] uppercase text-xs">Field Reports</span>
             </div>
-            <h2 className="text-5xl lg:text-7xl font-black text-white uppercase italic tracking-tighter leading-none">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white uppercase italic tracking-tighter leading-none">
               TRUSTED IN <br /> <span className="text-gray-700">THE FIELD.</span>
             </h2>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 lg:gap-6">
              <div className="text-right">
-                <p className="text-2xl font-black text-white italic">4.9/5</p>
-                <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Global Rating</p>
+                <p className="text-xl md:text-2xl font-bold text-white italic">4.9/5</p>
+                <p className="text-[8px] md:text-[10px] text-gray-500 uppercase font-semibold tracking-widest">Global Rating</p>
              </div>
              <div className="h-10 w-[1px] bg-white/10"></div>
              <div className="text-right">
-                <p className="text-2xl font-black text-white italic">2.5k+</p>
-                <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Supplies Delivered</p>
+                <p className="text-xl md:text-2xl font-bold text-white italic">2.5k+</p>
+                <p className="text-[8px] md:text-[10px] text-gray-500 uppercase font-semibold tracking-widest">Supplies Delivered</p>
              </div>
           </div>
         </div>
 
         <div className="relative flex overflow-hidden group">
-          <div className="flex gap-6 animate-scroll-x py-4 px-6 group-hover:[animation-play-state:paused]">
+          <div className="flex gap-4 md:gap-6 animate-scroll-x py-4 px-4 md:px-6 group-hover:[animation-play-state:paused]">
             {[...testimonials, ...testimonials].map((t, i) => (
               <TestimonialCard key={i} t={t} />
             ))}
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 mt-16 flex justify-center">
-            <button className="group flex items-center gap-4 text-gray-500 hover:text-yellow-400 transition-all font-black uppercase text-[10px] tracking-[0.4em]">
+        <div className="max-w-7xl mx-auto px-6 mt-12 md:mt-16 flex justify-center">
+            <button className="group flex items-center gap-4 text-gray-500 hover:text-yellow-400 transition-all font-bold uppercase text-[10px] tracking-[0.4em]">
                 View Full Service History <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
             </button>
         </div>
@@ -124,6 +124,11 @@ export default function Testimonials() {
         }
         .animate-scroll-x {
           animation: scroll-x 30s linear infinite;
+        }
+        @media (max-width: 768px) {
+          .animate-scroll-x {
+            animation-duration: 20s;
+          }
         }
       `}</style>
     </section>

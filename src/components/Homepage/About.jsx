@@ -53,7 +53,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="py-24 bg-white relative overflow-hidden text-slate-900 font-['Inter']">
+    <section id="about" className="py-12 md:py-24 bg-white relative overflow-hidden text-slate-900 font-['Inter']">
       
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
            style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '100px 100px' }}>
@@ -61,118 +61,118 @@ export default function About() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 md:mb-32">
           
-          <div className="relative">
-            <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-16 h-[80%] bg-orange-600/10 hidden lg:block -z-10"></div>
+          <div className="relative order-2 lg:order-1">
+            <div className="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 w-12 md:w-16 h-[80%] bg-orange-600/10 hidden lg:block -z-10"></div>
             <div className="relative bg-gray-100 p-2 shadow-2xl">
                 <img 
                     src="https://images.pexels.com/photos/2209524/pexels-photo-2209524.jpeg?auto=compress&cs=tinysrgb&w=1200" 
                     alt="Industrial Equipment" 
                     className="w-full h-auto object-cover"
                 />
-                <div className="absolute top-10 right-0 lg:-right-10 bg-orange-600 p-8 text-white max-w-xs shadow-xl">
-                    <h3 className="text-xl font-bold uppercase tracking-tight mb-2">Technical Excellence</h3>
-                    <p className="text-xs opacity-90 leading-relaxed uppercase font-semibold tracking-widest">
+                <div className="absolute top-6 md:top-10 right-0 lg:-right-10 bg-orange-600 p-4 md:p-8 text-white max-w-[200px] md:max-w-xs shadow-xl">
+                    <h3 className="text-lg md:text-xl font-bold uppercase tracking-tight mb-2">Technical Excellence</h3>
+                    <p className="text-[10px] md:text-xs opacity-90 leading-relaxed uppercase font-semibold tracking-widest">
                         Sri Kumar uses precision concepts throughout the process of supply.
                     </p>
                 </div>
             </div>
           </div>
 
-          <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start order-1 lg:order-2">
             <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-6xl lg:text-8xl font-black text-slate-900 leading-none">20</span>
+                <span className="text-6xl md:text-7xl lg:text-8xl font-bold text-slate-900 leading-none">20</span>
                 <div className="flex flex-col">
-                    <span className="text-2xl lg:text-4xl font-bold text-orange-600 leading-none">Years</span>
-                    <span className="text-2xl lg:text-4xl font-light italic text-slate-400">Experience</span>
+                    <span className="text-xl md:text-2xl lg:text-4xl font-bold text-orange-600 leading-none">Years</span>
+                    <span className="text-xl md:text-2xl lg:text-4xl font-light italic text-slate-400">Experience</span>
                 </div>
             </div>
             
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-slate-400 mb-8 border-b-2 border-orange-500 pb-2">
+            <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-400 mb-6 md:mb-8 border-b-2 border-orange-500 pb-2">
                 Production of Rock Drill Bits for Mining
             </p>
             
-            <p className="text-lg lg:text-xl text-slate-600 italic font-medium leading-relaxed mb-8">
+            <p className="text-base md:text-lg lg:text-xl text-slate-600 italic font-medium leading-relaxed mb-6 md:mb-8">
                 &quot;Every piece, it's a classic!&quot; With years of experience, Sri Kumar Drill Rod Works takes pride in being one of the most respected mining tools suppliers in Tamilnadu.
             </p>
 
-            <p className="text-slate-500 text-sm leading-relaxed mb-10 max-w-xl">
+            <p className="text-slate-500 text-sm leading-relaxed mb-8 md:mb-10 max-w-xl">
                 Whether you are a <span className="text-slate-900 font-bold">Contractor</span> on a large infrastructure project, a <span className="text-slate-900 font-bold">Quarry Owner</span>, or a repair shop looking for <span className="text-slate-900 font-bold">Authentic Spares</span>, we are here to serve you professionally.
             </p>
 
             <button 
                 onClick={() => navigate('/drill-rods')}
-                className="inline-flex items-center gap-4 bg-orange-600 text-white px-10 py-5 font-bold uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-lg active:scale-95"
+                className="w-full md:w-auto inline-flex items-center justify-center gap-4 bg-orange-600 text-white px-8 md:px-10 py-4 md:py-5 font-bold uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-lg active:scale-95"
             >
                 Read More
             </button>
           </div>
         </div>
 
-        <div className="border-y border-gray-100 py-20 mb-32 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="border-y border-gray-100 py-12 md:py-20 mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
             <div className="lg:col-span-8">
-                <h2 className="text-3xl lg:text-5xl font-black uppercase tracking-tighter italic mb-6">
+                <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-tighter italic mb-4 md:mb-6">
                     Trusted <span className="text-orange-600">Jackhammer</span> <br /> Spare Parts Distributor
                 </h2>
-                <p className="text-slate-500 text-lg leading-relaxed italic max-w-3xl">
+                <p className="text-slate-500 text-base md:text-lg leading-relaxed italic max-w-3xl">
                     Downtime is not an option. We operate as a dedicated distributor in Tamilnadu, ensuring critical components like <span className="text-slate-900 font-bold">Pistons</span> and <span className="text-slate-900 font-bold">Bush Kits</span> are always available.
                 </p>
             </div>
             <div className="lg:col-span-4 flex justify-start lg:justify-end">
                 <button 
                     onClick={() => navigate('/jack-hammer')}
-                    className="px-12 py-5 border-2 border-orange-600 text-orange-600 font-black uppercase text-xs tracking-widest hover:bg-orange-600 hover:text-white transition-all"
+                    className="w-full md:w-auto px-10 md:px-12 py-4 md:py-5 border-2 border-orange-600 text-orange-600 font-bold uppercase text-xs tracking-widest hover:bg-orange-600 hover:text-white transition-all"
                 >
                     View Catalog
                 </button>
             </div>
         </div>
 
-        <div className="mb-40">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <h2 className="text-4xl font-black uppercase italic tracking-tight">
+        <div className="mb-24 md:mb-40">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6">
+                <h2 className="text-3xl md:text-4xl font-bold uppercase italic tracking-tight">
                     Tapered <span className="text-orange-600">Button Bits</span>
                 </h2>
-                <div className="flex gap-4">
-                    <div className="px-4 py-2 bg-slate-50 text-[10px] font-bold text-slate-400 border border-slate-200 uppercase tracking-widest">Mining Belt Ready</div>
-                    <div className="px-4 py-2 bg-slate-50 text-[10px] font-bold text-slate-400 border border-slate-200 uppercase tracking-widest">High-Impact Steel</div>
+                <div className="flex flex-wrap gap-3 md:gap-4">
+                    <div className="px-3 md:px-4 py-2 bg-slate-50 text-[8px] md:text-[10px] font-bold text-slate-400 border border-slate-200 uppercase tracking-widest">Mining Belt Ready</div>
+                    <div className="px-3 md:px-4 py-2 bg-slate-50 text-[8px] md:text-[10px] font-bold text-slate-400 border border-slate-200 uppercase tracking-widest">High-Impact Steel</div>
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
                 {['Sandco', 'Blue Tapper', 'Pulanka', 'LT', 'Nanchang', 'PLKS'].map((brand) => (
-                    <div key={brand} className="group border border-gray-100 p-8 flex flex-col items-center justify-center hover:bg-slate-900 hover:border-slate-900 transition-all cursor-default">
-                        <Drill size={32} className="text-orange-600 mb-4" />
-                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-white">{brand}</span>
+                    <div key={brand} className="group border border-gray-100 p-6 md:p-8 flex flex-col items-center justify-center hover:bg-slate-900 hover:border-slate-900 transition-all cursor-default">
+                        <Drill size={28} className="text-orange-600 mb-3 md:mb-4" />
+                        <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-white text-center">{brand}</span>
                     </div>
                 ))}
             </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 mb-32 shadow-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 mb-24 md:mb-32 shadow-xl">
           {industrialValues.map((value, index) => (
-            <div key={index} className="bg-white p-12 hover:bg-slate-50 transition-colors">
-              <value.icon className="w-10 h-10 text-orange-600 mb-8" />
-              <h3 className="text-xl font-black uppercase tracking-tight mb-4">{value.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed font-medium italic">{value.description}</p>
+            <div key={index} className="bg-white p-8 md:p-12 hover:bg-slate-50 transition-colors">
+              <value.icon className="w-8 h-8 md:w-10 md:h-10 text-orange-600 mb-6 md:mb-8" />
+              <h3 className="text-lg md:text-xl font-bold uppercase tracking-tight mb-3 md:mb-4">{value.title}</h3>
+              <p className="text-xs md:text-sm text-slate-500 leading-relaxed font-medium italic">{value.description}</p>
             </div>
           ))}
         </div>
 
-        <div className="relative bg-slate-900 p-12 lg:p-24 text-center rounded-none overflow-hidden">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
+        <div className="relative bg-slate-900 p-10 md:p-16 lg:p-24 text-center rounded-none overflow-hidden">
+            <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
                 <Factory size={400} className="text-white" />
             </div>
-            <h3 className="text-4xl md:text-7xl font-black text-white mb-8 uppercase italic tracking-tighter leading-none relative z-10">
+            <h3 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 md:mb-8 uppercase italic tracking-tighter leading-tight md:leading-none relative z-10">
                 SECURE YOUR <br /> <span className="text-orange-600">SITE EFFICIENCY.</span>
             </h3>
-            <p className="text-slate-400 text-lg lg:text-xl mb-12 max-w-3xl mx-auto italic relative z-10 leading-relaxed">
+            <p className="text-slate-400 text-base md:text-lg lg:text-xl mb-8 md:mb-12 max-w-3xl mx-auto italic relative z-10 leading-relaxed">
                 Contact our Coimbatore headquarters for specialized bulk quotes and priority field support across Tamil Nadu.
             </p>
             <button
               onClick={() => navigate("/contactus")}
-              className="relative z-10 bg-orange-600 text-white px-20 py-6 font-black uppercase text-xs tracking-[0.4em] hover:bg-white hover:text-orange-600 transition-all shadow-2xl active:scale-95"
+              className="relative z-10 w-full md:w-auto bg-orange-600 text-white px-10 md:px-20 py-5 md:py-6 font-bold uppercase text-xs tracking-[0.2em] md:tracking-[0.4em] hover:bg-white hover:text-orange-600 transition-all shadow-2xl active:scale-95"
             >
               Get B2B Pricing
             </button>

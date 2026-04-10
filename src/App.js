@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/pages/Navigation';
 import Footer from './components/pages/Footer';
+import Loadingpage from './components/pages/loadingpage';
+
 // Core Pages
 import Homepage from './components/Homepage/Homepage';
 import Aboutus from './components/pages/Aboutus';
@@ -17,14 +19,14 @@ import LTTapper from './components/productpage/Tapper button bits/LT Tapper';
 import Nanchang from './components/productpage/Tapper button bits/Nanchang';
 import PLKSProductPage from './components/productpage/Tapper button bits/PLKS';
 
-// Product Group 2: Jack Hammer Spare Parts (FIXED PATHS)
+// Product Group 2: Jack Hammer Spare Parts
 import BushProductPage from './components/productpage/PSI/MDS Jack Hammer/Bush';
 import RangerBoxProductPage from './components/productpage/PSI/MDS Jack Hammer/Ranger Box';
 import PistonProductPage from './components/productpage/PSI/MDS Jack Hammer/Piston';
 import SideBoltProductPage from './components/productpage/PSI/MDS Jack Hammer/Side bold';
 import RetainerLockProductPage from './components/productpage/PSI/MDS Jack Hammer/Retainer lock';
 
-// Product Group 3: Atlas Copco VT4 (FIXED PATHS)
+// Product Group 3: Atlas Copco VT4
 import LinerSetProductPage from './components/productpage/Atlas copco VT 4 Compresser/Liner set';
 import CompressorPistonProductPage from './components/productpage/Atlas copco VT 4 Compresser/Piston';
 import ConnectRodProductPage from './components/productpage/Atlas copco VT 4 Compresser/Connect Rod';
@@ -32,7 +34,7 @@ import FilterProductPage from './components/productpage/Atlas copco VT 4 Compres
 import CompressorRingsProductPage from './components/productpage/Atlas copco VT 4 Compresser/Rings';
 import CompressorValvesProductPage from './components/productpage/Atlas copco VT 4 Compresser/Valves';
 
-// Product Group 4: Drill Rods (FIXED NAMES)
+// Product Group 4: Drill Rods
 import SandcoRodProductPage from './components/productpage/Drill Rods/Sandco Tapper drill rods';
 import BlueTapperRodProductPage from './components/productpage/Drill Rods/Blue Tapper drill rods';
 import ImportedRodsProductPage from './components/productpage/Drill Rods/Imported drill rods';
@@ -43,20 +45,32 @@ import StandardHoseProductPage from './components/productpage/Hose/Starndard';
 import DrillonHoseProductPage from './components/productpage/Hose/Drillon';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate initial asset loading (3 seconds)
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loadingpage />;
+  }
+
   return (
     <Router>
-      
       <Navigation />
+     
       <Buttontotop />
-      
-
 
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/aboutus" element={<Aboutus />} />
         <Route path="/blog" element={<BlogSectionClassic />} />
         <Route path="/contactus" element={<Contactus />} />
-
         <Route path="/products" element={<Products />} />
 
         {/* --- Product Routes --- */}
@@ -86,6 +100,7 @@ function App() {
         <Route path="/hoses/standard" element={<StandardHoseProductPage />} />
         <Route path="/hoses/drillon" element={<DrillonHoseProductPage />} />
       </Routes>
+
       <Whatsapp />
       <Footer />
     </Router>

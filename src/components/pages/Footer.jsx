@@ -1,5 +1,6 @@
+import React from 'react';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
-import Logo from '../../assests/logo.png'; // matches your project structure
+import Logo from '../../assests/logo.png'; 
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -20,46 +21,53 @@ export default function Footer() {
     { name: 'Bulk Enquiry', path: '/contactus' },
   ];
 
+  // Animated Social Button Component
+  const SocialButton = ({ Icon, color }) => (
+    <div className="group [perspective:180px] w-10 h-10 md:w-12 md:h-12 flex justify-center items-center">
+      <div className="relative w-full h-full rounded-full flex justify-center items-center transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:bg-white group-hover:[transform:rotateX(60deg)_translateY(2px)] group-hover:shadow-[0px_10px_10px_rgba(249,115,22,0.5)] bg-slate-900 border border-white/5">
+        <button className="bg-transparent border-none p-0 flex justify-center items-center transition-all duration-500 group-hover:[transform:translate3d(0px,0px,15px)_rotateX(-35deg)_translateY(2px)]">
+          <Icon className="w-[18px] h-[18px]" style={{ color: color }} />
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <footer className="bg-slate-950 border-t border-white/5 font-['Inter']">
-      {/* Ultra-Wide Container */}
-      <div className="max-w-[1800px] mx-auto px-6 lg:px-16 py-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 mb-20">
+      <div className="max-w-[1800px] mx-auto px-6 lg:px-16 py-12 md:py-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 md:gap-16 mb-16 md:mb-20">
           
-          {/* Brand Column (Col Span 4) */}
+          {/* Brand Column */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-3 mb-8">
-              <img src={Logo} alt="Sri Kumaran Rod Logo" className="h-16 w-auto" />
+              <img src={Logo} alt="Sri Kumaran Rod Logo" className="h-12 md:h-16 w-auto" />
               <div className="flex flex-col leading-none">
-                <span className="text-white font-black text-2xl tracking-tighter uppercase">
+                <span className="text-white font-bold text-xl md:text-2xl tracking-tighter uppercase">
                   SRI KUMARAN <span className="text-orange-500">ROD</span>
                 </span>
-                <span className="text-[10px] font-bold tracking-[0.3em] text-slate-500 uppercase">Industrial Solutions</span>
+                <span className="text-[10px] font-semibold tracking-[0.3em] text-slate-500 uppercase">Industrial Solutions</span>
               </div>
             </div>
-            <p className="text-slate-400 mb-10 leading-relaxed text-lg max-w-sm">
+            <p className="text-slate-400 mb-8 md:mb-10 leading-relaxed text-base md:text-lg max-w-sm font-normal">
               Coimbatore's trusted supplier of high-performance drill rods, compressor spares, and pneumatic accessories since 2025. 
             </p>
-            <div className="flex space-x-3">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
-                <a
-                  key={index}
-                  href="/"
-                  className="w-12 h-12 bg-slate-900 border border-white/5 rounded-xl flex items-center justify-center text-slate-500 hover:text-white hover:border-orange-500 hover:bg-orange-500/10 transition-all duration-300"
-                >
-                  <Icon size={20} />
-                </a>
-              ))}
+            
+            {/* 3D ANIMATED SOCIAL ICONS */}
+            <div className="flex items-center gap-4">
+              <SocialButton Icon={Facebook} color="#4267B2" />
+              <SocialButton Icon={Twitter} color="#1e90ff" />
+              <SocialButton Icon={Instagram} color="#ff00ff" />
+              <SocialButton Icon={Linkedin} color="#0077b5" />
             </div>
           </div>
 
-          {/* Products Column (Col Span 2) */}
+          {/* Products Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-white font-black uppercase tracking-widest mb-8 text-sm italic">Product Range</h4>
-            <ul className="space-y-4">
+            <h4 className="text-white font-bold uppercase tracking-widest mb-6 md:mb-8 text-xs md:sm italic">Product Range</h4>
+            <ul className="space-y-3 md:space-y-4">
               {productLinks.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.path} className="text-slate-400 hover:text-orange-500 transition-colors text-sm font-medium uppercase tracking-wider">
+                  <Link to={item.path} className="text-slate-400 hover:text-orange-500 transition-colors text-xs md:text-sm font-medium uppercase tracking-wider">
                     {item.name}
                   </Link>
                 </li>
@@ -67,13 +75,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links Column (Col Span 2) */}
+          {/* Quick Links Column */}
           <div className="lg:col-span-2">
-            <h4 className="text-white font-black uppercase tracking-widest mb-8 text-sm italic">Company</h4>
-            <ul className="space-y-4">
+            <h4 className="text-white font-bold uppercase tracking-widest mb-6 md:mb-8 text-xs md:sm italic">Company</h4>
+            <ul className="space-y-3 md:space-y-4">
               {companyLinks.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.path} className="text-slate-400 hover:text-orange-500 transition-colors text-sm font-medium uppercase tracking-wider">
+                  <Link to={item.path} className="text-slate-400 hover:text-orange-500 transition-colors text-xs md:text-sm font-medium uppercase tracking-wider">
                     {item.name}
                   </Link>
                 </li>
@@ -81,34 +89,34 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Details Column (Col Span 4) */}
-          <div className="lg:col-span-4 bg-slate-900/50 p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+          {/* Contact Details Column */}
+          <div className="lg:col-span-4 bg-slate-900/50 p-6 md:p-8 rounded-3xl border border-white/5 relative overflow-hidden">
             <div className="absolute top-0 right-0 p-4 opacity-10">
-                <ShieldCheck size={80} className="text-orange-500" />
+                <ShieldCheck className="text-orange-500 w-[60px] h-[60px] md:w-[80px] md:h-[80px]" />
             </div>
-            <h4 className="text-white font-black uppercase tracking-widest mb-8 text-sm italic">Technical Hub</h4>
+            <h4 className="text-white font-bold uppercase tracking-widest mb-6 md:mb-8 text-xs md:sm italic">Technical Hub</h4>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <MapPin className="text-orange-500 shrink-0" size={20} />
-                <p className="text-slate-400 text-sm leading-relaxed">
+                <MapPin className="text-orange-500 shrink-0 w-[18px] h-[18px] md:w-[20px] md:h-[20px]" />
+                <p className="text-slate-400 text-xs md:text-sm leading-relaxed font-normal">
                   Industrial Estate Road, Coimbatore,<br /> Tamil Nadu - 641001, India
                 </p>
               </div>
               <div className="flex items-center gap-4">
-                <Phone className="text-orange-500 shrink-0" size={20} />
-                <p className="text-slate-400 text-sm font-bold tracking-widest">+91 98765 43210</p>
+                <Phone className="text-orange-500 shrink-0 w-[18px] h-[18px] md:w-[20px] md:h-[20px]" />
+                <p className="text-slate-400 text-xs md:text-sm font-semibold tracking-widest">+91 98765 43210</p>
               </div>
               <div className="flex items-center gap-4 pt-4 border-t border-white/5">
                 <div className="flex-1">
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-2">Request technical catalog</p>
+                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-2">Request technical catalog</p>
                     <div className="flex">
                         <input
                             type="email"
                             placeholder="Engineering Email"
-                            className="flex-1 px-4 py-3 bg-slate-950 border border-white/10 rounded-l-xl text-white text-xs placeholder-slate-600 focus:outline-none focus:border-orange-500"
+                            className="flex-1 px-3 md:px-4 py-2 md:py-3 bg-slate-950 border border-white/10 rounded-l-xl text-white text-[10px] md:text-xs placeholder-slate-600 focus:outline-none focus:border-orange-500"
                         />
-                        <button className="px-5 py-3 bg-orange-600 text-white rounded-r-xl hover:bg-orange-500 transition-all shadow-lg active:scale-95">
-                            <Mail size={16} />
+                        <button className="px-4 md:px-5 py-2 md:py-3 bg-orange-600 text-white rounded-r-xl hover:bg-orange-500 transition-all shadow-lg active:scale-95">
+                            <Mail className="w-[14px] h-[14px] md:w-[16px] md:h-[16px]" />
                         </button>
                     </div>
                 </div>
@@ -118,16 +126,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/5 pt-10">
+        <div className="border-t border-white/5 pt-8 md:pt-10">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-            <p className="text-slate-500 text-[11px] font-bold uppercase tracking-[0.2em] text-center lg:text-left">
+            <p className="text-slate-500 text-[9px] md:text-[11px] font-semibold uppercase tracking-[0.1em] md:tracking-[0.2em] text-center lg:text-left leading-relaxed">
               © {currentYear} SRI KUMARAN ROD COMPANY. ALL RIGHTS RESERVED. <br className="md:hidden" />
               <span className="text-slate-700 mx-2 hidden lg:inline">|</span> 
               DESIGNED FOR INDUSTRIAL EXCELLENCE.
             </p>
-            <div className="flex flex-wrap justify-center space-x-8">
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8">
               {['Privacy Policy', 'Terms of Supply', 'Sitemap'].map((item) => (
-                <a key={item} href="/" className="text-slate-500 hover:text-white text-[11px] font-bold uppercase tracking-widest transition-colors">
+                <a key={item} href="/" className="text-slate-500 hover:text-white text-[9px] md:text-11px] font-semibold uppercase tracking-widest transition-colors">
                   {item}
                 </a>
               ))}
