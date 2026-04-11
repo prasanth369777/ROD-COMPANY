@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, HardHat, MapPin, Search, Menu, Box, Zap, Factory, Cog, Drill, Hammer, Wind, Droplets } from 'lucide-react';
+import { ChevronRight, HardHat, MapPin, Search, Menu, Box, Cog, Drill, Hammer, Wind, Droplets } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // 🔹 PRODUCT IMAGE IMPORTS
