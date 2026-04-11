@@ -124,7 +124,11 @@ export default function WhyChooseUs() {
                     className="text-slate-500 italic text-base md:text-xl leading-relaxed"
                   >
                     {active.longDescription}
-                    <div className="mt-8">
+                    <div className="mt-8 relative">
+                        {/* 🔹 DOODLE: "Action Required" */}
+                        <div className="absolute -top-10 right-0 font-['Caveat'] text-orange-500 text-2xl -rotate-6 hidden md:block">
+                           Let's talk business! ↴
+                        </div>
                         <button 
                             onClick={() => navigate('/contactus')}
                             className="w-full md:w-auto bg-orange-600 text-white px-8 py-4 font-semibold uppercase tracking-widest text-xs hover:bg-orange-700 transition-colors shadow-lg shadow-orange-600/20"
@@ -143,7 +147,7 @@ export default function WhyChooseUs() {
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-16">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 mb-16 md:mb-24 border-b border-slate-100 pb-12 md:pb-16">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-10 mb-16 md:mb-24 border-b border-slate-100 pb-12 md:pb-16 relative">
           <div className="max-w-4xl">
             <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-[3px] bg-orange-600"></div>
@@ -155,6 +159,10 @@ export default function WhyChooseUs() {
             <p className="text-slate-500 text-base md:text-lg lg:text-xl italic font-medium leading-relaxed max-w-3xl">
                As established drill rod dealers in Tamilnadu, we have built our reputation on trust, availability, and customer-centric service. Here is what sets us apart:
             </p>
+          </div>
+          {/* 🔹 DOODLE: "Tamil Nadu's Best" */}
+          <div className="font-['Caveat'] text-orange-400 text-3xl md:text-4xl -rotate-12 absolute -top-4 right-10 hidden lg:block select-none">
+            #1 in Tamil Nadu
           </div>
         </div>
 
@@ -194,8 +202,14 @@ export default function WhyChooseUs() {
                       {step.title}
                   </motion.h3>
                   
-                  <p className="text-slate-500 italic leading-relaxed text-sm md:text-base group-hover:text-slate-700 transition-colors">
+                  <p className="text-slate-500 italic leading-relaxed text-sm md:text-base group-hover:text-slate-700 transition-colors relative">
                       {step.description}
+                      {/* 🔹 DOODLE Underline for index 4 and 5 */}
+                      {(idx === 3 || idx === 4) && (
+                        <svg className="absolute -bottom-1 left-0 w-24 text-orange-500/30" viewBox="0 0 100 10" preserveAspectRatio="none">
+                          <path d="M0,5 Q50,0 100,5" fill="none" stroke="currentColor" strokeWidth="6" />
+                        </svg>
+                      )}
                   </p>
 
                   <div className="mt-8 md:mt-12 flex items-center gap-4 text-[10px] font-semibold uppercase tracking-widest text-slate-300 group-hover:text-orange-600 transition-all">
@@ -211,30 +225,48 @@ export default function WhyChooseUs() {
             className="group relative bg-orange-600 p-10 md:p-12 lg:p-16 flex flex-col justify-center items-center text-center cursor-pointer transition-all duration-500 hover:bg-orange-700"
             onClick={() => navigate('/contactus')}
           >
-            <Factory className="text-white mb-6 md:mb-8 w-10 h-10 md:w-12 md:h-12" />
+            {/* 🔹 DOODLE: Circle around Icon */}
+            <div className="relative">
+              <Factory className="text-white mb-6 md:mb-8 w-10 h-10 md:w-12 md:h-12 relative z-10" />
+              <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 text-white/20" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="10,5" />
+              </svg>
+            </div>
+            
             <h3 className="text-3xl md:text-4xl font-bold uppercase italic text-white mb-6 tracking-tighter leading-none">
                 Start Your <br /> Project Now.
             </h3>
-            <button className="flex items-center gap-4 bg-white text-orange-600 px-6 md:px-8 py-3 md:py-4 font-semibold uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-xl">
-                Get B2B Quote
-            </button>
+            
+            <div className="relative">
+              <button className="flex items-center gap-4 bg-white text-orange-600 px-6 md:px-8 py-3 md:py-4 font-semibold uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-xl">
+                  Get B2B Quote
+              </button>
+              {/* 🔹 DOODLE: "Fastest Response" */}
+              <div className="absolute -right-16 top-0 font-['Caveat'] text-white text-xl rotate-12 hidden lg:block opacity-70">
+                Quick Reply!
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Global Logistics Stats */}
         <div className="mt-16 md:mt-24 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 border-t border-slate-100 pt-12">
             {[
-                { label: "State Coverage", val: "Tamil Nadu Wide", icon: MapPinned },
-                { label: "Quality Control", val: "100% Authentic", icon: ShieldCheck },
-                { label: "Stock Availability", val: "Immediate Dispatch", icon: PackageSearch },
-                { label: "Technical Support", val: "Field Assistance", icon: UserCog }
+                { label: "State Coverage", val: "Tamil Nadu Wide", icon: MapPinned, doodle: "Statewide" },
+                { label: "Quality Control", val: "100% Authentic", icon: ShieldCheck, doodle: "Verified" },
+                { label: "Stock Availability", val: "Immediate Dispatch", icon: PackageSearch, doodle: "Ready" },
+                { label: "Technical Support", val: "Field Assistance", icon: UserCog, doodle: "Expert" }
             ].map((item, i) => (
-                <div key={i} className="flex flex-col gap-2">
+                <div key={i} className="flex flex-col gap-2 relative">
                     <div className="flex items-center gap-3">
                         <item.icon className="text-orange-600 w-3 h-3 md:w-4 md:h-4" />
                         <span className="text-[8px] md:text-[10px] font-semibold uppercase tracking-widest text-slate-400">{item.label}</span>
                     </div>
                     <p className="text-base md:text-xl font-bold italic uppercase tracking-tight text-slate-900">{item.val}</p>
+                    {/* 🔹 Subtle Doodle Text in background */}
+                    <div className="absolute -top-4 left-0 font-['Caveat'] text-orange-500/10 text-4xl select-none pointer-events-none uppercase">
+                      {item.doodle}
+                    </div>
                 </div>
             ))}
         </div>
@@ -243,6 +275,12 @@ export default function WhyChooseUs() {
       <div className="absolute bottom-[-2%] md:bottom-[-5%] left-[-2%] opacity-[0.03] select-none pointer-events-none">
          <h4 className="text-[20vw] md:text-[25vw] font-bold uppercase text-slate-900 leading-none tracking-tighter italic">LEADERSHIP</h4>
       </div>
+
+      {/* 🔹 IMPORTING HANDWRITTEN FONT FOR DOODLES */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+      `}</style>
     </section>
   );
 }
+

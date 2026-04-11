@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-// REMOVED: ChevronRight and Zap from this line
 import { Shield, Hammer, HardHat, TrendingUp, Drill } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Lenis from "@studio-freight/lenis";
@@ -32,7 +31,6 @@ const industrialValues = [
 ];
 
 export default function About() {
-  // REMOVED: mousePos from the state definition since it wasn't used in the JSX
   const [, setMousePos] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
 
@@ -76,6 +74,10 @@ export default function About() {
                     <p className="text-[10px] md:text-xs opacity-90 leading-relaxed uppercase font-semibold tracking-widest">
                         Sri Kumar uses precision concepts throughout the process of supply.
                     </p>
+                    {/* 🔹 DOODLE TEXT: "Precision Guaranteed" */}
+                    <div className="absolute -bottom-6 -left-4 md:-bottom-8 md:-left-8 text-orange-600 font-['Caveat'] text-xl md:text-3xl -rotate-6 whitespace-nowrap bg-white px-2 py-1 shadow-sm">
+                      ~ Precision Guaranteed!
+                    </div>
                 </div>
             </div>
           </div>
@@ -93,12 +95,21 @@ export default function About() {
                 Production of Rock Drill Bits for Mining
             </p>
             
-            <p className="text-base md:text-lg lg:text-xl text-slate-600 italic font-medium leading-relaxed mb-6 md:mb-8">
-                &quot;Every piece, it's a classic!&quot; With years of experience, Sri Kumar Drill Rod Works takes pride in being one of the most respected mining tools suppliers in Tamilnadu.
+            <p className="text-base md:text-lg lg:text-xl text-slate-600 italic font-medium leading-relaxed mb-6 md:mb-8 relative">
+                &quot;Every piece, it&apos;s a classic!&quot; With years of experience, Sri Kumar Drill Rod Works takes pride in being one of the most respected mining tools suppliers in Tamilnadu.
+                {/* 🔹 DOODLE TEXT: Underline accent */}
+                <svg className="absolute -bottom-2 left-0 w-32 md:w-48 text-orange-500/40" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0,5 Q50,0 100,5" fill="none" stroke="currentColor" strokeWidth="4" />
+                </svg>
             </p>
 
             <p className="text-slate-500 text-sm leading-relaxed mb-8 md:mb-10 max-w-xl">
-                Whether you are a <span className="text-slate-900 font-bold">Contractor</span> on a large infrastructure project, a <span className="text-slate-900 font-bold">Quarry Owner</span>, or a repair shop looking for <span className="text-slate-900 font-bold">Authentic Spares</span>, we are here to serve you professionally.
+                Whether you are a <span className="text-slate-900 font-bold">Contractor</span> on a large infrastructure project, a <span className="text-slate-900 font-bold">Quarry Owner</span>, or a repair shop looking for <span className="text-slate-900 font-bold relative">Authentic Spares 
+                  {/* 🔹 DOODLE: Circle around spares */}
+                  <svg className="absolute -top-1 -left-1 w-full h-full text-orange-500/20 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <ellipse cx="50" cy="50" rx="48" ry="40" fill="none" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                </span>, we are here to serve you professionally.
             </p>
 
             <button 
@@ -110,7 +121,12 @@ export default function About() {
           </div>
         </div>
 
-        <div className="border-y border-gray-100 py-12 md:py-20 mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center">
+        <div className="border-y border-gray-100 py-12 md:py-20 mb-20 md:mb-32 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center relative">
+            {/* 🔹 DOODLE TEXT: "The Hub" */}
+            <div className="absolute -top-6 left-4 font-['Caveat'] text-orange-400 text-2xl md:text-3xl rotate-3">
+              The Hub of Spares ↓
+            </div>
+            
             <div className="lg:col-span-8">
                 <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold uppercase tracking-tighter italic mb-4 md:mb-6">
                     Trusted <span className="text-orange-600">Jackhammer</span> <br /> Spare Parts Distributor
@@ -134,9 +150,13 @@ export default function About() {
                 <h2 className="text-3xl md:text-4xl font-bold uppercase italic tracking-tight">
                     Tapered <span className="text-orange-600">Button Bits</span>
                 </h2>
-                <div className="flex flex-wrap gap-3 md:gap-4">
+                <div className="flex flex-wrap gap-3 md:gap-4 relative">
                     <div className="px-3 md:px-4 py-2 bg-slate-50 text-[8px] md:text-[10px] font-bold text-slate-400 border border-slate-200 uppercase tracking-widest">Mining Belt Ready</div>
                     <div className="px-3 md:px-4 py-2 bg-slate-50 text-[8px] md:text-[10px] font-bold text-slate-400 border border-slate-200 uppercase tracking-widest">High-Impact Steel</div>
+                    {/* 🔹 DOODLE: "Best Quality" Arrow */}
+                    <div className="absolute -top-10 -right-4 font-['Caveat'] text-slate-400 text-lg hidden md:block">
+                      Industry Favorites ↴
+                    </div>
                 </div>
             </div>
 
@@ -152,8 +172,8 @@ export default function About() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 mb-24 md:mb-32 shadow-xl">
           {industrialValues.map((value, index) => (
-            <div key={index} className="bg-white p-8 md:p-12 hover:bg-slate-50 transition-colors">
-              <value.icon className="w-8 h-8 md:w-10 md:h-10 text-orange-600 mb-6 md:mb-8" />
+            <div key={index} className="bg-white p-8 md:p-12 hover:bg-slate-50 transition-colors group">
+              <value.icon className="w-8 h-8 md:w-10 md:h-10 text-orange-600 mb-6 md:mb-8 group-hover:scale-110 transition-transform" />
               <h3 className="text-lg md:text-xl font-bold uppercase tracking-tight mb-3 md:mb-4">{value.title}</h3>
               <p className="text-xs md:text-sm text-slate-500 leading-relaxed font-medium italic">{value.description}</p>
             </div>
@@ -165,20 +185,38 @@ export default function About() {
                 <Factory size={400} className="text-white" />
             </div>
             <h3 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 md:mb-8 uppercase italic tracking-tighter leading-tight md:leading-none relative z-10">
-                SECURE YOUR <br /> <span className="text-orange-600">SITE EFFICIENCY.</span>
+                SECURE YOUR <br /> <span className="text-orange-600 relative">
+                  SITE EFFICIENCY.
+                  {/* 🔹 DOODLE: Rough handwritten circle */}
+                  <svg className="absolute -top-4 -left-2 w-[110%] h-[150%] text-white opacity-20 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M5,50 Q50,5 95,50 Q50,95 5,50" fill="none" stroke="currentColor" strokeWidth="1" />
+                  </svg>
+                </span>
             </h3>
             <p className="text-slate-400 text-base md:text-lg lg:text-xl mb-8 md:mb-12 max-w-3xl mx-auto italic relative z-10 leading-relaxed">
                 Contact our Coimbatore headquarters for specialized bulk quotes and priority field support across Tamil Nadu.
             </p>
-            <button
-              onClick={() => navigate("/contactus")}
-              className="relative z-10 w-full md:w-auto bg-orange-600 text-white px-10 md:px-20 py-5 md:py-6 font-bold uppercase text-xs tracking-[0.2em] md:tracking-[0.4em] hover:bg-white hover:text-orange-600 transition-all shadow-2xl active:scale-95"
-            >
-              Get B2B Pricing
-            </button>
+            
+            {/* 🔹 DOODLE TEXT: "Call Now" */}
+            <div className="relative inline-block w-full md:w-auto">
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2 font-['Caveat'] text-orange-400 text-2xl hidden md:block">
+                Start Today!
+              </div>
+              <button
+                onClick={() => navigate("/contactus")}
+                className="relative z-10 w-full md:w-auto bg-orange-600 text-white px-10 md:px-20 py-5 md:py-6 font-bold uppercase text-xs tracking-[0.2em] md:tracking-[0.4em] hover:bg-white hover:text-orange-600 transition-all shadow-2xl active:scale-95"
+              >
+                Get B2B Pricing
+              </button>
+            </div>
         </div>
 
       </div>
+
+      {/* 🔹 IMPORTING HANDWRITTEN FONT FOR DOODLES */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+      `}</style>
     </section>
   );
 }

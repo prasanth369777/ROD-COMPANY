@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, HardHat, MapPin, Search, Menu, Box, Cog, Drill, Hammer, Wind, Droplets } from 'lucide-react';
+import { ChevronRight, HardHat, MapPin, Search, Menu, Box, MessageCircle, PhoneCall } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // 🔹 PRODUCT IMAGE IMPORTS
@@ -52,12 +52,12 @@ const ALL_PRODUCTS = [
 ];
 
 const CATEGORIES = [
-  { id: 'all', name: 'All Products', icon: Box },
-  { id: 'rods', name: 'Drill Rods', icon: Cog },
-  { id: 'bits', name: 'Tapper Bits', icon: Drill },
-  { id: 'jack', name: 'Jack Hammer', icon: Hammer },
-  { id: 'comp', name: 'Compressor', icon: Wind },
-  { id: 'hose', name: 'Industrial Hoses', icon: Droplets }
+  { id: 'all', name: 'All Products' },
+  { id: 'rods', name: 'Drill Rods' },
+  { id: 'bits', name: 'Tapper Bits' },
+  { id: 'jack', name: 'Jack Hammer' },
+  { id: 'comp', name: 'Compressor' },
+  { id: 'hose', name: 'Industrial Hoses' }
 ];
 
 export default function IndustrialSolutions() {
@@ -69,8 +69,19 @@ export default function IndustrialSolutions() {
     ? ALL_PRODUCTS 
     : ALL_PRODUCTS.filter(item => item.cat === filter);
 
+  // 🔹 SHARED CONTACT HANDLERS
+  const handleWhatsApp = (e, productName) => {
+    e.stopPropagation();
+    window.open(`https://wa.me/919876543210?text=I'm interested in ${productName}`, '_blank');
+  };
+
+  const handleCall = (e) => {
+    e.stopPropagation();
+    window.location.href = "tel:+919876543210";
+  };
+
   return (
-    <section className="bg-white min-h-screen flex font-['Inter'] relative">
+    <section className="bg-white min-h-screen flex font-['Inter'] relative items-start">
       
       {/* MOBILE HEADER */}
       <div className="xl:hidden fixed top-0 left-0 w-full bg-white border-b z-50 p-4 flex justify-between items-center shadow-sm">
@@ -80,133 +91,156 @@ export default function IndustrialSolutions() {
         </button>
       </div>
 
-      {/* --- 🔹 LEFT SIDEBAR NAVIGATION --- */}
+      {/* --- 🔹 STICKY SIDEBAR NAVIGATION (ICONS REMOVED) --- */}
       <aside className={`
-        fixed inset-y-0 left-0 z-40 w-72 bg-white border-r border-slate-100 p-6 transform transition-transform duration-300 xl:relative xl:translate-x-0
+        fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-100 p-8 transform transition-transform duration-300 xl:sticky xl:top-0 xl:h-screen xl:translate-x-0 flex flex-col
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
-        <div className="mb-8 hidden xl:block">
+        <div className="mb-10 hidden xl:block">
           <h2 className="text-xl font-black text-slate-900 tracking-tighter uppercase italic flex items-center gap-1">
             SRI KUMAR<span className="text-orange-600">.</span>
           </h2>
-          <p className="text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-1">Certified Spares 2026</p>
+          <p className="text-[8px] font-bold text-slate-600 uppercase tracking-[0.3em] mt-1">Industrial Portal</p>
         </div>
 
-        <div className="relative mb-8 mt-12 xl:mt-0">
+        <div className="relative mb-10 mt-12 xl:mt-0">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" size={14} />
           <input 
             type="text" 
-            placeholder="Search SKU..." 
-            className="w-full bg-[#f8fafc] border border-slate-100 rounded-lg py-2.5 pl-9 pr-4 text-xs focus:outline-none focus:ring-1 focus:ring-slate-200 text-slate-600"
+            placeholder="Search parts..." 
+            className="w-full bg-[#f8fafc] border-b border-slate-600 py-2 pl-9 pr-4 text-[10px] focus:outline-none focus:border-orange-500 text-slate-600 transition-colors"
           />
         </div>
 
-        <nav className="space-y-1.5 overflow-y-auto pr-1">
-          {CATEGORIES.map((cat) => (
+        <nav className="space-y-1 overflow-y-auto pr-1 flex-grow">
+          {CATEGORIES.map((cat, index) => (
             <button
               key={cat.id}
               onClick={() => {
                 setFilter(cat.id);
                 setIsMobileMenuOpen(false);
               }}
-              className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-200 group flex items-center justify-between
+              className={`w-full text-left py-3 rounded-lg transition-all duration-200 group flex items-center justify-between border-l-2
               ${filter === cat.id 
-                ? 'bg-[#0f172a] text-white shadow-lg' 
-                : 'text-slate-400 hover:bg-slate-50 hover:text-slate-600'}`}
+                ? 'border-orange-500 bg-slate-600 pl-4' 
+                : 'border-transparent pl-2 text-slate-400 hover:text-slate-900'}`}
             >
-              <div className="flex items-center gap-3">
-                <cat.icon size={16} className={filter === cat.id ? 'text-orange-500' : 'text-slate-300'} />
-                <span className="text-[10px] font-bold uppercase tracking-widest">{cat.name}</span>
+              <div className="flex items-center gap-4">
+                <span className={`text-[8px] font-black ${filter === cat.id ? 'text-orange-500' : 'text-slate-900'}`}>
+                  0{index + 1}
+                </span>
+                <span className="text-[10px] font-black uppercase tracking-[0.1em]">{cat.name}</span>
               </div>
-              <ChevronRight size={12} className={`${filter === cat.id ? 'opacity-100' : 'opacity-0'} transition-opacity`} />
+              <div className={`w-1 h-1 rounded-full bg-orange-500 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-0'}`}></div>
             </button>
           ))}
         </nav>
 
-        <div className="mt-auto pt-6 border-t border-slate-50 flex items-center gap-3 text-slate-400">
-          <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center">
-            <MapPin size={12} className="text-slate-300" />
+        <div className="mt-auto pt-8 border-t border-slate-500">
+          <div className="flex items-center gap-3 text-slate-400">
+            <MapPin size={12} />
+            <span className="text-[8px] font-bold uppercase tracking-widest leading-none">Tamil Nadu, IN</span>
           </div>
-          <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 leading-tight">Hub: Coimbatore, TN</span>
         </div>
       </aside>
 
       {/* --- 🔹 MAIN CONTENT GRID --- */}
-      <main className="flex-1 p-6 md:p-10 lg:p-12 bg-[#F9FBFC] overflow-y-auto pt-24 xl:pt-10">
+      <main className="flex-1 overflow-y-auto pt-24 xl:pt-10 flex flex-col items-center">
         
-        <header className="mb-10">
-          <div className="flex items-center gap-2 mb-3">
-             <div className="h-[1px] w-6 bg-orange-600"></div>
-             <p className="text-orange-600 font-bold uppercase text-[9px] tracking-[0.3em]">
-               {filter === 'all' ? 'Full Spares Inventory' : `Filtered: ${CATEGORIES.find(c => c.id === filter).name}`}
-             </p>
+        <div className="w-full max-w-[1500px] p-4 md:p-10 lg:p-12">
+          <header className="mb-12 px-2">
+            <div className="flex items-center gap-2 mb-4">
+               <div className="h-[1px] w-8 bg-orange-600"></div>
+               <p className="text-orange-600 font-bold uppercase text-[9px] tracking-[0.4em]">
+                 {filter === 'all' ? 'Engineering Catalog' : `Category: ${CATEGORIES.find(c => c.id === filter).name}`}
+               </p>
+            </div>
+            <h1 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase italic leading-none">
+              {CATEGORIES.find(c => c.id === filter).name}
+            </h1>
+          </header>
+
+          {/* 🔹 ENHANCED PRODUCT GRID (5 in 1 Desktop) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+            {filteredItems.map((item, index) => (
+              <div 
+                key={index} 
+                className="group relative bg-white rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/60 flex flex-col cursor-pointer border border-slate-50"
+                onClick={() => navigate(item.path)}
+              >
+                <div className="mb-3 md:mb-4 flex justify-between items-start px-1">
+                  <div className="max-w-[80%]">
+                    <h3 className="text-[10px] md:text-[11px] font-bold text-slate-900 tracking-tight uppercase italic truncate leading-none">
+                      {item.name}
+                    </h3>
+                    <p className="text-[8px] md:text-[9px] font-black text-orange-600 mt-1 uppercase tracking-tighter">{item.sku}</p>
+                  </div>
+                  <div className="bg-slate-50 px-1.5 py-0.5 rounded-md border border-slate-100">
+                    <span className="text-[6px] font-black uppercase text-slate-400">OES</span>
+                  </div>
+                </div>
+
+                <div className="aspect-square bg-[#F8FAFC] rounded-[1.2rem] md:rounded-[1.8rem] flex items-center justify-center p-4 md:p-8 relative overflow-hidden transition-all group-hover:bg-white border border-transparent group-hover:border-slate-100">
+                  <img src={item.img} alt={item.name} className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110 drop-shadow-xl" />
+                  
+                  <div className="absolute inset-x-2 bottom-2 md:bottom-4 flex justify-center gap-1.5 md:gap-2 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                      <button onClick={(e) => handleWhatsApp(e, item.name)} className="bg-green-500 text-white p-2 md:p-3 rounded-lg md:rounded-2xl hover:bg-green-600 shadow-xl transition-all hover:-translate-y-1 active:scale-95">
+                        <MessageCircle size={16} />
+                      </button>
+                      <button onClick={(e) => handleCall(e)} className="bg-blue-600 text-white p-2 md:p-3 rounded-lg md:rounded-2xl hover:bg-blue-700 shadow-xl transition-all hover:-translate-y-1 active:scale-95">
+                        <PhoneCall size={16} />
+                      </button>
+                  </div>
+                </div>
+
+                <div className="mt-4 md:mt-6 flex items-center justify-between bg-[#0f172a] rounded-xl md:rounded-2xl p-3 md:p-4 group/btn">
+                  <div className="flex flex-col">
+                      <p className="text-[6px] text-slate-500 font-bold uppercase tracking-widest leading-none mb-1">Status</p>
+                      <p className="text-[8px] md:text-[9px] font-black text-white uppercase leading-none">Stock Ready</p>
+                  </div>
+                  <div className="p-1.5 md:p-2 bg-orange-600 rounded-lg text-white group-hover/btn:scale-110 transition-transform">
+                     <ChevronRight size={14} />
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase italic leading-none">
-            {CATEGORIES.find(c => c.id === filter).name}
-          </h1>
-        </header>
 
-        {/* 🔹 Product Gallery (No logos in containers) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6">
-          {filteredItems.map((item, index) => (
-            <div 
-              key={index} 
-              className="group relative bg-white rounded-[2rem] p-4 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/50 flex flex-col cursor-pointer hover:-translate-y-1 border border-slate-50"
-              onClick={() => navigate(item.path)}
-            >
-              <div className="mb-4 text-center">
-                <h3 className="text-sm font-bold text-slate-900 tracking-tight uppercase italic mb-1 truncate px-2">
-                  {item.name}
-                </h3>
-                <div className="flex items-center justify-center gap-1.5">
-                   <div className="w-1 h-1 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
-                   <span className="text-[7px] font-black uppercase tracking-[0.2em] text-slate-400">Verified Stock</span>
-                </div>
-              </div>
-
-              <div className="aspect-square bg-[#F1F5F9] rounded-[1.8rem] flex items-center justify-center p-8 relative overflow-hidden transition-all group-hover:bg-white border border-transparent group-hover:border-slate-100">
-                <img 
-                  src={item.img} 
-                  alt={item.name} 
-                  className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 drop-shadow-xl"
-                />
-              </div>
-
-              {/* Minimalist Bottom Info */}
-              <div className="mt-5 flex items-center justify-between bg-[#0f172a] rounded-xl p-3">
-                <div>
-                   <p className="text-[9px] font-black text-white leading-none tracking-widest">{item.sku}</p>
-                   <p className="text-[6px] text-slate-500 font-bold uppercase tracking-widest mt-1">Available for Quote</p>
-                </div>
-                <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center text-white group-hover:bg-orange-500 transition-colors">
-                   <ChevronRight size={16} />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* FOOTER ACTIONS */}
-        <footer className="mt-24 pt-12 border-t border-slate-100 grid lg:grid-cols-2 gap-6">
-            <div className="bg-white p-10 rounded-[3rem] shadow-sm flex items-center gap-8 border border-slate-100 group hover:border-orange-500/10 transition-all">
-                <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                    <HardHat size={28} />
-                </div>
-                <div>
-                    <h4 className="text-slate-900 font-black uppercase tracking-widest text-[10px] mb-1 leading-none">Consultation</h4>
-                    <p className="text-slate-400 text-[10px] italic font-medium leading-relaxed mt-2">Technical support for custom engine sizing and infrastructure projects.</p>
+          {/* --- 🔹 FOOTER ACTIONS (ANIMATED BACKGROUND ICONS REMOVED) --- */}
+          <footer className="mt-24 pt-16 border-t border-slate-100 grid lg:grid-cols-2 gap-8 pb-20 px-2">
+            <div className="relative group overflow-hidden bg-white border border-slate-100 p-1 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500">
+                <div className="bg-[#f8fafc] rounded-[2.3rem] p-10 h-full flex flex-col justify-between relative overflow-hidden">
+                    <div className="relative z-10">
+                        <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-900 mb-8 group-hover:bg-orange-600 group-hover:text-white transition-all duration-500">
+                            <HardHat size={28} />
+                        </div>
+                        <h4 className="text-slate-900 font-black uppercase tracking-[0.2em] text-xs mb-3">Project Consultation</h4>
+                        <p className="text-slate-500 text-[11px] leading-relaxed max-w-xs font-medium">Technical support for custom engine sizing and on-site hardware selection across Tamil Nadu.</p>
+                    </div>
+                    <div className="relative z-10 mt-10 flex items-center gap-3 text-orange-600 font-black uppercase text-[10px] tracking-widest cursor-pointer group/link">
+                        Speak to Expert <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
+                    </div>
                 </div>
             </div>
-            <button className="bg-[#0f172a] p-10 rounded-[3rem] flex items-center gap-8 group hover:bg-orange-600 transition-all text-left shadow-xl shadow-slate-200">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-white">
-                    <Box size={28} />
-                </div>
-                <div>
-                    <h4 className="text-white font-black uppercase tracking-widest text-[10px] mb-1 leading-none">Bulk Orders</h4>
-                    <p className="text-white/40 text-[10px] italic font-medium leading-relaxed mt-2">Competitive B2B volume pricing for industrial contracts across TN.</p>
+
+            <button className="relative group overflow-hidden bg-[#0f172a] p-1 rounded-[2.5rem] shadow-2xl transition-all duration-500 text-left">
+                <div className="bg-gradient-to-br from-slate-900 to-[#0f172a] rounded-[2.3rem] p-10 h-full flex flex-col justify-between relative overflow-hidden border border-white/5">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-orange-600/10 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div className="relative z-10">
+                        <div className="w-14 h-14 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center text-orange-500 mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <Box size={28} />
+                        </div>
+                        <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-3">B2B Volume Contracts</h4>
+                        <p className="text-slate-400 text-[11px] leading-relaxed max-w-xs font-medium">Secure competitive B2B volume pricing for large-scale industrial contracts and state-wide logistics.</p>
+                    </div>
+                    <div className="relative z-10 mt-10 flex items-center justify-between">
+                        <span className="bg-orange-600 text-white px-6 py-3 rounded-xl font-black uppercase text-[10px] tracking-widest group-hover:bg-white group-hover:text-slate-900 transition-all">Request Quote</span>
+                        <div className="text-white/20 font-light text-4xl italic opacity-20 group-hover:opacity-40 transition-opacity">SRI KUMAR</div>
+                    </div>
                 </div>
             </button>
-        </footer>
+          </footer>
+        </div>
       </main>
     </section>
   );
