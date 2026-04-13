@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin,} from 'lucide-react';
 import Logo from '../../assests/logo.png'; 
 import { Link } from 'react-router-dom';
 
@@ -90,39 +90,43 @@ export default function Footer() {
           </div>
 
           {/* Contact Details Column */}
-          <div className="lg:col-span-4 bg-slate-900/50 p-6 md:p-8 rounded-3xl border border-white/5 relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-4 opacity-10">
-                <ShieldCheck className="text-orange-500 w-[60px] h-[60px] md:w-[80px] md:h-[80px]" />
-            </div>
-            <h4 className="text-white font-bold uppercase tracking-widest mb-6 md:mb-8 text-xs md:sm italic">Technical Hub</h4>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <MapPin className="text-orange-500 shrink-0 w-[18px] h-[18px] md:w-[20px] md:h-[20px]" />
-                <p className="text-slate-400 text-xs md:text-sm leading-relaxed font-normal">
-                  Industrial Estate Road, Coimbatore,<br /> Tamil Nadu - 641001, India
-                </p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Phone className="text-orange-500 shrink-0 w-[18px] h-[18px] md:w-[20px] md:h-[20px]" />
-                <p className="text-slate-400 text-xs md:text-sm font-semibold tracking-widest">+91 98765 43210</p>
-              </div>
-              <div className="flex items-center gap-4 pt-4 border-t border-white/5">
-                <div className="flex-1">
-                    <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-2">Request technical catalog</p>
-                    <div className="flex">
-                        <input
-                            type="email"
-                            placeholder="Engineering Email"
-                            className="flex-1 px-3 md:px-4 py-2 md:py-3 bg-slate-950 border border-white/10 rounded-l-xl text-white text-[10px] md:text-xs placeholder-slate-600 focus:outline-none focus:border-orange-500"
-                        />
-                        <button className="px-4 md:px-5 py-2 md:py-3 bg-orange-600 text-white rounded-r-xl hover:bg-orange-500 transition-all shadow-lg active:scale-95">
-                            <Mail className="w-[14px] h-[14px] md:w-[16px] md:h-[16px]" />
-                        </button>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
+<div className="lg:col-span-4 bg-slate-900/50 p-6 md:p-8 rounded-3xl border border-white/5 relative overflow-hidden">
+  {/* Subtle background glow replacing the icon */}
+  <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-600/10 blur-[60px] pointer-events-none"></div>
+  
+  <h4 className="text-white font-bold uppercase tracking-widest mb-6 md:mb-8 text-xs md:sm italic">Technical Hub</h4>
+  
+  <div className="space-y-6">
+    <div className="flex flex-col gap-1">
+      <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest">Office Address</p>
+      <p className="text-slate-400 text-xs md:text-sm leading-relaxed font-normal">
+        Industrial Estate Road, Coimbatore,<br /> 
+        Tamil Nadu - 641001, India
+      </p>
+    </div>
+
+    <div className="flex flex-col gap-1">
+      <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest">Direct Line</p>
+      <p className="text-slate-400 text-xs md:text-sm font-semibold tracking-widest">+91 98765 43210</p>
+    </div>
+
+    <div className="flex items-center gap-4 pt-4 border-t border-white/5">
+      <div className="flex-1">
+        <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-2">Request technical catalog</p>
+        <div className="flex">
+          <input
+            type="email"
+            placeholder="Engineering Email"
+            className="flex-1 px-3 md:px-4 py-2 md:py-3 bg-slate-950 border border-white/10 rounded-l-xl text-white text-[10px] md:text-xs placeholder-slate-600 focus:outline-none focus:border-orange-500"
+          />
+          <button className="px-6 md:px-8 py-2 md:py-3 bg-orange-600 text-white rounded-r-xl hover:bg-orange-500 transition-all shadow-lg active:scale-95 font-bold uppercase text-[10px] tracking-widest">
+            Send
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
 
         {/* Bottom bar */}
