@@ -1,205 +1,141 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause,Spotlight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import HeroImage1 from '../../assests/hero-image.png'; 
+import React, { useEffect, useState } from "react";
+import { 
+ 
+  ShieldCheck,  
+  ArrowRight,
+  MessageCircle,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import Lenis from "@studio-freight/lenis";
 
-// 🔹 Styled Button Component with the requested SVG animations
-const AnimatedButton = ({ children, onClick, className }) => {
+// 🔹 PRODUCT IMAGE IMPORTS
+import img1 from "../../assests/Hero1.webp";
+import img2 from "../../assests/Hero2.webp"; 
+import img3 from "../../assests/Hero3.webp";
+
+const productImages = [img1, img2, img3];
+
+// 🔹 REFINED INDUSTRIAL BUTTON COMPONENT
+const IndustrialButton = ({ children, onClick, variant = "primary", className = "" }) => {
+  const baseStyles = "relative group overflow-hidden px-8 md:px-10 py-4 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 uppercase font-bold tracking-[0.2em] text-[10px] md:text-[11px]";
+  
+  const variants = {
+    primary: "bg-red-600 text-white hover:bg-white hover:text-red-600 border border-red-600",
+    secondary: "bg-transparent text-white border border-white/30 hover:border-red-600 hover:text-red-600 backdrop-blur-sm"
+  };
+
   return (
-    <div className={`relative inline-block group ${className}`}>
-      <button 
-        onClick={onClick}
-        className="relative px-12 py-4 bg-[#fec195] text-[15px] font-semibold text-[#181818] cursor-pointer border border-[#fec195] rounded-lg shadow-[2px_2px_3px_rgba(0,0,0,0.2)] hover:border-[#f3b182] hover:bg-gradient-to-r hover:from-[#fec195] hover:via-[#fabd92] hover:to-[#fac39c] transition-all duration-300 overflow-visible"
-      >
+    <button onClick={onClick} className={`${baseStyles} ${variants[variant]} ${className}`}>
+      {/* Animated background fill effect */}
+      <div className={`absolute inset-0 w-0 group-hover:w-full transition-all duration-500 ease-out ${variant === 'primary' ? 'bg-white' : 'bg-red-600'}`}></div>
+      
+      <span className="relative z-10 flex items-center gap-3">
         {children}
-        
-        {/* SVG ICON 1 */}
-        <div className="absolute top-0 right-0 w-[25px] origin-top-left rotate-[10deg] transition-all duration-500 ease-in-out drop-shadow-[2px_2px_3px_rgba(0,0,0,0.3)] group-hover:animate-slay-1">
-          <svg viewBox="0 0 26.3 65.33" className="fill-[#181818]">
-            <path d="M13.98 52.87c0.37,-0.8 0.6,-1.74 0.67,-2.74 1.01,1.1 2.23,2.68 1.24,3.87 -0.22,0.26 -0.41,0.61 -0.59,0.97 -2.95,5.89 3.44,10.87 2.98,0.78 0.29,0.23 0.73,0.82 1.03,1.18 0.33,0.4 0.7,0.77 1,1.15 0.29,0.64 -0.09,2.68 1.77,4.91 5.42,6.5 5.67,-2.38 0.47,-4.62 -0.41,-0.18 -0.95,-0.26 -1.28,-0.54 -0.5,-0.41 -1.23,-1.37 -1.66,-1.9 0.03,-0.43 -0.17,-0.13 0.11,-0.33 4.98,1.72 8.4,-1.04 2.38,-3.16 -1.98,-0.7 -2.9,-0.36 -4.72,0.16 -0.63,-0.58 -2.38,-3.82 -2.82,-4.76 1.21,0.56 1.72,1.17 3.47,1.3 6.5,0.5 2.31,-4.21 -2.07,-4.04 -1.12,0.04 -1.62,0.37 -2.49,0.62l-1.25 -3.11c0.03,-0.26 0.01,-0.18 0.1,-0.28 1.35,0.86 1.43,1 3.25,1.45 2.35,0.15 3.91,-0.15 1.75,-2.4 -1.22,-1.27 -2.43,-2.04 -4.22,-2.23l-2.08 0.13c-0.35,-0.58 -0.99,-2.59 -1.12,-3.3l-0.01 -0.01 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0c-0.24,-0.36 1.88,1.31 2.58,1.57 1.32,0.49 2.6,0.33 3.82,0 -0.37,-1.08 -1.17,-2.31 -2.13,-3.11 -1.79,-1.51 -3.07,-1.41 -5.22,-1.38l-0.93 -4.07c0.41,-0.57 1.41,0.9 2.82,1.36 0.96,0.31 1.94,0.41 3,0.14 2,-0.52 -2.25,-4.4 -4.53,-4.71 -0.7,-0.1 -1.23,-0.04 -1.92,-0.03 -0.46,-0.82 -0.68,-3.61 -0.92,-4.74 0.8,0.88 1.15,1.54 2.25,2.23 0.8,0.5 1.58,0.78 2.57,0.85 2.54,0.18 -0.1,-3.47 -0.87,-4.24 -1.05,-1.05 -2.34,-1.59 -4.32,-1.78l-0.33 -3.49c0.83,0.67 1.15,1.48 2.3,2.16 1.07,0.63 2.02,0.89 3.58,0.79 0.15,-1.34 -1.07,-3.39 -2.03,-4.3 -1.05,-0.99 -2.08,-1.47 -3.91,-1.68l-0.07 -3.27 0.32 -0.65c0.44,0.88 1.4,1.74 2.24,2.22 0.69,0.39 2.4,1.1 3.44,0.67 0.31,-1.92 -1.84,-4.49 -3.5,-5.29 -0.81,-0.39 -1.61,-0.41 -2.18,-0.68 -0.12,-1.28 0.27,-3.23 0.37,-4.55l-0.89 0c-0.06,1.28 -0.35,3.12 -0.34,4.31 -0.44,0.45 -0.37,0.42 -0.96,0.64 -3.88,1.49 -4.86,6.38 -3.65,7.34 1.42,-0.31 3.69,-2.14 4.16,-3.66 0.23,0.5 0.1,2.36 0.05,3.05 -1.23,0.4 -2.19,1.05 -2.92,1.82 -1.17,1.24 -2.36,4.04 -1.42,5.69 1.52,0.09 4.07,-2.49 4.49,-4.07l0.29 3.18c-2.81,0.96 -5.01,3.68 -4.18,7.43 2.06,-0.09 3.78,-2.56 4.66,-4.15 0.23,1.45 0.67,3.06 0.74,4.52 -1.26,0.93 -2.37,1.8 -2.97,3.55 -0.48,1.4 -0.49,3.72 0.19,4.55 0.59,0.71 2.06,-1.17 2.42,-1.67 1,-1.35 0.81,-1.92 1.29,-2.46l0.7 3.44c-0.49,0.45 -0.94,0.55 -1.5,1.19 -1.93,2.23 -2.14,4.33 -1.01,6.92 0.72,0.09 2.04,-1.4 2.49,-2.06 0.65,-0.95 0.79,-1.68 1.14,-2.88l0.97 2.92c-0.2,0.55 -1.84,1.32 -2.6,3.62 -0.54,1.62 -0.37,3.86 0.67,4.93 0.58,-0.09 1.85,-1.61 2.2,-2.19 0.66,-1.09 0.66,-1.64 1,-2.93l1.32 3.18c-0.23,0.72 -1.63,1.72 -1.82,4.18 -0.17,2.16 1.11,6.88 3.13,2.46zm-4.09 -16.89l-0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 -0 0.01 0.01z" />
-          </svg>
-        </div>
-
-        {/* SVG ICON 2 */}
-        <div className="absolute top-0 left-[25px] w-[12px] origin-top rotate-[10deg] transition-all duration-1000 ease-in-out drop-shadow-[2px_2px_3px_rgba(0,0,0,0.5)] group-hover:rotate-0 group-hover:animate-slay-2">
-          <svg viewBox="0 0 11.67 37.63" className="fill-[#181818]">
-            <path d="M7.63 35.26c-0.02,0.13 0.01,0.05 -0.06,0.14 -0,0 -0.08,0.07 -0.11,0.1 -0.42,0.25 -0.55,0.94 -0.23,1.4 0.68,0.95 2.66,0.91 3.75,0.21 0.2,-0.13 0.47,-0.3 0.57,-0.49 0.09,-0.02 0.04,0.03 0.11,-0.07l-1.35 -1.24c-0.78,-0.78 -1.25,-1.9 -2.07,-0.62 -0.11,0.18 -0.06,0.16 -0.22,0.26 -0.4,-0.72 -0.95,-1.79 -1.26,-2.59 0.82,0.02 1.57,-0.12 2.16,-0.45 0.49,-0.27 1.15,-0.89 1.33,-1.4 0.1,-0.06 0.02,0.01 0.06,-0.1 -0.24,-0.16 -0.87,-0.37 -1.19,-0.52 -0.4,-0.19 -0.73,-0.39 -1.09,-0.62 -0.25,-0.16 -0.85,-0.6 -1.18,-0.3 -0.35,0.32 -0.32,0.83 -0.53,1.17 -0.71,-0.3 -0.55,-0.26 -0.84,-1.22 -0.15,-0.5 -0.31,-1.12 -0.41,-1.66l0.03 -0.13c0.56,0.23 1.28,0.37 1.99,0.28 0.56,-0.07 1.33,-0.42 1.62,-0.71l0.1 -0.1c-0.74,-0.68 -1.09,-1.2 -1.65,-1.99 -1.09,-1.52 -1.2,-0.28 -1.92,0.17 -0.26,-0.79 -0.73,0.2 -0.12,-2.76 0.06,-0.3 0.19,-0.7 0.2,-0.98 0.18,0.08 0.01,-0.01 0.11,0.08 0.05,0.05 0.07,0.07 0.1,0.12 0.94,1.17 3.63,0.82 4.21,0.01 0.13,-0.02 0.06,0.03 0.1,-0.1 -1.14,-0.81 -1.91,-2.89 -2.58,-2.67 -0.29,0.09 -0.78,0.63 -0.93,0.87 -0.54,-0.48 -0.36,-0.63 -0.38,-0.81 0.01,-0.01 0.03,-0.04 0.03,-0.03 0.01,0.02 0.36,-0.35 0.45,-0.6 0.13,-0.35 0.04,-0.65 -0.05,-0.95 0.06,-0.41 0.33,-1.33 0.28,-1.71 0.22,-0.05 0.19,0.05 0.45,0.17 0.47,0.23 1.17,0.33 1.7,0.32 0.62,-0 1.74,-0.39 1.94,-0.75 0.14,-0.02 0.05,0.06 0.13,-0.09 -1.05,-1.1 -0.7,-0.64 -1.62,-1.92 -0.58,-0.81 -0.9,-1.27 -1.9,0.12 -0.44,-0.5 -0.64,-0.69 -0.66,-1.24 0.02,-0.31 0.15,-0.36 0.08,-0.73 -0.04,-0.24 -0.14,-0.41 -0.29,-0.59l-0.47 -2.54c0.09,-0.14 -0.09,-0.1 0.2,-0.05 0.06,0.01 0.19,0.05 0.3,0.07 0.54,0.09 1.47,0.01 1.95,-0.15 0.57,-0.19 1.53,-0.8 1.68,-1.18 0.16,-0.07 0.05,0.02 0.15,-0.13 -0.12,-0.15 -0.95,-0.65 -1.15,-0.8 -1.43,-1.08 -2.21,-2.77 -3.16,-0.38 -0.2,-0.1 -0.75,-0.55 -0.83,-0.74 -0.15,-0.35 -0.21,-0.81 -0.37,-1.15l-0.1 -0.25c-0.03,-0.3 -0.44,-1.33 -0.57,-1.64 -0.2,-0.51 -0.47,-1.09 -0.64,-1.6l-0.55 0c0.14,0.42 0.36,0.84 0.53,1.28 0.12,0.3 0.19,0.35 0.06,0.66l-0.21 0.52c-0.01,0.01 -0.01,0.02 -0.02,0.03 -0.06,0.1 -0.03,0.05 -0.06,0.09 -1.44,-1.03 -1.66,-0.73 -2.07,0.46 -0.16,0.46 -0.3,0.93 -0.5,1.36l-0.64 1.28c0.06,0.07 -0,0.03 0.1,0.03 0.05,0.05 0.02,0.03 0.1,0.08l0.49 0.14c0.23,0.05 0.44,0.09 0.66,0.1 0.55,0.04 0.94,-0.06 1.35,-0.19 0.54,-0.18 1.09,-0.44 1.5,-0.82 0.15,-0.14 0.24,-0.3 0.4,-0.41l0.46 1.66c0.03,0.74 -0.09,0.6 0.27,1.21 0.01,0.01 0.01,0.02 0.02,0.03 0.01,0.01 0.01,0.02 0.02,0.04l0.07 0.11c-0.02,0.22 0.19,1.01 0.24,1.29 0.09,0.46 -0.21,0.79 -0.3,1.2 -0.55,-0.23 -1.25,-1.06 -1.66,-0.23 -0.12,0.25 -0.17,0.36 -0.26,0.62 -0.33,1.01 -0.63,1.61 -1.06,2.43l0.12 0.04 0.23 0.11c0.06,0.02 0.17,0.04 0.25,0.06 0.17,0.04 0.34,0.08 0.52,0.09 0.29,0.02 0.93,0.07 1.12,-0.13 0.42,0.01 1.24,-0.49 1.51,-0.71 0.01,0.01 0.03,0 0.04,0.02l0.09 0.06c-0.04,0.29 0.02,0.41 0.03,0.7l-0.05 1.41c-0.06,1.12 -0.29,1.06 -0.76,1.69 -0.08,-0.07 -0.03,-0.01 -0.11,-0.11 -0.03,-0.03 -0.06,-0.08 -0.09,-0.11 -0.2,-0.25 -0.38,-0.54 -0.7,-0.69 -0.7,-0.32 -1.52,1.73 -2.82,2.61 0.04,0.2 -0.01,0.06 0.1,0.11 0.25,0.3 1,0.67 1.5,0.78 0.35,0.08 0.71,0.08 1.09,0.05 0.25,-0.02 0.82,-0.16 0.92,-0.13 -0.16,0.69 -0.35,1.35 -0.52,2.03 -0.25,1 -0.03,0.77 -0.98,1.53 -0.3,-0.31 -0.33,-0.77 -0.77,-1.02 -0.42,-0.25 -0.91,0.35 -1.12,0.55 -0.33,0.32 -0.58,0.6 -0.97,0.89 -0.19,0.14 -0.34,0.26 -0.53,0.4 -0.14,0.11 -0.43,0.29 -0.53,0.4 0.1,0.15 -0.02,0.06 0.15,0.13 0.09,0.22 0.35,0.38 0.54,0.52 0.22,0.16 0.43,0.29 0.69,0.39 0.43,0.17 1.32,0.31 1.87,0.23l0.23 -0.05c0.01,-0 0.03,-0.02 0.04,-0.02 0.01,-0 0.02,-0.01 0.03,-0.02 0.32,0.05 0.52,-0.18 0.79,-0.24l-0.02 0.66c0,0.77 -0.24,0.75 0.16,1.51l0.04 0.07c0,0.01 0.01,0.03 0.02,0.04 -0.05,0.35 0.18,1.03 0.24,1.4 -0.23,0.18 -0.34,0.33 -0.51,0.41 -0.75,-1.17 -0.82,-1.52 -1.92,-0.43 -0.32,0.31 -0.59,0.57 -0.95,0.86 -0.23,0.19 -0.95,0.65 -1.05,0.81l0.13 0.1c0.88,1.15 3.14,1.5 4.1,0.82 0.47,-0.34 0.54,-0.56 0.52,-1.34l0.67 1.84c0.03,0.16 0.06,0.28 0.12,0.42 0.03,0.06 0.05,0.12 0.09,0.17 0.1,0.15 0.03,0.06 0.13,0.14 -0,0.29 0.14,0.22 0.06,0.56 -0.03,0.13 -0.14,0.43 -0.19,0.53 -1.94,-1.27 -1.57,-0.02 -2.28,1.76 -0.16,0.41 -0.37,0.77 -0.53,1.2 0.09,0.08 0.01,0.03 0.15,0.03 0.29,0.33 1.66,0.28 2.36,-0.01 0.48,-0.2 0.96,-0.46 1.3,-0.82 0.15,-0.16 0.16,-0.3 0.38,-0.33 0.14,0.08 0.17,0.19 0.27,0.36zm-3.62 -12.85c0.13,-0.01 0.31,-0.15 0.55,-0.19 -0.01,0.45 0.02,0.74 -0.34,0.45 -0.06,-0.05 -0.09,-0.06 -0.12,-0.09 -0.09,-0.1 -0.04,-0.01 -0.09,-0.17zm1.92 -12.29l-0.04 0.13c-0.07,-0.02 -0.17,-0.02 -0.21,-0.03 -0.27,-0.08 -0.09,0.04 -0.16,-0.16 0.12,-0.08 0.18,-0.23 0.34,-0.35l0.08 0.4zm1.33 3.05l-0.4 0.17c-0,-0.08 -0,-0.15 -0.02,-0.23 -0.02,-0.09 -0.03,-0.07 -0.05,-0.11l0.07 -0.16c0.21,0.11 0.28,0.16 0.4,0.32zm-1.54 6.48l0.16 -0.51c0.17,0.07 0.25,0.14 0.36,0.29l-0.52 0.22zm0.28 10.88l-0.09 -0.38 0.37 0.07c-0.02,0.1 -0.03,0.13 -0.09,0.19 -0.13,0.15 0.01,0.06 -0.19,0.12zm-1.05 -5.97c0.06,0.12 0.16,0.16 0.26,0.23 -0.09,0.14 -0.22,0.18 -0.37,0.21 -0,-0.02 -0.02,-0.27 -0.02,-0.27 0.04,-0.19 -0.06,-0.09 0.13,-0.16zm1.03 -8.01c-0.09,-0.02 -0.15,-0.02 -0.22,-0.07 -0.21,-0.13 -0.08,-0.02 -0.14,-0.18 0.15,-0.05 0.21,-0.15 0.45,-0.24l-0.08 0.48zm0.57 16.58l-0.45 -0c0.02,-0.18 0.12,-0.3 0.26,-0.42l0.18 0.42zm-1.45 -3.7l-0.19 -0.23c-0.06,-0.07 -0.1,-0.13 -0.17,-0.19 -0.24,-0.23 -0.29,-0.14 -0.36,-0.36l0.46 -0.19c0.07,0.14 0.25,0.78 0.26,0.97zm0.37 -23.67l-0.12 -0.57 0.54 0.21c-0.07,0.16 -0.27,0.31 -0.41,0.36zm-1.46 -3.02c-0.07,0.01 -0.19,-0.04 -0.3,-0.06 -0.04,-0.01 -0.14,-0.02 -0.18,-0.03 -0.15,-0.07 -0.06,0.04 -0.14,-0.13 0.11,-0.07 0.2,-0.27 0.37,-0.4 0.13,0.13 0.2,0.43 0.24,0.62z" />
-          </svg>
-        </div>
-
-        {/* SVG ICON 3 */}
-        <div className="absolute top-0 left-0 w-[18px] origin-top rotate-[-5deg] transition-all duration-1000 ease-in-out drop-shadow-[2px_2px_3px_rgba(0,0,0,0.5)] group-hover:rotate-0 group-hover:animate-slay-3">
-          <svg viewBox="0 0 25.29 76.92" className="fill-[#181818]">
-            <path d="M19.14 6.58c0.09,0.1 -0.02,0.03 0.17,0.15 0.04,0.03 0.19,0.09 0.27,0.13l0.16 0.02c0.12,0.14 0.02,0.06 0.22,0.18 0.63,0.37 1.81,0.52 2.51,0.53 0.42,-0.26 0.61,-1.58 0.55,-2.27 -0.11,-1.17 -1.02,-3.42 -2.17,-3.76 -0.84,-0.25 -1.19,0.02 -1.4,0.7 -0.03,0.1 -0.05,0.19 -0.09,0.28l-0.18 0.25c-0.18,-0.36 -0.77,-0.97 -1.2,-1.18 -0.64,-0.31 -0.36,-0.26 -0.84,-1.59l-0.75 0c0.2,0.63 0.44,1.27 0.61,1.92 0.17,0.64 0.47,1.46 0.58,2.05 -0.21,0.36 -0.43,0.5 -0.31,1.1 0.11,0.51 0.35,0.71 0.76,0.9 0.13,0.31 0.36,1.33 0.39,1.78 -0.68,0.24 -1.38,0.85 -1.62,1.43 -0.45,-0.47 -0.29,-1.59 -1.59,-1.22 -0.8,0.22 -1.09,0.8 -1.45,1.52 -0.58,1.18 -0.96,2.15 -0.6,3.58 0.04,0.17 0.13,0.4 0.19,0.55 0.11,0.29 0.09,0.34 0.35,0.44 1.74,-0.01 2.96,-0.82 4.13,-1.55 0.22,-0.13 0.65,-0.39 0.79,-0.62 0.74,-1.2 -0.74,-2.14 -1.7,-2.43 -0.01,-0.51 1.07,-0.87 1.7,-0.82 0.21,1.74 0.56,3.5 0.61,5.33 0.05,2.05 0.01,3.68 -0.08,5.71 -1.2,0.52 -0.99,0.65 -1.77,1.46 -0.39,-0.45 -0.22,-1.6 -1.59,-1.18 -0.79,0.24 -0.91,0.63 -1.42,1.55 -0.78,1.41 -0.95,2.66 -0.36,4.15 0.14,0.35 0.06,0.36 0.36,0.37 0.78,-0 1.47,-0.18 2.09,-0.43 0.51,-0.2 1.26,-0.76 1.69,-0.86 -0.18,0.3 -0.34,0.91 -0.48,1.25l-1.54 3.5c-1.75,0.08 -1.26,0.29 -2.27,0.59 0.1,-1.15 0.1,-1.69 -1.1,-1.78 -0.7,-0.05 -1.5,0.65 -1.91,0.96 -1.04,0.82 -1.93,1.81 -1.94,3.77 0.09,0.22 -0.03,0.09 0.18,0.11 0.24,0.36 1.4,0.49 1.94,0.58l0.19 -0.01 0.71 -0.01 0.08 -0.02 1.74 -0.17c0.25,0.04 0.03,-0.07 0.19,0.09l-2.62 4.74c-0.28,0.51 -0.56,1.2 -0.86,1.61 -0.44,-0.02 -0.69,-0.14 -1.18,-0.08 -0.38,0.04 -0.72,0.17 -1.08,0.22 0.1,-0.53 0.78,-1.5 -0.62,-1.96 -0.79,-0.26 -1.74,0.32 -2.33,0.6 -2.12,1.02 -2.81,3.28 -2.36,3.38 0.01,0.01 0.03,0.02 0.03,0.04l0.11 0.1c0.42,0.34 1.16,0.64 1.66,0.79 0.65,0.19 1.73,0.31 2.43,0.38 3,0.28 1.16,-2.8 1.09,-3.14 0.86,0.12 1.3,-0.05 1.81,0.56 -0.08,0.35 -0.53,1.2 -0.71,1.6 -0.74,1.61 -1.24,3.24 -1.73,4.96 -0.92,0.11 -1.11,0.44 -1.77,0.69 0.01,-1.08 0.1,-1.68 -1.14,-1.71 -0.55,-0.01 -0.8,0.17 -1.11,0.41 -1.43,1.08 -2.52,2.24 -2.53,4.15 -0,0.62 0.11,0.48 0.22,0.54 0.63,0.38 1.79,0.44 2.67,0.35 0.47,-0.05 0.97,-0.11 1.43,-0.2l0.98 -0.22c0.38,-0.08 0.14,-0.15 0.26,0.06 -0.08,0.78 -0.66,2.6 -0.56,3.29 -0.13,0.14 -0.07,0.08 -0.17,0.29 -0.06,0.13 -0.08,0.18 -0.12,0.33 -0.07,0.3 -0.02,0.6 -0.03,0.92 -0.09,0.94 -0.17,0.52 -0.78,0.94 -0.32,0.22 -0.57,0.55 -0.86,0.82 -0.29,-0.69 -0.22,-1.44 -1.39,-1.13 -0.93,0.25 -1.93,2.19 -2.03,3.16 -0.06,0.56 0.02,1.84 0.39,2.08 2,0.02 2.64,-0.6 4.08,-1.25l-0.01 0.28c-0.06,0.58 -0.22,2.09 -0.14,2.62 -0.44,0.37 -0.46,1.03 -0.12,1.49 -0.08,3.97 0.16,2.73 -0.77,3.57 -0.24,0.21 -0.37,0.4 -0.62,0.62 -0.36,-0.53 -0.09,-1.43 -1.37,-1.13 -0.98,0.23 -1.92,2.22 -2.06,3.14 -0.07,0.47 -0.07,1.79 0.41,2.09 0.86,0.04 1.94,-0.12 2.51,-0.52l0.16 -0.08c0.6,-0.17 1.39,-0.67 1.84,-0.94 0.12,0.18 0.04,0.07 0.14,0.1 -0.18,0.38 -0.31,0.07 -0.71,0.58 -0.67,0.86 0.33,1.72 0.89,2.31 0.6,0.64 1.71,1.63 2.94,1.88 0.38,-0.11 0.92,-1.2 1.04,-1.69 0.21,-0.86 0.15,-1.53 -0.05,-2.41 -0.22,-0.94 -0.24,-1.38 -1.01,-1.81 -0.93,-0.52 -1.19,0.28 -1.59,0.76 -0.21,-0.33 -0.33,-0.79 -0.58,-1.12 -0.48,-0.62 -0.48,-0.13 -0.5,-1.22 -0.02,-1.09 0.05,-2.25 0.01,-3.32 0.37,0.22 0.89,0.86 1.37,1.21 0.51,0.37 1.05,0.65 1.76,0.82 0.32,-0.02 0.92,-1.21 1.04,-1.68 0.22,-0.87 0.15,-1.53 -0.04,-2.41 -0.19,-0.86 -0.3,-1.41 -0.96,-1.79 -1.06,-0.6 -1.26,0.38 -1.71,0.74 -0.22,-0.8 -0.65,-1.34 -1.19,-1.71l0.5 -4.35 0.38 0.28c0.23,0.25 0.6,0.67 0.87,0.82 0.07,0.1 0.05,0.1 0.19,0.21 0.18,0.23 0.66,0.57 0.92,0.6 0.1,0.13 -0.01,0.03 0.16,0.16 0.08,0.06 0.1,0.07 0.18,0.11 0.14,0.07 0.26,0.1 0.44,0.15l0.45 0.17c0.35,0.08 0.75,-0.74 0.91,-1.05 0.21,-0.4 0.41,-1.07 0.43,-1.57 -0,-0.28 0.04,-0.67 -0.1,-0.85l0.03 -0.17c-0,-0.04 -0.01,-0.13 -0.01,-0.15 -0.05,-0.13 -0.03,-0.1 -0.09,-0.17 0.06,-0.51 -0.25,-1.75 -0.94,-2.22 -1.11,-0.74 -1.37,0.09 -1.86,0.69l-0.12 -0.2c-0.28,-0.56 -0.41,-1.06 -1,-1.45 0.04,-1.21 1.29,-5.03 1.31,-5.65 0.07,0.06 0.05,0.04 0.12,0.13 0.63,0.83 0.41,0.6 1.22,1.38 0.76,0.74 1.67,1.73 2.95,1.92 0.28,0.13 0.55,-0.41 0.69,-0.64 0.21,-0.34 0.36,-0.64 0.47,-1.02 0.36,-1.24 0.14,-3.92 -1.03,-4.6 -1.23,-0.72 -1.67,0.89 -1.75,0.72 -0.01,-0.01 -0.03,0.02 -0.04,0.03 -0.19,-0.33 -0.3,-0.68 -0.49,-1 -0.22,-0.38 -0.47,-0.51 -0.68,-0.79 0.39,-1.04 1.05,-2.29 1.59,-3.3 0.57,-1.06 1.2,-2.15 1.7,-3.17 1.43,-0.02 1.51,0.55 1.8,0.6 -0.1,0.19 -0.02,0.07 -0.16,0.2 -0.01,0.01 -0.21,0.13 -0.23,0.15 -0.8,0.47 -1.8,0.96 -1.37,2.09 0.14,0.37 0.42,0.53 0.75,0.73 1.23,0.73 2.46,1.53 4.32,1.53 0.28,-0.08 0.25,-0.15 0.35,-0.44 0.22,-0.63 0.33,-1.22 0.26,-1.93 -0.11,-1.05 -1.06,-3.33 -2.21,-3.65 -1.31,-0.37 -1.17,0.6 -1.56,1.21l-0.2 -0.19c-0.84,-0.96 -0.61,-0.56 -1.27,-1.09 0.16,-0.47 0.7,-1.32 0.98,-1.82 1.05,-1.91 1.94,-3.59 2.84,-5.61 0.73,0.01 1.23,0.31 1.57,0.68 -0.26,0.25 -1.37,0.7 -1.67,1.19 -0.51,0.8 -0.07,1.45 0.63,1.87 1.15,0.7 2.56,1.58 4.34,1.55 0.33,-0.09 0.46,-0.67 0.52,-0.98 0.28,-1.4 -0.01,-2.34 -0.66,-3.5 -0.49,-0.87 -0.67,-1.3 -1.44,-1.54 -1.15,-0.36 -1.27,0.44 -1.56,1.23 -0.65,-0.55 0.03,-0.23 -1.38,-1.25 0.22,-0.6 1.08,-2.59 1.06,-3.14 0.38,-0.35 0.52,-0.78 0.43,-1.4 0.22,-0.75 0.67,-4.16 0.53,-5 0.32,0.09 0.75,0.4 1.06,0.57 0.35,0.2 0.71,0.39 1.06,0.57 0.73,0.38 1.61,0.62 2.65,0.61 0.58,-0.21 0.64,-1.82 0.61,-2.32 -0.04,-0.79 -0.45,-1.64 -0.77,-2.19 -0.39,-0.68 -0.64,-1.3 -1.45,-1.52 -1.33,-0.36 -1.16,0.63 -1.55,1.24 -0.67,-0.66 -0.61,-0.87 -1.64,-1.37 -0.06,-2.55 -0.87,-5.97 -0.9,-6.74l0.15 -0.03 0.01 -0.03zm-14.34 62.71l-0.02 1.23c-0.17,-0.13 -0.38,-0.3 -0.62,-0.45 -0.2,-0.13 -0.4,-0.21 -0.59,-0.39 0.26,-0.28 0.65,-0.51 1.16,-0.55l0.07 0.15zm14.26 -66.46c-0.03,0.28 0.03,0.13 -0.15,0.29 -0.01,0.01 -0.24,0.12 -0.24,0.13 -0.22,0.12 -0.24,0.17 -0.54,0.21 0.01,-0.4 -0.17,-0.77 -0.25,-1.14 0.63,0.03 0.9,0.46 1.18,0.51zm-14.86 55.33c0.15,-0.05 0.34,-0.22 0.51,-0.31 0.29,-0.15 0.4,-0.14 0.78,-0.16 -0.03,0.41 -0.14,0.81 -0.08,1.19 -0.26,0.14 -0.08,0.13 -0.34,-0.03 -0.26,-0.16 -0.76,-0.47 -0.88,-0.69zm2.5 -3.73c0.16,-0.41 0.11,-0.97 0.32,-1.32 0.3,0.08 0.44,0.22 0.64,0.41 0.2,0.19 0.27,0.36 0.41,0.49 -0.16,0.21 0.06,0.08 -0.33,0.21 -0.1,0.03 -0.26,0.05 -0.36,0.08 -0.23,0.05 -0.43,0.12 -0.68,0.14zm0.14 8.74l-1.08 0.27c-0.09,-0.08 -0.07,0.14 -0.08,-0.17l0.07 -1.1c0.51,0.12 0.97,0.57 1.09,1.01zm-0.43 8.78c-0.17,0.02 -0.31,0.07 -0.44,0.1 -0.01,0 -0.23,0.03 -0.24,0.03 -0.22,-0.04 0,0.16 -0.14,-0.1l-0.01 -0.9c0.37,0.15 0.68,0.48 0.83,0.88zm7.48 -41.68c0.31,-0.02 0.51,-0.13 0.93,-0.12 0.35,0 0.54,0.09 0.82,0.17 -0.11,0.53 -0.59,0.91 -0.64,1.43 -0.25,-0.04 -0.12,0.01 -0.27,-0.15l-0.84 -1.31zm4.93 -8.23c-0.27,-0 -0.43,-0.17 -0.68,-0.32 -0.41,-0.23 -0.51,-0.16 -0.64,-0.47 0.15,-0.04 0.4,-0.31 0.62,-0.42 0.29,-0.15 0.49,-0.18 0.85,-0.23 0.05,0.51 -0.12,0.95 -0.14,1.43zm-12.94 26.21c0.63,-0.04 0.61,-0.21 1.47,-0.11l-0.33 1.55c-0.33,-0.14 -0.22,-0.21 -0.62,-0.71 -0.32,-0.39 -0.42,-0.39 -0.52,-0.74zm15.47 -33.38c-0.15,0.29 -0.36,0.33 -0.67,0.51 -0.26,0.15 -0.4,0.29 -0.69,0.42 -0.01,-0.23 0.02,-0.53 -0.08,-0.67l0.03 -0.86c0.33,0.01 0.6,0.1 0.83,0.21 0.22,0.11 0.42,0.34 0.58,0.38zm-12.41 30.37c0.14,-0.37 0.45,-1.36 0.68,-1.6 0.66,0.19 1.09,0.56 1.31,1.14 -0.34,0.04 -0.75,0.16 -1.08,0.25 -0.9,0.24 -0.77,0.49 -0.91,0.21z" />
-          </svg>
-        </div>
-      </button>
-    </div>
+      </span>
+    </button>
   );
 };
 
-export default function ProfessionalHero() {
-  const navigate = useNavigate();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+export default function CompressorValvesProductPage() {
+  const [slideIndex, setSlideIndex] = useState(0);
 
-  const slides = [
-    {
-      title: "Drill Rod Dealers",
-      subtitle: "Industrial Excellence // Since 2025",
-      highlight: "in Tamilnadu",
-      description: "Sri Kumar Drill Rod Works: Your trusted partner for mining, construction, and infrastructure sectors across the state.",
-      image: HeroImage1,
-      accent: "from-blue-600/20 via-blue-900/40 to-black",
-      tag: "President's Choice Deal"
-    },
-    {
-      title: "Premium Alloy Steel",
-      subtitle: "High Impact Resistance",
-      highlight: "Global Standards",
-      description: "Engineered for the toughest terrains. Our drill rods ensure 30% more durability in high-pressure environments.",
-      image: HeroImage1, 
-      accent: "from-zinc-800/20 via-zinc-900/40 to-black",
-      tag: "Limited Time Offer"
-    },
-    {
-      title: "TN Wide Network",
-      subtitle: "Fastest Logistics",
-      highlight: "24HR Dispatch",
-      description: "Strategic distribution hubs across Tamilnadu ensuring your project never stops. B2B pricing guaranteed.",
-      image: HeroImage1, 
-      accent: "from-orange-600/20 via-red-900/40 to-black",
-      tag: "New Arrival"
-    }
-  ];
+  const whatsappNumber = "919876543210"; 
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hi Sri Kumar Drill Rods, I am inquiring about Drill Rods in Tamilnadu. Please provide B2B pricing.`;
 
   useEffect(() => {
-    let interval;
-    if (isPlaying) {
-      interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-      }, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [isPlaying, slides.length]);
+    const lenis = new Lenis({ lerp: 0.1 });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
 
-  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    const interval = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % productImages.length);
+    }, 5000);
+
+    return () => {
+      lenis.destroy();
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
-    <section className="relative h-screen lg:h-[90vh] min-h-[700px] w-full overflow-hidden bg-black/[0.96] antialiased font-['Inter']">
-      
-      <Spotlight className="-top-40 left-0 md:-top-20 md:left-60" fill="white" />
+    <div className="bg-white font-['Inter'] text-slate-900 overflow-x-hidden">
+      <head>
+        <title>Drill Rod Dealers in Tamilnadu – Sri Kumar Drill Rod Works</title>
+        <meta name="description" content="Sri Kumar Drill Rod Works, your trusted drill rod dealers in Tamilnadu. Reliable partner for mining, construction, and infrastructure." />
+      </head>
 
-      <div className="pointer-events-none absolute inset-0 [background-size:40px_40px] select-none opacity-10 [background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]" />
+      {/* --- HERO SECTION: FULL BACKGROUND CAROUSEL --- */}
+      <section id="hero" className="relative h-[75vh] md:h-[85vh] min-h-[550px] md:min-h-[750px] w-full overflow-hidden bg-black flex items-center">
+        
+        {/* BACKGROUND IMAGES CAROUSEL */}
+        {productImages.map((img, i) => (
+          <div 
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${slideIndex === i ? 'opacity-50' : 'opacity-0'}`}
+          >
+            <img src={img} className="w-full h-full object-cover" alt="Drill Rod Banner" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/20 to-transparent"></div>
+          </div>
+        ))}
 
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
-        >
-          <div className={`absolute inset-0 bg-gradient-to-br ${slide.accent}`}></div>
-          
-          <div className="relative z-10 max-w-[1400px] mx-auto h-full px-6 lg:px-16 flex items-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full pt-16 lg:pt-0">
-              
-              <div className={`order-2 lg:order-1 transition-all duration-700 delay-300 transform ${index === currentSlide ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
-                <span className="inline-block px-4 py-1 rounded-full bg-white/5 backdrop-blur-md text-white text-[10px] md:text-xs font-medium tracking-[0.2em] mb-4 md:mb-6 border border-white/10 uppercase">
-                  {slide.tag}
-                </span>
-                
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] tracking-tight mb-6 uppercase">
-                  {slide.title} <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-b from-neutral-100 to-neutral-500 font-light">
-                    {slide.highlight}
-                  </span>
-                </h1>
-                
-                <p className="text-base md:text-lg text-neutral-400 max-w-lg mb-8 md:mb-10 leading-relaxed font-light">
-                  {slide.description}
-                </p>
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 lg:px-16 relative z-20 w-full">
+          <div className="max-w-4xl">
+            <div className="flex items-center gap-4 mb-6 md:mb-10">
+              <div className="h-[1px] w-12 bg-red-600"></div>
+              <span className="text-slate-300 font-['Poppins'] font-semibold tracking-[0.4em] uppercase text-[8px] md:text-[10px]">
+                Industrial Excellence Since 2025
+              </span>
+            </div>
+            
+            <h1 className="text-3xl md:text-5xl lg:text-[4.5rem] font-['Poppins'] font-light uppercase tracking-tighter leading-[1.1] mb-6 md:mb-10 text-white">
+              Drill Rod Dealers in Tamilnadu – <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-600 font-normal italic">
+                Sri Kumar Drill Rod Works
+              </span>
+            </h1>
 
-                <div className="flex flex-wrap gap-6">
-                  {/* 🔹 NEW STYLED BUTTONS */}
-                  <AnimatedButton onClick={() => navigate('/drill-rods')}>
-                    Explore Inventory
-                  </AnimatedButton>
-                  <AnimatedButton onClick={() => navigate('/contactus')}>
-                    Technical Specs
-                  </AnimatedButton>
-                </div>
-              </div>
+            <div className="flex items-start gap-4 md:gap-6 mb-8 md:mb-12">
+               <div className="pt-1 text-red-500">
+                  <ShieldCheck size={20} className="md:w-7 md:h-7" strokeWidth={1.5} />
+               </div>
+               <h2 className="text-sm md:text-lg lg:text-xl font-['Poppins'] font-light text-slate-300 leading-tight tracking-wide max-w-2xl">
+                  Sri Kumar Drill Rod Works, your trusted drill rod dealers in Tamilnadu and a reliable partner for the mining, construction, and infrastructure sectors across the state.
+               </h2>
+            </div>
 
-              <div className={`order-1 lg:order-2 relative transition-all duration-1000 delay-500 transform ${index === currentSlide ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}>
-                <div className="absolute inset-0 bg-white/5 blur-[100px] rounded-full animate-pulse"></div>
-                <img src={slide.image} alt="Industrial Product" className="relative z-10 w-full h-auto drop-shadow-[0_20px_50px_rgba(255,255,255,0.05)] object-contain max-h-[350px] md:max-h-[450px] lg:max-h-[600px]" />
-              </div>
+            {/* 🔹 NEW BUTTONS IN HERO */}
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 mt-8 md:mt-16">
+              <IndustrialButton onClick={() => window.open(whatsappLink, "_blank")}>
+                <MessageCircle size={14} strokeWidth={2.5} /> B2B Pricing
+              </IndustrialButton>
+              <Link to="/contactus">
+                <IndustrialButton variant="secondary">
+                  Contact Sales <ArrowRight size={14} strokeWidth={2.5} />
+                </IndustrialButton>
+              </Link>
             </div>
           </div>
         </div>
-      ))}
 
-      <div className="absolute top-1/2 w-full flex justify-between px-4 md:px-8 -translate-y-1/2 z-30 pointer-events-none">
-          <button onClick={prevSlide} className="pointer-events-auto p-3 rounded-full border border-white/5 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md transition-all active:scale-90">
-            <ChevronLeft size={20} strokeWidth={1.5} />
-          </button>
-          <button onClick={nextSlide} className="pointer-events-auto p-3 rounded-full border border-white/5 bg-white/5 hover:bg-white/10 text-white backdrop-blur-md transition-all active:scale-90">
-            <ChevronRight size={20} strokeWidth={1.5} />
-          </button>
-      </div>
-
-      <div className="absolute bottom-10 left-0 w-full z-30 px-6 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex gap-3 w-full max-w-2xl">
-          {slides.map((_, i) => (
-            <div key={i} onClick={() => setCurrentSlide(i)} className="flex-1 cursor-pointer py-4">
-              <div className="h-[1px] bg-white/10 relative overflow-hidden">
-                <div className={`absolute top-0 left-0 h-full bg-white transition-all ease-linear ${i === currentSlide && isPlaying ? "w-full duration-[5000ms]" : "w-0 duration-0"} ${i < currentSlide ? "w-full" : ""}`} />
-              </div>
+        {/* PROGRESS INDICATOR */}
+        <div className="absolute bottom-6 md:bottom-10 left-6 right-6 flex gap-2 md:gap-4 max-w-[250px] md:max-w-sm z-30">
+          {productImages.map((_, i) => (
+            <div key={i} className="h-[1px] md:h-[2px] flex-1 bg-white/10 relative overflow-hidden">
+               <div className={`absolute top-0 left-0 h-full bg-red-600 transition-all duration-[5000ms] linear ${slideIndex === i ? 'w-full' : 'w-0'}`}></div>
             </div>
           ))}
         </div>
-        <button onClick={() => setIsPlaying(!isPlaying)} className="text-white/50 hover:text-white transition-colors p-2">
-          {isPlaying ? <Pause size={14} strokeWidth={1.5} /> : <Play size={14} strokeWidth={1.5} />}
-        </button>
-      </div>
+      </section>
 
-      <style>{`
-        @keyframes spotlight {
-          0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
-          100% { opacity: 1; transform: translate(-50%,-40%) scale(1); }
-        }
-        .animate-spotlight {
-          animation: spotlight 2s ease .75s 1 forwards;
-        }
+    </div>
+  );
+}
 
-        /* 🔹 NEW BUTTON ANIMATIONS */
-        @keyframes slay-1 {
-          0% { transform: rotate(10deg); }
-          50% { transform: rotate(-5deg); }
-          100% { transform: rotate(10deg); }
-        }
-        @keyframes slay-2 {
-          0% { transform: rotate(0deg); }
-          50% { transform: rotate(15deg); }
-          100% { transform: rotate(0deg); }
-        }
-        @keyframes slay-3 {
-          0% { transform: rotate(0deg); }
-          50% { transform: rotate(-5deg); }
-          100% { transform: rotate(0deg); }
-        }
-        .group:hover .animate-slay-1 {
-          animation: slay-1 3s cubic-bezier(0.52, 0, 0.58, 1) infinite;
-        }
-        .group:hover .animate-slay-2 {
-          animation: slay-2 3s cubic-bezier(0.52, 0, 0.58, 1) 1s infinite;
-        }
-        .group:hover .animate-slay-3 {
-          animation: slay-3 2s cubic-bezier(0.52, 0, 0.58, 1) 1s infinite;
-        }
-      `}</style>
-    </section>
+// eslint-disable-next-line no-unused-vars
+function QuoteIcon({ className }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V12C14.017 12.5523 13.5693 13 13.017 13H11.017C10.4647 13 10.017 12.5523 10.017 12V9C10.017 7.34315 11.3601 6 13.017 6H19.017C20.6739 6 22.017 7.34315 22.017 9V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM4.017 21L4.017 18C4.017 16.8954 4.91242 16 6.017 16H9.017C9.56928 16 10.017 15.5523 10.017 15V9C10.017 8.44772 9.56928 8 9.017 8H5.017C4.46472 8 4.017 8.44772 4.017 9V12C4.017 12.5523 3.56928 13 3.017 13H1.017C0.464722 13 0.017 12.5523 0.017 12V9C0.017 7.34315 1.36015 6 3.017 6H9.017C10.6739 6 12.017 7.34315 12.017 9V15C12.017 18.3137 9.33072 21 6.017 21H4.017Z" />
+    </svg>
   );
 }

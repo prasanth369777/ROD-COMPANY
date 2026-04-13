@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ChevronRight, HardHat, MapPin, Search, Menu, Box, MessageCircle, PhoneCall } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -65,9 +65,12 @@ export default function IndustrialSolutions() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  const filteredItems = filter === 'all' 
-    ? ALL_PRODUCTS 
-    : ALL_PRODUCTS.filter(item => item.cat === filter);
+  // 🚀 Performance Optimization: Memoize filtered list to prevent lag during menu toggles
+  const filteredItems = useMemo(() => {
+    return filter === 'all' 
+      ? ALL_PRODUCTS 
+      : ALL_PRODUCTS.filter(item => item.cat === filter);
+  }, [filter]);
 
   // 🔹 SHARED CONTACT HANDLERS
   const handleWhatsApp = (e, productName) => {
@@ -81,23 +84,23 @@ export default function IndustrialSolutions() {
   };
 
   return (
-    <section className="bg-white min-h-screen flex font-['Inter'] relative items-start">
+    <section className="bg-white min-h-screen flex font-['Inter'] relative items-start antialiased">
       
       {/* MOBILE HEADER */}
       <div className="xl:hidden fixed top-0 left-0 w-full bg-white border-b z-50 p-4 flex justify-between items-center shadow-sm">
         <h2 className="font-bold text-slate-900 italic uppercase tracking-tighter">SRI KUMAR<span className="text-orange-600">.</span></h2>
-        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-slate-50 rounded-lg text-slate-900 border border-slate-200">
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-slate-50 rounded-lg text-slate-900 border border-slate-200 active:scale-95 transition-transform">
           <Menu size={20} />
         </button>
       </div>
 
-      {/* --- 🔹 STICKY SIDEBAR NAVIGATION (ICONS REMOVED) --- */}
+      {/* --- 🔹 STICKY SIDEBAR NAVIGATION --- */}
       <aside className={`
-        fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-100 p-8 transform transition-transform duration-300 xl:sticky xl:top-0 xl:h-screen xl:translate-x-0 flex flex-col
+        fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-100 p-8 transform transition-all duration-300 ease-in-out xl:sticky xl:top-0 xl:h-screen xl:translate-x-0 flex flex-col will-change-transform
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="mb-10 hidden xl:block">
-          <h2 className="text-xl font-black text-slate-900 tracking-tighter uppercase italic flex items-center gap-1">
+          <h2 className="text-xl font-black text-slate-900 tracking-tighter uppercase italic">
             SRI KUMAR<span className="text-orange-600">.</span>
           </h2>
           <p className="text-[8px] font-bold text-slate-600 uppercase tracking-[0.3em] mt-1">Industrial Portal</p>
@@ -112,7 +115,7 @@ export default function IndustrialSolutions() {
           />
         </div>
 
-        <nav className="space-y-1 overflow-y-auto pr-1 flex-grow">
+        <nav className="space-y-1 overflow-y-auto pr-1 flex-grow scrollbar-hide">
           {CATEGORIES.map((cat, index) => (
             <button
               key={cat.id}
@@ -122,8 +125,8 @@ export default function IndustrialSolutions() {
               }}
               className={`w-full text-left py-3 rounded-lg transition-all duration-200 group flex items-center justify-between border-l-2
               ${filter === cat.id 
-                ? 'border-orange-500 bg-slate-600 pl-4' 
-                : 'border-transparent pl-2 text-slate-400 hover:text-slate-900'}`}
+                ? 'border-orange-500 bg-slate-50 pl-4' 
+                : 'border-transparent pl-2 text-slate-900 hover:text-slate-900'}`}
             >
               <div className="flex items-center gap-4">
                 <span className={`text-[8px] font-black ${filter === cat.id ? 'text-orange-500' : 'text-slate-900'}`}>
@@ -131,7 +134,7 @@ export default function IndustrialSolutions() {
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-[0.1em]">{cat.name}</span>
               </div>
-              <div className={`w-1 h-1 rounded-full bg-orange-500 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-0'}`}></div>
+              <div className={`w-1 h-1 rounded-full bg-orange-500 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-50'}`}></div>
             </button>
           ))}
         </nav>
@@ -145,7 +148,7 @@ export default function IndustrialSolutions() {
       </aside>
 
       {/* --- 🔹 MAIN CONTENT GRID --- */}
-      <main className="flex-1 overflow-y-auto pt-24 xl:pt-10 flex flex-col items-center">
+      <main className="flex-1 overflow-y-auto pt-24 xl:pt-10 flex flex-col items-center translate-z-0">
         
         <div className="w-full max-w-[1500px] p-4 md:p-10 lg:p-12">
           <header className="mb-12 px-2">
@@ -161,11 +164,11 @@ export default function IndustrialSolutions() {
           </header>
 
           {/* 🔹 ENHANCED PRODUCT GRID (5 in 1 Desktop) */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 will-change-transform">
             {filteredItems.map((item, index) => (
               <div 
                 key={index} 
-                className="group relative bg-white rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200/60 flex flex-col cursor-pointer border border-slate-50"
+                className="group relative bg-white rounded-[1.5rem] md:rounded-[2rem] p-3 md:p-5 transition-all duration-300 hover:shadow-2xl hover:shadow-slate-200/60 flex flex-col cursor-pointer border border-slate-50 transform-gpu"
                 onClick={() => navigate(item.path)}
               >
                 <div className="mb-3 md:mb-4 flex justify-between items-start px-1">
@@ -181,9 +184,14 @@ export default function IndustrialSolutions() {
                 </div>
 
                 <div className="aspect-square bg-[#F8FAFC] rounded-[1.2rem] md:rounded-[1.8rem] flex items-center justify-center p-4 md:p-8 relative overflow-hidden transition-all group-hover:bg-white border border-transparent group-hover:border-slate-100">
-                  <img src={item.img} alt={item.name} className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110 drop-shadow-xl" />
+                  <img 
+                    src={item.img} 
+                    alt={item.name} 
+                    loading="lazy"
+                    className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 drop-shadow-xl will-change-transform" 
+                  />
                   
-                  <div className="absolute inset-x-2 bottom-2 md:bottom-4 flex justify-center gap-1.5 md:gap-2 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                  <div className="absolute inset-x-2 bottom-2 md:bottom-4 flex justify-center gap-1.5 md:gap-2 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
                       <button onClick={(e) => handleWhatsApp(e, item.name)} className="bg-green-500 text-white p-2 md:p-3 rounded-lg md:rounded-2xl hover:bg-green-600 shadow-xl transition-all hover:-translate-y-1 active:scale-95">
                         <MessageCircle size={16} />
                       </button>
@@ -193,12 +201,12 @@ export default function IndustrialSolutions() {
                   </div>
                 </div>
 
-                <div className="mt-4 md:mt-6 flex items-center justify-between bg-[#0f172a] rounded-xl md:rounded-2xl p-3 md:p-4 group/btn">
+                <div className="mt-4 md:mt-6 flex items-center justify-between bg-[#0f172a] rounded-xl md:rounded-2xl p-3 md:p-4 group/btn transition-colors duration-300">
                   <div className="flex flex-col">
                       <p className="text-[6px] text-slate-500 font-bold uppercase tracking-widest leading-none mb-1">Status</p>
                       <p className="text-[8px] md:text-[9px] font-black text-white uppercase leading-none">Stock Ready</p>
                   </div>
-                  <div className="p-1.5 md:p-2 bg-orange-600 rounded-lg text-white group-hover/btn:scale-110 transition-transform">
+                  <div className="p-1.5 md:p-2 bg-orange-600 rounded-lg text-white group-hover/btn:scale-110 transition-transform duration-300">
                      <ChevronRight size={14} />
                   </div>
                 </div>
