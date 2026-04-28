@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/pages/Navigation';
 import Footer from './components/pages/Footer';
-import Loadingpage from './components/pages/loadingpage';
 
 // Core Pages
 import Homepage from './components/Homepage/Homepage';
@@ -45,25 +44,10 @@ import StandardHoseProductPage from './components/productpage/Hose/Starndard';
 import DrillonHoseProductPage from './components/productpage/Hose/Drillon';
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate initial asset loading (3 seconds)
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <Loadingpage />;
-  }
-
   return (
     <Router>
       <Navigation />
-     
+      
       <Buttontotop />
 
       <Routes>

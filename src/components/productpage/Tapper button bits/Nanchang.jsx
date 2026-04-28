@@ -14,11 +14,11 @@ import {
 import Lenis from "@studio-freight/lenis";
 
 // Importing Pulakana assets
-import img1 from "../../../assests/productimg/Pulakana/1.webp";
-import img2 from "../../../assests/productimg/Pulakana/2.webp";
-import img3 from "../../../assests/productimg/Pulakana/3.webp";
-import img4 from "../../../assests/productimg/Pulakana/4.webp";
-import img5 from "../../../assests/productimg/Pulakana/5.webp";
+import img1 from "../../../assests/productimg/Nanchang +/1.webp";
+import img2 from "../../../assests/productimg/Nanchang +/2.webp";
+import img3 from "../../../assests/productimg/Nanchang +/3.webp";
+import img4 from "../../../assests/productimg/Nanchang +/4.webp";
+import img5 from "../../../assests/productimg/Nanchang +/5.webp";
 
 const productImages = [img1, img2, img3, img4, img5];
 

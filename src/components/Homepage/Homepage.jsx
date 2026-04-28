@@ -22,7 +22,7 @@ export default function Home() {
        <Products />
        <Infintyscroll />
       <About />
-      
+    
       <Industry />
       <Process />
       <Blogsec />

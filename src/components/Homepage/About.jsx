@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { Icon } from "@iconify/react"; // 🔹 Using Iconify for high-precision technical icons
+import { Icon } from "@iconify/react"; 
 import { useNavigate } from "react-router-dom";
 import Lenis from "@studio-freight/lenis";
 
@@ -13,25 +13,25 @@ export default function About() {
   // Memoize industrial values to prevent unnecessary re-renders (Performance Fix)
   const industrialValues = useMemo(() => [
     {
-      icon: "ph:shield-check-light",
+      icon: "solar:shield-check-bold", // Professional solid black style
       title: "Durability First",
       description: "Our high-quality products are sourced from leading brands to ensure maximum performance and safety on every job site.",
       accent: "from-orange-500 to-red-600"
     },
     {
-      icon: "ph:hammer-light",
+      icon: "solar:hammer-bold",
       title: "Precision Spares",
       description: "Critical jackhammer components like pistons and bush kits are always in stock to eliminate operational downtime.",
       accent: "from-red-600 to-orange-400"
     },
     {
-      icon: "ph:hard-hat-light",
+      icon: "solar:helmet-bold",
       title: "Safety Standard",
       description: "Every part we supply is tested for quality and compatibility, giving mining contractors complete peace of mind.",
       accent: "from-orange-400 to-yellow-500"
     },
     {
-      icon: "ph:chart-line-up-light",
+      icon: "solar:graph-up-bold",
       title: "Peak Productivity",
       description: "We help you get equipment back to the site quickly, minimizing delays across Tamil Nadu's active mining belts.",
       accent: "from-yellow-500 to-orange-500"
@@ -44,7 +44,6 @@ export default function About() {
     requestAnimationFrame(raf);
 
     const handleMouseMove = (e) => {
-      // Throttle mouse movement to reduce CPU lag
       requestAnimationFrame(() => {
         setMousePos({ x: e.clientX, y: e.clientY });
       });
@@ -60,9 +59,7 @@ export default function About() {
   return (
     <section id="about" className="py-12 md:py-24 bg-white relative overflow-hidden text-slate-900 font-['Inter'] antialiased">
       
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-           style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '100px 100px' }}>
-      </div>
+      {/* 🔹 Background Grid Lines Removed as requested */}
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         
@@ -165,7 +162,7 @@ export default function About() {
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4">
                 {['Sandco', 'Blue Tapper', 'Pulanka', 'LT', 'Nanchang', 'PLKS'].map((brand) => (
                     <div key={brand} className="group border border-gray-100 p-6 md:p-8 flex flex-col items-center justify-center hover:bg-slate-900 hover:border-slate-900 transition-all transform-gpu cursor-default">
-                        <Icon icon="ph:wrench-light" className="text-orange-600 mb-3 md:mb-4 w-7 h-7" />
+                        <Icon icon="solar:settings-minimalistic-bold" className="text-black mb-3 md:mb-4 w-7 h-7 group-hover:text-white" />
                         <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-white text-center">{brand}</span>
                     </div>
                 ))}
@@ -175,7 +172,7 @@ export default function About() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 mb-24 md:mb-32 shadow-xl">
           {industrialValues.map((value, index) => (
             <div key={index} className="bg-white p-8 md:p-12 hover:bg-slate-50 transition-colors group">
-              <Icon icon={value.icon} className="w-8 h-8 md:w-10 md:h-10 text-orange-600 mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-300" />
+              <Icon icon={value.icon} className="w-8 h-8 md:w-10 md:h-10 text-black mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-300" />
               <h3 className="text-lg md:text-xl font-bold uppercase tracking-tight mb-3 md:mb-4 text-slate-900">{value.title}</h3>
               <p className="text-xs md:text-sm text-slate-500 leading-relaxed font-medium italic">{value.description}</p>
             </div>
@@ -183,9 +180,6 @@ export default function About() {
         </div>
 
         <div className="relative bg-slate-900 p-10 md:p-16 lg:p-24 text-center rounded-none overflow-hidden">
-            <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
-               
-            </div>
             <h3 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-6 md:mb-8 uppercase italic tracking-tighter leading-tight md:leading-none relative z-10">
                 SECURE YOUR <br /> <span className="text-orange-600 relative">
                   SITE EFFICIENCY.

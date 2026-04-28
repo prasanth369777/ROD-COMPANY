@@ -15,11 +15,11 @@ import {
 import Lenis from "@studio-freight/lenis";
 
 // Importing Assets from the LT directory as requested
-import img1 from "../../../../assests/productimg/Pulakana/1.webp";
-import img2 from "../../../../assests/productimg/Pulakana/2.webp";
-import img3 from "../../../../assests/productimg/Pulakana/3.webp";
-import img4 from "../../../../assests/productimg/Pulakana/4.webp";
-import img5 from "../../../../assests/productimg/Pulakana/5.webp";
+import img1 from "../../../../assests/productimg/Bush/1.webp";
+import img2 from "../../../../assests/productimg/Bush/2.webp";
+import img3 from "../../../../assests/productimg/Bush/3.webp";
+import img4 from "../../../../assests/productimg/Bush/4.webp";
+import img5 from "../../../../assests/productimg/Bush/5.webp";
 
 const productImages = [img1, img2, img3, img4, img5];
 
