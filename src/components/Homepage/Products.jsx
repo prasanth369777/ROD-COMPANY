@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ChevronRight, HardHat, MapPin, Search, Menu, Box, MessageCircle, PhoneCall } from 'lucide-react';
+import { ChevronRight,MapPin, Search, Menu, MessageCircle, PhoneCall } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // 🔹 PRODUCT IMAGE IMPORTS
@@ -153,62 +153,55 @@ export default function IndustrialSolutions() {
                  {filter === 'all' ? 'Engineering Catalog' : `Category: ${CATEGORIES.find(c => c.id === filter).name}`}
                </p>
             </div>
-            <h1 className="text-4xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase italic leading-none">
+            <h1 className="text-4xl md:text-7xl font-normal tracking-tighter uppercase leading-none text-black">
               {CATEGORIES.find(c => c.id === filter).name}
             </h1>
           </header>
 
-          {/* 🔹 NEW 3D & GLOW HOVER PRODUCT GRID */}
+          {/* 🔹 MINIMAL RECTANGULAR GRID WITHOUT HOVER EFFECT */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10 will-change-transform">
             {filteredItems.map((item, index) => (
               <div 
                 key={index} 
-                className="group relative bg-white rounded-[2rem] md:rounded-[2.5rem] p-4 md:p-7 transition-all duration-500 hover:-translate-y-4 hover:shadow-[0_40px_80px_-20px_rgba(15,23,42,0.2)] flex flex-col cursor-pointer border border-slate-100 transform-gpu overflow-hidden"
+                className="group relative bg-white border border-slate-200 p-4 md:p-7 flex flex-col cursor-pointer transition-all transform-gpu overflow-hidden"
                 onClick={() => navigate(item.path)}
               >
-                {/* Background Spotlight Glow */}
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-orange-500/0 via-transparent to-transparent group-hover:from-orange-500/[0.03] transition-colors duration-500"></div>
-
                 <div className="mb-5 md:mb-6 flex justify-between items-start px-1 relative z-10">
                   <div className="max-w-[85%]">
-                    <h3 className="text-xs md:text-sm font-black text-slate-900 tracking-tight uppercase italic truncate leading-none group-hover:text-orange-600 transition-colors duration-300">
+                    <h3 className="text-xs md:text-sm font-normal tracking-tight uppercase truncate leading-none text-slate-900">
                       {item.name}
                     </h3>
-                    <p className="text-[10px] md:text-[11px] font-black text-slate-400 mt-2 uppercase tracking-tighter group-hover:text-orange-600 transition-colors duration-300">{item.sku}</p>
+                    <p className="text-[10px] md:text-[11px] font-light text-slate-400 mt-2 uppercase tracking-tighter">{item.sku}</p>
                   </div>
-                  <div className="bg-slate-50 px-2 py-1 rounded-md border border-slate-100 group-hover:bg-orange-50 group-hover:border-orange-100 transition-all">
-                    <span className="text-[8px] font-black uppercase text-slate-400 group-hover:text-orange-600">OES</span>
+                  <div className="bg-slate-50 px-2 py-1 rounded border border-slate-100">
+                    <span className="text-[8px] font-light uppercase text-slate-400">OES</span>
                   </div>
                 </div>
 
-                <div className="aspect-square bg-[#F8FAFC] rounded-[1.8rem] md:rounded-[2.2rem] flex items-center justify-center p-6 md:p-12 relative overflow-hidden transition-all duration-500 group-hover:bg-white group-hover:shadow-inner border border-transparent group-hover:border-slate-100">
-                  {/* Subtle Inner Glow on Hover */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.08)_0%,transparent_70%)]"></div>
-
+                <div className="aspect-square bg-[#F8FAFC] flex items-center justify-center p-0 md:p-2 relative overflow-hidden">
                   <img 
                     src={item.img} 
                     alt={item.name} 
                     loading="lazy"
-                    className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110 drop-shadow-xl will-change-transform z-10" 
+                    className="w-full h-full object-contain filter drop-shadow-md will-change-transform z-10" 
                   />
                   
-                  {/* Action Bar Reveal */}
-                  <div className="absolute inset-x-0 bottom-4 flex justify-center gap-3 translate-y-24 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-20">
-                      <button onClick={(e) => handleWhatsApp(e, item.name)} className="bg-green-500 text-white p-3 md:p-4 rounded-2xl hover:bg-green-600 shadow-[0_10px_20px_rgba(34,197,94,0.3)] transition-all hover:-translate-y-1 active:scale-90">
-                        <MessageCircle size={20} />
-                      </button>
-                      <button onClick={(e) => handleCall(e)} className="bg-blue-600 text-white p-3 md:p-4 rounded-2xl hover:bg-blue-700 shadow-[0_10px_20px_rgba(37,99,235,0.3)] transition-all hover:-translate-y-1 active:scale-90">
-                        <PhoneCall size={20} />
-                      </button>
+                  <div className="absolute inset-x-4 bottom-4 flex justify-center gap-3 z-20">
+                    <button onClick={(e) => handleWhatsApp(e, item.name)} className="bg-green-500 text-white p-3 md:p-4 hover:bg-green-600 transition-all active:scale-90">
+                      <MessageCircle size={18} />
+                    </button>
+                    <button onClick={(e) => handleCall(e)} className="bg-blue-600 text-white p-3 md:p-4 hover:bg-blue-700 transition-all active:scale-90">
+                      <PhoneCall size={18} />
+                    </button>
                   </div>
                 </div>
 
-                <div className="mt-6 md:mt-8 flex items-center justify-between bg-[#0f172a] rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-5 group/btn transition-all duration-300 group-hover:bg-orange-600">
+                <div className="mt-6 md:mt-8 flex items-center justify-between bg-slate-950 p-4 md:p-5 group/btn transition-all duration-300">
                   <div className="flex flex-col">
-                      <p className="text-[8px] text-slate-500 font-bold uppercase tracking-widest leading-none mb-1.5 group-hover:text-white/60">Status</p>
-                      <p className="text-[10px] md:text-[11px] font-black text-white uppercase leading-none">Stock Ready</p>
+                      <p className="text-[8px] text-slate-500 font-light uppercase tracking-widest leading-none mb-1.5">Status</p>
+                      <p className="text-[10px] md:text-[11px] font-normal text-white uppercase leading-none">Stock Ready</p>
                   </div>
-                  <div className="p-2 md:p-3 bg-white/10 rounded-xl text-white group-hover:bg-white group-hover:text-orange-600 transition-all duration-300 shadow-lg">
+                  <div className="p-2 md:p-3 bg-white/10 text-white transition-all duration-300">
                      <ChevronRight size={18} />
                   </div>
                 </div>
@@ -216,40 +209,8 @@ export default function IndustrialSolutions() {
             ))}
           </div>
 
-          {/* --- 🔹 FOOTER ACTIONS --- */}
-          <footer className="mt-32 pt-20 border-t border-slate-100 grid lg:grid-cols-2 gap-10 pb-20 px-2">
-            <div className="relative group overflow-hidden bg-white border border-slate-100 p-1 rounded-[3rem] shadow-sm hover:shadow-2xl transition-all duration-500">
-                <div className="bg-[#f8fafc] rounded-[2.8rem] p-12 h-full flex flex-col justify-between relative overflow-hidden">
-                    <div className="relative z-10">
-                        <div className="w-16 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-900 mb-8 group-hover:bg-orange-600 group-hover:text-white transition-all duration-500">
-                            <HardHat size={32} />
-                        </div>
-                        <h4 className="text-slate-900 font-black uppercase tracking-[0.2em] text-sm mb-4">Project Consultation</h4>
-                        <p className="text-slate-500 text-xs leading-relaxed max-w-sm font-medium">Technical support for custom engine sizing and on-site hardware selection across Tamil Nadu.</p>
-                    </div>
-                    <div className="relative z-10 mt-12 flex items-center gap-3 text-orange-600 font-black uppercase text-xs tracking-widest cursor-pointer group/link">
-                        Speak to Expert <ChevronRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
-                    </div>
-                </div>
-            </div>
+          
 
-            <button className="relative group overflow-hidden bg-[#0f172a] p-1 rounded-[3rem] shadow-2xl transition-all duration-500 text-left">
-                <div className="bg-gradient-to-br from-slate-900 to-[#0f172a] rounded-[2.8rem] p-12 h-full flex flex-col justify-between relative overflow-hidden border border-white/5">
-                    <div className="absolute top-0 right-0 w-80 h-80 bg-orange-600/10 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    <div className="relative z-10">
-                        <div className="w-16 h-14 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center justify-center text-orange-500 mb-8 group-hover:scale-110 transition-transform duration-500">
-                            <Box size={32} />
-                        </div>
-                        <h4 className="text-white font-black uppercase tracking-[0.2em] text-sm mb-4">B2B Volume Contracts</h4>
-                        <p className="text-slate-400 text-xs leading-relaxed max-w-sm font-medium">Secure competitive B2B volume pricing for large-scale industrial contracts and state-wide logistics.</p>
-                    </div>
-                    <div className="relative z-10 mt-12 flex items-center justify-between">
-                        <span className="bg-orange-600 text-white px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest group-hover:bg-white group-hover:text-slate-900 transition-all shadow-lg">Request Quote</span>
-                        <div className="text-white/20 font-light text-5xl italic opacity-20 group-hover:opacity-40 transition-opacity">SRI KUMAR</div>
-                    </div>
-                </div>
-            </button>
-          </footer>
         </div>
       </main>
     </section>

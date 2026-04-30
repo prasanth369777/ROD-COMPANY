@@ -42,6 +42,7 @@ import ImportedRodsProductPage from './components/productpage/Drill Rods/Importe
 import DurlonHoseProductPage from './components/productpage/Hose/DurlonRockdrillhose';
 import StandardHoseProductPage from './components/productpage/Hose/Starndard';
 import DrillonHoseProductPage from './components/productpage/Hose/Drillon';
+import Industries from './components/Homepage/Industryweservce';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/blog" element={<BlogSectionClassic />} />
         <Route path="/contactus" element={<Contactus />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/industries" element={<Industries/>} />
 
         {/* --- Product Routes --- */}
         <Route path="/tapper-bits/pulanka" element={<Pulanka />} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import LogoImg from "../../assests/logo.png";
@@ -23,12 +23,15 @@ export default function Navigation() {
   ];
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[100] px-2 py-2 md:px-8 md:py-4">
+    <div className="fixed top-0 left-0 w-full z-[100] px-0 py-0">
       <nav
-        className={`mx-auto max-w-screen-2xl transition-all duration-500 rounded-2xl md:rounded-3xl border border-white/10 shadow-2xl
-        ${scrolled ? "bg-slate-900/95 backdrop-blur-xl py-2 md:py-3" : "bg-slate-800/40 backdrop-blur-md py-4 md:py-5"}`}
+        className={`w-full transition-all duration-500 border-b border-white/10 shadow-2xl ${
+          scrolled 
+            ? "bg-slate-900/95 backdrop-blur-xl py-2 md:py-3" 
+            : "bg-slate-800/40 backdrop-blur-md py-4 md:py-5"
+        }`}
       >
-        <div className="px-4 lg:px-10 flex justify-between items-center text-white">
+        <div className="max-w-[1920px] mx-auto px-6 md:px-12 lg:px-16 flex justify-between items-center text-white w-full">
           {/* Logo Section */}
           <Link to="/" className="group flex items-center gap-2 md:gap-3 shrink-0">
             <div className="relative w-10 h-10 md:w-12 md:h-12 overflow-hidden rounded-lg md:rounded-xl border border-white/20">
@@ -62,7 +65,7 @@ export default function Navigation() {
           {/* Action Button */}
           <div className="hidden md:flex items-center">
             <Link to="/contactus">
-              <button className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 lg:px-8 py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold text-xs uppercase transition-all transform hover:shadow-[0_10px_20px_rgba(249,115,22,0.3)] active:scale-95">
+              <button className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-6 lg:px-8 py-2.5 md:py-3 rounded-none font-bold text-xs uppercase transition-all transform hover:shadow-[0_10px_20px_rgba(249,115,22,0.3)] active:scale-95">
                 Get Quote
               </button>
             </Link>
@@ -92,7 +95,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link to="/contactus" onClick={() => setIsOpen(false)} className="pt-2">
-              <button className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3.5 rounded-xl font-bold uppercase text-xs tracking-wider">
+              <button className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3.5 rounded-none font-bold uppercase text-xs tracking-wider">
                 Get Quote
               </button>
             </Link>

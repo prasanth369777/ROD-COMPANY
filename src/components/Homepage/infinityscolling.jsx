@@ -40,26 +40,26 @@ export default function ProductGridScroll() {
 
   const ProductCard = ({ item, isTall }) => (
     <div className={`flex-shrink-0 ${isTall ? 'w-[300px] h-[450px]' : 'w-[280px] h-[380px]'} relative group cursor-pointer`}>
-      <div className="relative w-full h-full rounded-none bg-white border border-slate-200 transition-all duration-500 group-hover:border-orange-500 shadow-sm group-hover:shadow-2xl group-hover:-translate-y-2">
+      <div className="relative w-full h-full rounded-none bg-white border border-slate-200 transition-all duration-500 shadow-sm">
         
         {/* Technical Header */}
         <div className="absolute top-0 left-0 w-full p-4 flex justify-between items-start z-20">
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 group-hover:text-orange-600 transition-colors">
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 transition-colors">
                 Series_{item.sku}
             </span>
-            <div className="h-4 w-4 border-t-2 border-r-2 border-slate-200 group-hover:border-orange-500 transition-colors"></div>
+            <div className="h-4 w-4 border-t-2 border-r-2 border-slate-200 transition-colors"></div>
         </div>
 
-        {/* Main Image Area */}
-        <div className="absolute inset-0 z-0 p-10 flex items-center justify-center">
+        {/* Main Image Area - Made larger and closer to the bounds */}
+        <div className="absolute inset-0 z-0 p-6 flex items-center justify-center">
           <img
             src={item.img}
             alt={item.name}
-            className="w-full h-auto max-h-[70%] object-contain filter drop-shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+            className="w-full h-auto max-h-[82%] object-contain filter drop-shadow-2xl transition-all duration-700 scale-105"
           />
         </div>
 
-        {/* Info Overlay (Sliding up on hover) */}
+        {/* Info Overlay */}
         <div className="absolute bottom-0 left-0 w-full p-8 z-10 bg-gradient-to-t from-white via-white/90 to-transparent">
           <p className="text-[9px] font-semibold text-orange-600 uppercase tracking-[0.3em] mb-1">Authentic Component</p>
           <h4 className="text-xl font-semibold text-slate-900 uppercase tracking-tighter leading-tight italic">
@@ -68,15 +68,15 @@ export default function ProductGridScroll() {
           
           <div className="mt-4 flex items-center gap-2 overflow-hidden">
             <div className="h-[2px] w-full bg-slate-100 relative">
-                <div className="absolute inset-0 bg-orange-600 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700"></div>
+                <div className="absolute inset-0 bg-orange-600"></div>
             </div>
             <span className="text-[8px] font-semibold text-slate-300 uppercase whitespace-nowrap">Spec_Verified</span>
           </div>
         </div>
 
         {/* Corner Accent */}
-        <div className="absolute bottom-0 right-0 w-12 h-12 bg-slate-50 group-hover:bg-orange-500 transition-colors flex items-center justify-center">
-            <div className="w-2 h-2 rounded-full bg-slate-200 group-hover:bg-white animate-pulse"></div>
+        <div className="absolute bottom-0 right-0 w-12 h-12 bg-slate-50 transition-colors flex items-center justify-center">
+            <div className="w-2 h-2 rounded-full bg-slate-200 animate-pulse"></div>
         </div>
       </div>
     </div>
