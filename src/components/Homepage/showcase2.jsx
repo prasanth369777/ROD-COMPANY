@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 // Images
-import Hero1_Image from "../../assests/Hero1-1.webp";
-import Hero2_Image from "../../assests/Hero 2-1.webp";
-import Hero3_Image from "../../assests/Hero 3-1.webp";
+import Hero1_Image from "../../assests/Hero Image1.webp";
+import Hero2_Image from "../../assests/Hero Image3.webp";
+import Hero3_Image from "../../assests/Hero image2.webp";
 
 // Product Data
 const eliteProductsData = [
