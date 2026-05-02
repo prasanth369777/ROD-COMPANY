@@ -11,6 +11,7 @@ import BlogSectionClassic from './components/pages/Blog';
 import Buttontotop from './components/pages/buttontotop';
 import Whatsapp from './components/pages/whatsapp';
 import Products from './components/pages/Productspage';
+import ScrollToTop from './components/pages/ScrollToTop';
 
 // Product Group 1: Tapper Button Bits
 import Pulanka from './components/productpage/Tapper button bits/Pulanka';
@@ -47,6 +48,7 @@ import Industries from './components/Homepage/Industryweservce';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Navigation />
       
       <Buttontotop />

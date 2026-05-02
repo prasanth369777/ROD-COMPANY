@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 
-// 🔹 PRODUCT IMAGE IMPORTS
+// 🔹 DESKTOP PRODUCT IMAGE IMPORTS
 import img1 from "../../assests/Hero Image1.webp";
 import img2 from "../../assests/Hero image2.webp"; 
 import img3 from "../../assests/Hero Image3.webp";
 import img4 from "../../assests/Hero Image4.webp";
 
+// 🔹 MOBILE PRODUCT IMAGE IMPORTS (Different asset selection)
+import mImg1 from "../../assests/Hero Section Image_1.webp";
+import mImg2 from "../../assests/Hero Section Image_2.webp";
+import mImg3 from "../../assests/Hero Section Image_3.webp";
+import mImg4 from "../../assests/Hero Section Image_4.webp";
+
 const productImages = [img1, img2, img3, img4];
+const mobileImages = [mImg1, mImg2, mImg3, mImg4];
 
 export default function CompressorValvesProductPage() {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -37,8 +44,8 @@ export default function CompressorValvesProductPage() {
       {/* --- ELITE BENTO EDITORIAL HERO SLIDER --- */}
       <section id="hero" className="relative h-[75vh] md:h-[85vh] min-h-[550px] md:min-h-[800px] w-full overflow-hidden bg-black flex items-center">
         
-        {/* 🔹 BACKGROUND LAYER: LAYERED MASKING & REVOLUTION ANIMATION */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* 🔹 BACKGROUND LAYER: DESKTOP VARIANT */}
+        <div className="absolute inset-0 z-0 overflow-hidden hidden md:block">
           {productImages.map((img, i) => (
             <div 
               key={i}
@@ -53,10 +60,26 @@ export default function CompressorValvesProductPage() {
           ))}
         </div>
 
+        {/* 🔹 BACKGROUND LAYER: MOBILE VARIANT */}
+        <div className="absolute inset-0 z-0 overflow-hidden md:hidden">
+          {mobileImages.map((img, i) => (
+            <div 
+              key={i}
+              className={`absolute inset-0 transition-all duration-[1500ms] cubic-bezier(0.645, 0.045, 0.355, 1) transform ${
+                slideIndex === i 
+                  ? 'opacity-100 scale-100' 
+                  : 'opacity-0 scale-110'
+              }`}
+            >
+              <img src={img} className="w-full h-full object-cover" alt="Mobile Industrial Background" />
+            </div>
+          ))}
+        </div>
+
         {/* 🔹 CALL TO ACTION BUTTONS - BOTTOM CENTERED */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-wrap items-center justify-center gap-6">
           <a
-            href="https://wa.me/919876543210?text=Hi Sri Kumar Drill Rods, I am inquiring about Drill Rods in Tamilnadu. Please provide B2B pricing."
+            href="https://wa.me/9443439096?text=Hi Sri Kumar Drill Rods, I am inquiring about Drill Rods in Tamilnadu. Please provide B2B pricing."
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 bg-green-500 text-white px-10 py-5 font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:bg-green-600 active:scale-95 transform-gpu"
@@ -68,7 +91,7 @@ export default function CompressorValvesProductPage() {
           </a>
 
           <a
-            href="tel:+919876543210"
+            href="tel:+919994468589"
             className="flex items-center gap-4 bg-red-600 text-white px-10 py-5 font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:bg-red-700 active:scale-95 transform-gpu"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,6 +100,7 @@ export default function CompressorValvesProductPage() {
             Call Now
           </a>
         </div>
+
       </section>
 
     </div>

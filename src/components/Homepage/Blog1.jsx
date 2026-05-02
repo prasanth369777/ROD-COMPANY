@@ -19,14 +19,7 @@ const blogs = [
     image: "https://images.pexels.com/photos/439416/pexels-photo-439416.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Drill Rods", "Mining", "Sandco"],
   },
-  {
-    title: "Preventing Hose Failure in High-Pressure Drilling",
-    description: "Why Durlon and Drillon hoses are the industry standard for pneumatic safety. Understanding PSI limits and abrasion resistance.",
-    author: "Operations Lead",
-    date: "Feb 10, 2026",
-    image: "https://images.pexels.com/photos/162539/pexels-photo-162539.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Hoses", "Safety", "Pneumatics"],
-  },
+  
   {
     title: "Jack Hammer Spare Parts: Reducing Downtime",
     description: "Essential spares to keep on-site: From Ranger Boxes to Side Bolts. How precision-fit parts extend the life of MDS Jack Hammers.",
@@ -35,22 +28,7 @@ const blogs = [
     image: "https://images.pexels.com/photos/585418/pexels-photo-585418.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Jack Hammer", "Spares", "Efficiency"],
   },
-  {
-    title: "The Science of Rock Drill Bit Sharpening",
-    description: "Extend the lifespan of your button bits by up to 40% with proper grinding techniques and frequency schedules.",
-    author: "Bit Specialist",
-    date: "Jan 05, 2026",
-    image: "https://images.pexels.com/photos/257700/pexels-photo-257700.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Button Bits", "Grinding", "Tools"],
-  },
-  {
-    title: "Mining Safety: Pneumatic System Integrity",
-    description: "Identifying micro-leaks in compressor valves before they lead to catastrophic equipment failure in underground sites.",
-    author: "Safety Officer",
-    date: "Dec 18, 2025",
-    image: "https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Safety", "Compressors", "Audit"],
-  },
+  
   {
     title: "Top Hammer vs. DTH: Choosing Your Rig",
     description: "A deep dive into drilling mechanics: When to use Imported top hammer rods versus traditional down-the-hole configurations.",
@@ -58,14 +36,6 @@ const blogs = [
     date: "Nov 30, 2025",
     image: "https://images.pexels.com/photos/1108101/pexels-photo-1108101.jpeg?auto=compress&cs=tinysrgb&w=800",
     tags: ["Drilling", "Rigs", "Engineering"],
-  },
-  {
-    title: "Supply Chain Solutions for Tamil Nadu Mining",
-    description: "How Sri Kumar Drill Rods ensures 24-hour delivery of critical spares to Salem, Coimbatore, and Chennai industrial zones.",
-    author: "Logistics Mgr",
-    date: "Nov 12, 2025",
-    image: "https://images.pexels.com/photos/2209524/pexels-photo-2209524.jpeg?auto=compress&cs=tinysrgb&w=800",
-    tags: ["Logistics", "B2B", "Tamil Nadu"],
   },
 ];
 

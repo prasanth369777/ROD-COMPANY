@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { ChevronRight, Search, Menu, MessageCircle, PhoneCall, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Icon } from '@iconify/react'; // 🔹 Using Iconify for high-precision stroke icons
 
-// Product Image Imports based on your folder structure
+
+// 🔹 PRODUCT IMAGE IMPORTS
 import PulakanaImg from "../../assests/productimg/Pulakana/1.webp";
 import LTImg from "../../assests/productimg/LT (1)/1.webp";
 import NanchangImg from "../../assests/productimg/Nanchang +/1.webp";
 import PLKSImg from "../../assests/productimg/PLKS/1.webp";
 import BushImg from "../../assests/productimg/Bush/1.webp";
-import RangerBoxImg from "../../assests/productimg/Bush/2.webp"; // Used for Ranger Box
 import PistonImg from "../../assests/productimg/Piston/1.webp";
 import SideBoldImg from "../../assests/productimg/Side bold-/1.webp";
-import RetainerLockImg from "../../assests/productimg/Piston-/1.webp"; // Using Piston- as Retainer placeholder if needed
+import RetainerLockImg from "../../assests/productimg/Retainer lock/1.webp"; 
 import LinerSetImg from "../../assests/productimg/Liner set/1.webp";
 import ConnectRodImg from "../../assests/productimg/Connect Rod/1.webp";
 import FiltersImg from "../../assests/productimg/Air filter and Oil filter/1.webp";
@@ -19,240 +19,264 @@ import RingsImg from "../../assests/productimg/Rings/1.webp";
 import ValvesImg from "../../assests/productimg/Valves/1.webp";
 import SandcoRodsImg from "../../assests/productimg/Sandco Tapper drill rods/1.webp";
 
-const ProductPage = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
+// 🔹 NEWLY ADDED FROM SCREENSHOT
+import BlueTapperImg from "../../assests/productimg/Blue Tapper drill rods/1.webp";
+import ImportedRodsImg from "../../assests/productimg/Imported drill rods/1.webp";
+import DrillonImg from "../../assests/productimg/Drillon/1.webp";
+import StandardHoseImg from "../../assests/productimg/Starndard/1.webp";
+
+// 🔹 HERO CAROUSEL ASSETS (DESKTOP)
+import img1 from "../../assests/Hero Image1.webp";
+import img2 from "../../assests/Hero image2.webp"; 
+import img3 from "../../assests/Hero Image3.webp";
+import img4 from "../../assests/Hero Image4.webp";
+
+// 🔹 HERO CAROUSEL ASSETS (MOBILE)
+import mImg1 from "../../assests/Hero Section Image_1.webp";
+import mImg2 from "../../assests/Hero Section Image_2.webp";
+import mImg3 from "../../assests/Hero Section Image_3.webp";
+import mImg4 from "../../assests/Hero Section Image_4.webp";
+
+
+const ALL_PRODUCTS = [
+  { name: 'Pulanka', img: PulakanaImg, sku: 'PK-BIT', cat: 'bits', path: '/tapper-bits/pulanka' },
+  { name: 'LT Tapper', img: LTImg, sku: 'LT-BIT', cat: 'bits', path: '/tapper-bits/lt' },
+  { name: 'Nanchang Plus', img: NanchangImg, sku: 'NC-BIT', cat: 'bits', path: '/tapper-bits/nanchang-plus' },
+  { name: 'PLKS Precision', img: PLKSImg, sku: 'PL-BIT', cat: 'bits', path: '/tapper-bits/plks' },
+  { name: 'Hammer Bush', img: BushImg, sku: 'JH-BSH', cat: 'jack', path: '/jack-hammer/bush' },
+  { name: 'Ranger Box', img: BushImg, sku: 'JH-RBX', cat: 'jack', path: '/jack-hammer/ranger-box' },
+  { name: 'JH Piston', img: PistonImg, sku: 'JH-PST', cat: 'jack', path: '/jack-hammer/piston' },
+  { name: 'Side Bolt', img: SideBoldImg, sku: 'JH-SBT', cat: 'jack', path: '/jack-hammer/side-bolt' },
+  { name: 'Retainer Lock', img: RetainerLockImg, sku: 'JH-RLK', cat: 'jack', path: '/jack-hammer/retainer-lock' },
+  { name: 'Liner Set', img: LinerSetImg, sku: 'VT4-LNR', cat: 'comp', path: '/compressor/liner-set' },
+  { name: 'Comp Piston', img: PistonImg, sku: 'VT4-PST', cat: 'comp', path: '/compressor/piston' },
+  { name: 'Connect Rod', img: ConnectRodImg, sku: 'VT4-CRD', cat: 'comp', path: '/compressor/connect-rod' },
+  { name: 'Filters', img: FiltersImg, sku: 'VT4-FLT', cat: 'comp', path: '/compressor/filters' },
+  { name: 'Rings', img: RingsImg, sku: 'VT4-RNG', cat: 'comp', path: '/compressor/rings' },
+  { name: 'Valves', img: ValvesImg, sku: 'VT4-VLV', cat: 'comp', path: '/compressor/valves' },
+  { name: 'Sandco Rods', img: SandcoRodsImg, sku: 'DR-SND', cat: 'rods', path: '/drill-rods/sandco' },
+  { name: 'Blue Tapper', img: BlueTapperImg, sku: 'DR-BLU', cat: 'rods', path: '/drill-rods/blue-tapper' },
+  { name: 'Imported Rods', img: ImportedRodsImg, sku: 'DR-IMP', cat: 'rods', path: '/drill-rods/imported' },
+  { name: 'Durlon Hose', img: FiltersImg, sku: 'HS-DUR', cat: 'hose', path: '/hoses/durlon' },
+  { name: 'Standard Hose', img: StandardHoseImg, sku: 'HS-STD', cat: 'hose', path: '/hoses/standard' },
+  { name: 'Drillon Hose', img: DrillonImg, sku: 'HS-DRL', cat: 'hose', path: '/hoses/drillon' },
+];
+
+const CATEGORIES = [
+  { id: 'all', name: 'All Products' },
+  { id: 'rods', name: 'Drill Rods' },
+  { id: 'bits', name: 'Tapper Bits' },
+  { id: 'jack', name: 'Jack Hammer' },
+  { id: 'comp', name: 'Compressor' },
+  { id: 'hose', name: 'Industrial Hoses' }
+];
+
+export default function IndustrialSolutions() {
+  const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [slideIndex, setSlideIndex] = useState(0);
+  
+  const productImages = [img1, img2, img3, img4];
+  const mobileImages = [mImg1, mImg2, mImg3, mImg4];
   const navigate = useNavigate();
 
-  const productData = [
-    {
-      id: 'bits',
-      category: 'Tapper button bits',
-      icon: "ph:nut-light", // 🔹 Professional Stroke Icon
-      items: [
-        { name: 'Pulanka', code: 'SK-B1', path: "/tapper-bits/pulanka", img: PulakanaImg },
-        { name: 'LT', code: 'SK-B2', path: "/tapper-bits/lt", img: LTImg },
-        { name: 'Nanchang +', code: 'SK-B3', path: "/tapper-bits/nanchang-plus", img: NanchangImg },
-        { name: 'PLKS', code: 'SK-B4', path: "/tapper-bits/plks", img: PLKSImg }
-      ]
-    },
-    {
-      id: 'jack',
-      category: 'PSI/MDS Jack Hammer',
-      icon: "ph:hammer-light", 
-      items: [
-        { name: 'Bush', code: 'SK-J1', path: "/jack-hammer/bush", img: BushImg },
-        { name: 'Ranger Box', code: 'SK-J2', path: "/jack-hammer/ranger-box", img: RangerBoxImg },
-        { name: 'Piston', code: 'SK-J3', path: "/jack-hammer/piston", img: PistonImg },
-        { name: 'Side bold', code: 'SK-J4', path: "/jack-hammer/side-bolt", img: SideBoldImg },
-        { name: 'Retainer lock', code: 'SK-J5', path: "/jack-hammer/retainer-lock", img: RetainerLockImg }
-      ]
-    },
-    {
-      id: 'comp',
-      category: 'Atlas Copco VT 4 Compressor',
-      icon: "ph:wind-light",
-      items: [
-        { name: 'Liner set', code: 'SK-C1', path: "/compressor/liner-set", img: LinerSetImg },
-        { name: 'Piston', code: 'SK-C2', path: "/compressor/piston", img: PistonImg },
-        { name: 'Connect Rod', code: 'SK-C3', path: "/compressor/connect-rod", img: ConnectRodImg },
-        { name: 'Air & Oil filter', code: 'SK-C4', path: "/compressor/filters", img: FiltersImg },
-        { name: 'Rings', code: 'SK-C5', path: "/compressor/rings", img: RingsImg },
-        { name: 'Valves', code: 'SK-C6', path: "/compressor/valves", img: ValvesImg }
-      ]
-    },
-    {
-      id: 'rods',
-      category: 'Drill Rods',
-      icon: "ph:columns-light",
-      items: [
-        { name: 'Sandco Tapper drill rods', code: 'SK-R1', path: "/drill-rods/sandco", img: SandcoRodsImg },
-        { name: 'Blue Tapper drill rods', code: 'SK-R2', path: "/drill-rods/blue-tapper", img: SandcoRodsImg },
-        { name: 'Imported drill rods', code: 'SK-R3', path: "/drill-rods/imported", img: SandcoRodsImg }
-      ]
-    },
-    {
-      id: 'hose',
-      category: 'Hose',
-      icon: "ph:waves-light",
-      items: [
-        { name: 'Durlon Rock drill hose', code: 'SK-H1', path: "/hoses/durlon", img: FiltersImg },
-        { name: 'Standard', code: 'SK-H2', path: "/hoses/standard", img: FiltersImg },
-        { name: 'Drillon', code: 'SK-H3', path: "/hoses/drillon", img: FiltersImg }
-      ]
-    }
-  ];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % productImages.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, [productImages.length]);
 
-  // Helper to map sidebar with Icons
-  const sidebarItems = [
-    { name: 'All', icon: "ph:squares-four-light" },
-    ...productData.map(p => ({ name: p.category, icon: p.icon }))
-  ];
+  const filteredItems = useMemo(() => {
+    const list = filter === 'all' 
+      ? ALL_PRODUCTS 
+      : ALL_PRODUCTS.filter(item => item.cat === filter);
 
-  const getVisibleProducts = () => {
-    let list = [];
-    if (activeCategory === 'All') {
-      productData.forEach(cat => {
-        cat.items.forEach(item => list.push({ ...item, parentCat: cat.category }));
-      });
-    } else {
-      const found = productData.find(p => p.category === activeCategory);
-      if (found) {
-        found.items.forEach(item => list.push({ ...item, parentCat: found.category }));
-      }
-    }
     if (searchQuery) {
       return list.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
     }
     return list;
+  }, [filter, searchQuery]);
+
+  const handleWhatsApp = (e, productName) => {
+    e.stopPropagation();
+    window.open(`https://wa.me/919443439096?text=I'm interested in ${productName}`, '_blank');
   };
 
-  const visibleProducts = getVisibleProducts();
+  const handleCall = (e) => {
+    e.stopPropagation();
+    window.location.href = "tel:+919994468589";
+  };
 
   return (
-    <div className="bg-white min-h-screen font-['Inter'] flex text-slate-900 antialiased">
+    <section className="bg-white min-h-screen flex font-['Inter'] relative items-start antialiased mt-16">
       
-      {/* LEFT SIDEBAR */}
-      <aside className="w-80 border-r border-slate-100 h-screen sticky top-0 hidden xl:flex flex-col bg-[#FDFDFD] pt-32">
-        <div className="px-8 flex-1 overflow-y-auto">
-          <div className="relative mb-8">
-            <Icon icon="ph:magnifying-glass-light" className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" width="14" />
-            <input 
-              type="text" 
-              placeholder="Search components..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-100 rounded-lg py-2.5 pl-9 pr-4 text-xs font-light focus:outline-none focus:ring-1 focus:ring-orange-600/20"
-            />
-          </div>
+      {/* MOBILE HEADER */}
+      <div className="xl:hidden fixed top-0 left-0 w-full bg-white border-b z-50 p-4 flex justify-between items-center shadow-sm">
+        <h2 className="font-bold text-slate-900 italic uppercase tracking-tighter">SRI KUMAR<span className="text-orange-600">.</span></h2>
+        <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-slate-50 rounded-lg text-slate-900 border border-slate-200 active:scale-95 transition-transform">
+          <Menu size={20} />
+        </button>
+      </div>
 
-          <nav className="space-y-1 pb-10">
-            <p className="text-[10px] font-semibold text-slate-300 uppercase tracking-[0.2em] mb-4 px-2">Registry</p>
-            {sidebarItems.map((cat) => (
-              <button
-                key={cat.name}
-                onClick={() => setActiveCategory(cat.name)}
-                className={`w-full text-left px-4 py-3 rounded-lg text-[11px] font-semibold uppercase tracking-widest transition-all flex items-center justify-between group ${activeCategory === cat.name ? 'bg-slate-900 text-white shadow-lg translate-x-2' : 'text-slate-400 hover:bg-slate-50 hover:text-slate-900'}`}
-              >
-                <div className="flex items-center gap-3">
-                  <Icon icon={cat.icon} width="18" className={activeCategory === cat.name ? "text-orange-500" : "text-slate-300"} />
-                  {cat.name}
-                </div>
-                <Icon icon="ph:caret-right-light" width="12" className={`${activeCategory === cat.name ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100 transition-opacity`} />
-              </button>
-            ))}
-          </nav>
+      {/* --- 🔹 STICKY SIDEBAR NAVIGATION --- */}
+      <aside className={`
+        fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-100 p-8 transform transition-all duration-300 ease-in-out xl:sticky xl:top-0 xl:h-screen xl:translate-x-0 flex flex-col will-change-transform
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        <div className="mb-10 hidden xl:block">
+          <h2 className="text-xl font-black text-slate-900 tracking-tighter uppercase italic">
+            SRI KUMAR<span className="text-orange-600">.</span>
+          </h2>
+          <p className="text-[8px] font-bold text-slate-600 uppercase tracking-[0.3em] mt-1">Industrial Portal</p>
         </div>
 
-        <div className="p-8 border-t border-slate-50 mb-10">
-           <div className="bg-orange-50 p-6 rounded-2xl">
-              <Icon icon="ph:shield-check-light" className="text-orange-600 mb-3" width="20" />
-              <p className="text-[10px] font-semibold text-orange-900 uppercase mb-1 tracking-tight">Technical Support</p>
-              <p className="text-[10px] text-orange-700/70 font-light leading-relaxed">Expert assistance for all drilling site requirements.</p>
-           </div>
+        <div className="relative mb-10 mt-12 xl:mt-0">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={14} />
+          <input 
+            type="text" 
+            placeholder="Search parts..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-[#f8fafc] border-b border-slate-600 py-2 pl-9 pr-4 text-[10px] focus:outline-none focus:border-orange-500 text-slate-600 transition-colors"
+          />
+        </div>
+
+        <nav className="space-y-1 overflow-y-auto pr-1 flex-grow scrollbar-hide">
+          {CATEGORIES.map((cat, index) => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setFilter(cat.id);
+                setIsMobileMenuOpen(false);
+              }}
+              className={`w-full text-left py-3 rounded-lg transition-all duration-200 group flex items-center justify-between border-l-2
+              ${filter === cat.id 
+                ? 'border-orange-500 bg-slate-600 pl-4' 
+                : 'border-transparent pl-2 text-slate-900 hover:text-slate-900'}`}
+            >
+              <div className="flex items-center gap-4">
+                <span className={`text-[8px] font-black ${filter === cat.id ? 'text-orange-500' : 'text-slate-900'}`}>
+                  0{index + 1}
+                </span>
+                <span className="text-[10px] font-black uppercase tracking-[0.1em]">{cat.name}</span>
+              </div>
+              <div className={`w-1 h-1 rounded-full bg-orange-500 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-50'}`}></div>
+            </button>
+          ))}
+        </nav>
+
+        <div className="mt-auto pt-8 border-t border-slate-500">
+          <div className="flex items-center gap-3 text-slate-400">
+            <MapPin size={12} />
+            <span className="text-[8px] font-bold uppercase tracking-widest leading-none">Tamil Nadu, IN</span>
+          </div>
         </div>
       </aside>
 
-      {/* RIGHT SIDE - PRODUCTS */}
-      <main className="flex-1 bg-white pt-32 pb-32">
-        <header className="px-8 lg:px-12 mb-12 flex justify-between items-center">
-            <div>
-                <h1 className="text-sm font-semibold uppercase tracking-[0.3em] flex items-center gap-3">
-                   {activeCategory} 
-                   <span className="bg-slate-100 text-slate-400 text-[10px] font-medium px-2 py-0.5 rounded-full">{visibleProducts.length}</span>
-                </h1>
+      {/* --- 🔹 MAIN CONTENT GRID --- */}
+      <main className="flex-1 overflow-y-auto pt-24 xl:pt-10 flex flex-col items-center translate-z-0">
+        
+        <div className="w-full max-w-[1600px] p-4 md:p-10 lg:p-12">
+          <header className="mb-16 px-2">
+            <div className="flex items-center gap-2 mb-4">
+               <div className="h-[1px] w-12 bg-orange-600"></div>
+               <p className="text-orange-600 font-bold uppercase text-[10px] tracking-[0.4em]">
+                 {filter === 'all' ? 'Engineering Catalog' : `Category: ${CATEGORIES.find(c => c.id === filter)?.name || ''}`}
+               </p>
             </div>
-            <div className="flex items-center gap-4 text-slate-300">
-                <button className="p-2 hover:text-slate-900 transition-colors"><Icon icon="ph:grid-four-light" width="18" /></button>
-                <button className="p-2 hover:text-slate-900 transition-colors border-l border-slate-100 pl-4"><Icon icon="ph:list-light" width="18" /></button>
-            </div>
-        </header>
+            <h1 className="text-4xl md:text-7xl font-normal tracking-tighter uppercase leading-none text-black">
+              {CATEGORIES.find(c => c.id === filter)?.name || 'All Products'}
+            </h1>
+          </header>
 
-        <div className="px-8 lg:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-16">
-            {visibleProducts.map((product, idx) => (
+          {/* 🔹 3 PRODUCTS IN A SINGLE LINE (Using md:grid-cols-3) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 will-change-transform">
+            {filteredItems.map((item, index) => (
               <div 
-                key={idx} 
-                className="group cursor-pointer"
-                onClick={() => navigate(product.path)}
+                key={index} 
+                className="group relative bg-white border border-slate-200 p-4 md:p-7 flex flex-col cursor-pointer transition-all transform-gpu overflow-hidden"
+                onClick={() => navigate(item.path)}
               >
-                <div className="aspect-square bg-slate-50 rounded-2xl overflow-hidden mb-6 relative border border-slate-100 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-slate-200 group-hover:-translate-y-1">
-                  <img 
-                    src={product.img} 
-                    alt={product.name} 
-                    className="w-full h-full object-contain p-4 grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" 
-                  />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-2 py-1 rounded text-[8px] font-semibold tracking-widest border border-slate-100 uppercase shadow-sm text-slate-500">
-                    {product.code}
+                <div className="mb-5 md:mb-6 flex justify-between items-start px-1 relative z-10">
+                  <div className="max-w-[85%]">
+                    <h3 className="text-xs md:text-sm font-normal tracking-tight uppercase truncate leading-none text-slate-900">
+                      {item.name}
+                    </h3>
+                    <p className="text-[10px] md:text-[11px] font-light text-slate-400 mt-2 uppercase tracking-tighter">{item.sku}</p>
                   </div>
-                  <div className="absolute bottom-4 right-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <div className="bg-orange-600 text-white p-3 rounded-xl shadow-xl flex items-center justify-center">
-                        <Icon icon="ph:arrow-right-light" width="16" />
-                    </div>
+                  <div className="bg-slate-50 px-2 py-1 rounded border border-slate-100">
+                    <span className="text-[8px] font-light uppercase text-slate-400">OES</span>
                   </div>
                 </div>
 
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-[8px] font-semibold uppercase tracking-[0.2em] text-orange-600 bg-orange-50 px-2 py-0.5 rounded">
-                      {product.parentCat}
-                    </span>
+                <div className="aspect-square bg-[#F8FAFC] flex items-center justify-center p-0 md:p-2 relative overflow-hidden">
+                  <img 
+                    src={item.img} 
+                    alt={item.name} 
+                    loading="lazy"
+                    className="w-full h-full object-contain filter drop-shadow-md will-change-transform z-10" 
+                  />
+                  
+                  <div className="absolute inset-x-4 bottom-4 flex justify-center gap-3 z-20">
+                    <button onClick={(e) => handleWhatsApp(e, item.name)} className="bg-green-500 text-white p-3 md:p-4 hover:bg-green-600 transition-all active:scale-90">
+                      <MessageCircle size={18} />
+                    </button>
+                    <button onClick={(e) => handleCall(e)} className="bg-blue-600 text-white p-3 md:p-4 hover:bg-blue-700 transition-all active:scale-90">
+                      <PhoneCall size={18} />
+                    </button>
                   </div>
-                  <h3 className="text-sm font-medium uppercase tracking-tight text-slate-900 group-hover:text-orange-600 transition-colors">
-                    {product.name}
-                  </h3>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-50">
-                    <div className="flex items-center gap-1.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                        <span className="text-[9px] font-medium text-slate-400 uppercase tracking-widest">In Stock</span>
-                    </div>
-                    <span className="text-[9px] font-semibold text-slate-900 border border-slate-900 px-2 py-0.5 rounded italic uppercase font-mono">M-Series</span>
+                </div>
+
+                <div className="mt-6 md:mt-8 flex items-center justify-between bg-slate-950 p-4 md:p-5 group/btn transition-all duration-300">
+                  <div className="flex flex-col">
+                      <p className="text-[8px] text-slate-500 font-light uppercase tracking-widest leading-none mb-1.5">Status</p>
+                      <p className="text-[10px] md:text-[11px] font-normal text-white uppercase leading-none">Stock Ready</p>
+                  </div>
+                  <div className="p-2 md:p-3 bg-white/10 text-white transition-all duration-300">
+                     <ChevronRight size={18} />
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Banner */}
-          <div className="mt-32 bg-slate-900 rounded-[3rem] p-12 lg:p-20 text-white relative overflow-hidden group">
-            <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div className="flex items-center gap-3 mb-8">
-                        <div className="w-10 h-10 bg-orange-600 rounded-xl flex items-center justify-center text-white">
-                            <Icon icon="ph:truck-light" width="20" />
-                        </div>
-                        <span className="text-orange-500 text-[10px] font-semibold uppercase tracking-[0.4em]">Direct Site Delivery</span>
-                    </div>
-                    <h2 className="text-4xl lg:text-6xl font-light uppercase italic tracking-tighter leading-none mb-6">
-                        Bulk Logistics <br /> For Quarry Sites.
-                    </h2>
-                    <p className="text-slate-400 text-lg italic max-w-md font-light">Immediate dispatch for high-volume orders to major mining hubs across Tamil Nadu.</p>
+          {/* 🔹 HERO CAROUSEL SECTION */}
+          <section id="hero-carousel" className="relative h-[50vh] md:h-[85vh] min-h-[350px] md:min-h-[800px] w-full mt-32 overflow-hidden bg-black flex items-center justify-center">
+            
+            {/* Desktop Carousel Variant */}
+            <div className="absolute inset-0 z-0 overflow-hidden hidden md:block">
+              {productImages.map((img, i) => (
+                <div 
+                  key={i}
+                  className={`absolute inset-0 transition-all duration-[1500ms] cubic-bezier(0.645, 0.045, 0.355, 1) transform ${
+                    slideIndex === i ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
+                  }`}
+                >
+                  <img src={img} className="w-full h-full object-cover" alt="Industrial Catalog View" />
                 </div>
-                <div className="flex flex-col lg:items-end gap-8">
-                    <div className="flex items-center gap-4 text-right">
-                        <div>
-                            <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-500 mb-1 text-white/40">Service Hours</p>
-                            <p className="text-sm font-semibold uppercase tracking-tighter">24/7 Supply Support</p>
-                        </div>
-                        <div className="w-12 h-12 rounded-full border border-slate-800 flex items-center justify-center shadow-inner">
-                            <Icon icon="ph:clock-light" width="20" className="text-orange-600" />
-                        </div>
-                    </div>
-                    <button 
-                      onClick={() => navigate('/contactus')}
-                      className="bg-white text-slate-900 px-10 py-5 rounded-full font-semibold uppercase text-xs tracking-widest hover:bg-orange-600 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-2xl"
-                    >
-                        Request Site Quote
-                    </button>
-                </div>
+              ))}
             </div>
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-orange-600/10 to-transparent pointer-events-none"></div>
-            <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-600/5 blur-[100px] rounded-full"></div>
-          </div>
+
+            {/* Mobile Carousel Variant */}
+            <div className="absolute inset-0 z-0 overflow-hidden md:hidden">
+              {mobileImages.map((img, i) => (
+                <div 
+                  key={i}
+                  className={`absolute inset-0 transition-all duration-[1500ms] cubic-bezier(0.645, 0.045, 0.355, 1) transform ${
+                    slideIndex === i ? 'opacity-100 scale-100' : 'opacity-0 scale-110'
+                  }`}
+                >
+                  <img src={img} className="w-full h-full object-cover" alt="Mobile Catalog View" />
+                </div>
+              ))}
+            </div>
+          </section>
+
+         
         </div>
       </main>
-    </div>
+    </section>
   );
-};
-
-export default ProductPage;
+}

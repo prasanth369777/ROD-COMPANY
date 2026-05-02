@@ -1,5 +1,5 @@
-import React, { useState, useMemo } from 'react';
-import { ChevronRight,MapPin, Search, Menu, MessageCircle, PhoneCall } from 'lucide-react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { ChevronRight, Search, Menu, MessageCircle, PhoneCall, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // 🔹 PRODUCT IMAGE IMPORTS
@@ -59,23 +59,35 @@ const CATEGORIES = [
 
 export default function IndustrialSolutions() {
   const [filter, setFilter] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Preserved interval logic
+  }, []);
+
   const filteredItems = useMemo(() => {
-    return filter === 'all' 
+    const list = filter === 'all' 
       ? ALL_PRODUCTS 
       : ALL_PRODUCTS.filter(item => item.cat === filter);
-  }, [filter]);
+
+    if (searchQuery) {
+      return list.filter(p => p.name.toLowerCase().includes(searchQuery.toLowerCase()));
+    }
+    return list;
+  }, [filter, searchQuery]);
 
   const handleWhatsApp = (e, productName) => {
     e.stopPropagation();
-    window.open(`https://wa.me/919876543210?text=I'm interested in ${productName}`, '_blank');
+    window.open(`https://wa.me/919443439096?text=I'm interested in ${productName}`, '_blank');
   };
 
   const handleCall = (e) => {
     e.stopPropagation();
-    window.location.href = "tel:+919876543210";
+    window.location.href = "tel:+919994468589";
   };
 
   return (
@@ -102,10 +114,12 @@ export default function IndustrialSolutions() {
         </div>
 
         <div className="relative mb-10 mt-12 xl:mt-0">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-300" size={14} />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={14} />
           <input 
             type="text" 
             placeholder="Search parts..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-[#f8fafc] border-b border-slate-600 py-2 pl-9 pr-4 text-[10px] focus:outline-none focus:border-orange-500 text-slate-600 transition-colors"
           />
         </div>
@@ -150,16 +164,16 @@ export default function IndustrialSolutions() {
             <div className="flex items-center gap-2 mb-4">
                <div className="h-[1px] w-12 bg-orange-600"></div>
                <p className="text-orange-600 font-bold uppercase text-[10px] tracking-[0.4em]">
-                 {filter === 'all' ? 'Engineering Catalog' : `Category: ${CATEGORIES.find(c => c.id === filter).name}`}
+                 {filter === 'all' ? 'Engineering Catalog' : `Category: ${CATEGORIES.find(c => c.id === filter)?.name || ''}`}
                </p>
             </div>
             <h1 className="text-4xl md:text-7xl font-normal tracking-tighter uppercase leading-none text-black">
-              {CATEGORIES.find(c => c.id === filter).name}
+              {CATEGORIES.find(c => c.id === filter)?.name || 'All Products'}
             </h1>
           </header>
 
-          {/* 🔹 MINIMAL RECTANGULAR GRID WITHOUT HOVER EFFECT */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10 will-change-transform">
+          {/* 🔹 3 Products in a single line on medium and larger screens */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 will-change-transform">
             {filteredItems.map((item, index) => (
               <div 
                 key={index} 
@@ -208,8 +222,6 @@ export default function IndustrialSolutions() {
               </div>
             ))}
           </div>
-
-          
 
         </div>
       </main>

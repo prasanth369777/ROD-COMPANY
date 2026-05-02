@@ -114,7 +114,7 @@ export default function About() {
             </p>
 
             <button 
-                onClick={() => navigate('/drill-rods')}
+                onClick={() => navigate('/aboutus')}
                 className="w-full md:w-auto inline-flex items-center justify-center gap-4 bg-orange-600 text-white px-8 md:px-10 py-4 md:py-5 font-bold uppercase text-xs tracking-widest hover:bg-slate-900 transition-all shadow-lg active:scale-95 transform-gpu"
             >
                 Read More
@@ -137,7 +137,7 @@ export default function About() {
             </div>
             <div className="lg:col-span-4 flex justify-start lg:justify-end">
                 <button 
-                    onClick={() => navigate('/jack-hammer')}
+                    onClick={() => navigate('/aboutus')}
                     className="w-full md:w-auto px-10 md:px-12 py-4 md:py-5 border-2 border-orange-600 text-orange-600 font-bold uppercase text-xs tracking-widest hover:bg-orange-600 hover:text-white transition-all transform-gpu"
                 >
                     View Catalog

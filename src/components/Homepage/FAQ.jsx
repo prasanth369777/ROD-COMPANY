@@ -143,7 +143,7 @@ export default function FAQ() {
               Request B2B Pricing
             </button>
             <div className="h-[1px] w-12 bg-white/10 hidden sm:block"></div>
-            <a href="tel:+91XXXXXXXXXX" className="text-white font-bold uppercase text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] border-b-2 border-orange-500 pb-2 hover:text-orange-500 transition-colors text-center">
+            <a href="tel:+919443439096" className="text-white font-bold uppercase text-xs md:text-sm tracking-[0.2em] md:tracking-[0.3em] border-b-2 border-orange-500 pb-2 hover:text-orange-500 transition-colors text-center">
                 Call Technical Support
             </a>
           </div>
