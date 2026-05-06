@@ -37,8 +37,8 @@ export default function CompressorValvesProductPage() {
   return (
     <div className="bg-white font-['Inter'] text-slate-900 overflow-x-hidden mt-16">
       <head>
-        <title>Drill Rod Dealers in Tamilnadu – Sri Kumar Drill Rod Works</title>
-        <meta name="description" content="Sri Kumar Drill Rod Works, your trusted drill rod dealers in Tamilnadu. Reliable partner for mining, construction, and infrastructure." />
+        <title>Drill Rod Dealers in Tamilnadu – Sri Kumar Drill Rods</title>
+        <meta name="description" content="Sri Kumar Drill Rods, your trusted drill rod dealers in Tamilnadu. Reliable partner for mining, construction, and infrastructure." />
       </head>
 
       {/* --- ELITE BENTO EDITORIAL HERO SLIDER --- */}
@@ -76,13 +76,13 @@ export default function CompressorValvesProductPage() {
           ))}
         </div>
 
-        {/* 🔹 CALL TO ACTION BUTTONS - BOTTOM CENTERED */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-wrap items-center justify-center gap-6">
+        {/* 🔹 CALL TO ACTION BUTTONS - RESPONSIVE POSITIONING */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col sm:flex-row items-center justify-center gap-6 w-full px-6">
           <a
             href="https://wa.me/9443439096?text=Hi Sri Kumar Drill Rods, I am inquiring about Drill Rods in Tamilnadu. Please provide B2B pricing."
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 bg-green-500 text-white px-10 py-5 font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:bg-green-600 active:scale-95 transform-gpu"
+            className="flex items-center justify-center gap-4 bg-green-500 text-white w-full sm:w-auto px-10 py-5 font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:bg-green-600 active:scale-95 transform-gpu"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                <path d="M1.5 4.5c3.3-3.3 8.6-3.3 11.9 0 3.3 3.3 3.3 8.6 0 11.9l-1.3 1.3-4.1.3-1.3-3.8 2.3-2.3a8.8 8.8 0 01-3.6-3.6L4.7 7.7l-3.2 1.3C1.5 9 1.5 7.8 1.5 4.5zm10.6 8.5c.3 0 .6-.1.8-.3l2-2c.4-.4.4-1 0-1.4l-2-2a1.2 1.2 0 00-1.7 1.7l1.1 1.1-1.1 1.1c-.2.2-.3.5-.3.8s.1.6.3.8l.8.5c.2.2.5.3.8.3z" />
@@ -92,7 +92,7 @@ export default function CompressorValvesProductPage() {
 
           <a
             href="tel:+919994468589"
-            className="flex items-center gap-4 bg-red-600 text-white px-10 py-5 font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:bg-red-700 active:scale-95 transform-gpu"
+            className="flex items-center justify-center gap-4 bg-red-600 text-white w-full sm:w-auto px-10 py-5 font-bold text-sm tracking-widest uppercase transition-all shadow-2xl hover:bg-red-700 active:scale-95 transform-gpu"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from '../pages/Navigation';
 import Hero from '../Homepage/Hero';
-import Showcase from '../Homepage/showcase2';
+// import Showcase from '../Homepage/showcase2';
 import Products from './Products';
 import About from './About';
 import Industry from './Industryweservce';
@@ -18,7 +18,7 @@ export default function Home() {
     <div className="bg-slate-900 text-white">
       <Navigation />
       <Hero />
-      <Showcase />
+      {/* <Showcase /> */}
 
     
        <Products />

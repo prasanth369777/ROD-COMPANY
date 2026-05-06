@@ -3,10 +3,10 @@ import { ChevronRight, Search, Menu, MessageCircle, PhoneCall, MapPin } from 'lu
 import { useNavigate } from 'react-router-dom';
 
 // 🔹 PRODUCT IMAGE IMPORTS
-import PulakanaImg from "../../assests/productimg/Pulakana/1.webp";
+import PulakanaImg from "../../assests/productimg/Pulakana/Pulanka1.webp";
 import LTImg from "../../assests/productimg/LT (1)/1.webp";
 import NanchangImg from "../../assests/productimg/Nanchang +/1.webp";
-import PLKSImg from "../../assests/productimg/PLKS/1.webp";
+import PLKSImg from "../../assests/productimg/PLKS/PLKS1.webp";
 import BushImg from "../../assests/productimg/Bush/1.webp";
 import PistonImg from "../../assests/productimg/Piston/1.webp";
 import SideBoldImg from "../../assests/productimg/Side bold-/1.webp";
@@ -35,7 +35,7 @@ const ALL_PRODUCTS = [
   { name: 'Side Bolt', img: SideBoldImg, sku: 'JH-SBT', cat: 'jack', path: '/jack-hammer/side-bolt' },
   { name: 'Retainer Lock', img: RetainerLockImg, sku: 'JH-RLK', cat: 'jack', path: '/jack-hammer/retainer-lock' },
   { name: 'Liner Set', img: LinerSetImg, sku: 'VT4-LNR', cat: 'comp', path: '/compressor/liner-set' },
-  { name: 'Comp Piston', img: PistonImg, sku: 'VT4-PST', cat: 'comp', path: '/compressor/piston' },
+  { name: 'Atlas Piston', img: PistonImg, sku: 'VT4-PST', cat: 'comp', path: '/compressor/piston' },
   { name: 'Connect Rod', img: ConnectRodImg, sku: 'VT4-CRD', cat: 'comp', path: '/compressor/connect-rod' },
   { name: 'Filters', img: FiltersImg, sku: 'VT4-FLT', cat: 'comp', path: '/compressor/filters' },
   { name: 'Rings', img: RingsImg, sku: 'VT4-RNG', cat: 'comp', path: '/compressor/rings' },
