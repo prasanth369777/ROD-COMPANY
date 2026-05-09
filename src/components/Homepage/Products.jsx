@@ -18,6 +18,7 @@ import RingsImg from "../../assests/productimg/Rings/1.webp";
 import ValvesImg from "../../assests/productimg/Valves/1.webp";
 import SandcoRodsImg from "../../assests/productimg/Sandco Tapper drill rods/1.webp";
 
+
 // 🔹 NEWLY ADDED FROM SCREENSHOT
 import BlueTapperImg from "../../assests/productimg/Blue Tapper drill rods/1.webp";
 import ImportedRodsImg from "../../assests/productimg/Imported drill rods/1.webp";

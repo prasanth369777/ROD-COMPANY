@@ -308,7 +308,8 @@ export default function StandardHoseProductPage() {
               "Granite & Blue Metal Quarrying",
               "Borewell Drilling",
               "Construction Projects",
-              "Underground Drilling"
+              "Underground Drilling",
+              "Available Sizes & Specifications"
             ].map((app, i) => (
               <div key={app} className="group p-10 bg-[#fafafa] border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
                 <span className="font-['Poppins'] font-light text-6xl text-slate-100 group-hover:text-orange-600/10 transition-colors leading-none block mb-6">0{i+1}</span>
