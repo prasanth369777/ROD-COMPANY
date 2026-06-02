@@ -13,7 +13,7 @@ export default function QuickContact() {
       {/* FLOATING CALL ICON */}
       <a 
         href={callLink}
-        className="group flex items-center justify-center bg-slate-900 border border-white/10 text-white w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:bg-orange-600 active:scale-90"
+        className="group flex items-center justify-center bg-blue-600 border border-white/10 text-white w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:bg-blue-700 active:scale-90"
         aria-label="Call Now"
       >
         <div className="relative">
@@ -33,8 +33,8 @@ export default function QuickContact() {
 
              {/* Subtle notification ping */}
              <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
              </span>
         </div>
       </a>
@@ -44,7 +44,7 @@ export default function QuickContact() {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center justify-center bg-gradient-to-r from-orange-500 to-red-600 text-white w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:brightness-110 active:scale-90"
+        className="group flex items-center justify-center bg-gradient-to-r from-green-500 to-green-600 text-white w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:brightness-110 active:scale-90"
         aria-label="WhatsApp Chat"
       >
         <svg 

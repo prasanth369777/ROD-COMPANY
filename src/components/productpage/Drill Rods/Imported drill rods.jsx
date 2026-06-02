@@ -72,7 +72,7 @@ export default function ImportedRodsProductPage() {
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-10">
-                <div className="h-[2px] w-12 bg-orange-600"></div>
+                <div className="h-[2px] w-12 bg-blue-600"></div>
                 <span className="text-slate-400 font-['Poppins'] font-bold tracking-[0.4em] uppercase text-[10px]">
                   International Quality Standards
                 </span>
@@ -80,14 +80,14 @@ export default function ImportedRodsProductPage() {
               
               <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-['Poppins'] font-bold tracking-tighter leading-[1] mb-10 text-slate-900">
                 Imported <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 font-medium">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-600 font-medium">
                   Drill Rods
                 </span>
               </h1>
 
               <div className="flex items-start gap-6 mb-12">
                  <div className="pt-1">
-                    <ShieldCheck className="text-orange-600 w-6 h-6" />
+                    <ShieldCheck className="text-blue-600 w-6 h-6" />
                  </div>
                  <h2 className="text-xl lg:text-2xl font-['Poppins'] font-medium text-slate-700 leading-tight">
                    Premium Quality Imported Drill Rods Supplier in Tamil Nadu
@@ -110,7 +110,7 @@ export default function ImportedRodsProductPage() {
                 <a href={whatsappLink} target="_blank" rel="noreferrer" className="px-12 py-5 bg-green-600 text-white font-['Poppins'] font-bold uppercase text-[11px] tracking-[0.2em] hover:bg-green-700 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3">
                   <MessageCircle size={16} /> Get Price on WhatsApp
                 </a>
-                <button onClick={handleCall} className="px-12 py-5 bg-slate-900 text-white font-['Poppins'] font-bold uppercase text-[11px] tracking-[0.2em] hover:bg-orange-600 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3">
+                <button onClick={handleCall} className="px-12 py-5 bg-slate-900 text-white font-['Poppins'] font-bold uppercase text-[11px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3">
                   Call Support <PhoneCall size={16} />
                 </button>
               </div>
@@ -120,7 +120,7 @@ export default function ImportedRodsProductPage() {
             <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
                <div className="relative w-full max-w-[550px] aspect-square bg-white shadow-2xl border border-slate-100 p-8 lg:p-12 group overflow-hidden">
                   <div className="absolute top-6 right-6 z-20">
-                     <div className="p-3 bg-orange-600 text-white rounded-full shadow-lg hover:scale-110 transition-transform cursor-pointer">
+                     <div className="p-3 bg-blue-600 text-white rounded-full shadow-lg hover:scale-110 transition-transform cursor-pointer">
                         <Maximize2 size={18} />
                      </div>
                   </div>
@@ -128,7 +128,7 @@ export default function ImportedRodsProductPage() {
                      <img src={activeImg} className="max-h-full w-auto object-contain filter drop-shadow-xl" alt="Imported Drill Rod Main" />
                   </div>
                   <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-[80%] bg-white/70 backdrop-blur-md border border-white/40 py-4 px-6 text-center shadow-lg">
-                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-orange-600 block mb-1">Global Procurement</span>
+                     <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600 block mb-1">Global Procurement</span>
                      <h3 className="text-sm font-['Poppins'] font-bold uppercase text-slate-800 tracking-tighter leading-none">Imported Tapper Rod</h3>
                   </div>
                </div>
@@ -151,7 +151,7 @@ export default function ImportedRodsProductPage() {
                 </p>
               </div>
               <div className="flex items-center gap-6 p-8 bg-[#fafafa] border border-slate-100 max-w-2xl shadow-sm">
-                <div className="h-12 w-1.5 bg-orange-600"></div>
+                <div className="h-12 w-1.5 bg-blue-600"></div>
                 <p className="text-slate-600 text-lg font-bold uppercase tracking-tight leading-tight">
                   Sri Kumar Drill Rods supplies bulk quantities across Tamil Nadu with ready stock availability and fast dispatch support.
                 </p>
@@ -159,7 +159,7 @@ export default function ImportedRodsProductPage() {
             </div>
             <div className="lg:col-span-4 grid grid-cols-2 gap-4">
                <div className="bg-[#fafafa] p-8 flex flex-col items-center justify-center text-center hover:bg-white hover:shadow-xl transition-all border border-slate-100">
-                  <Filter className="text-orange-600 mb-3 w-8 h-8" />
+                  <Filter className="text-blue-600 mb-3 w-8 h-8" />
                   <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-2">Energy Transfer</span>
                </div>
                <div className="bg-[#fafafa] p-8 flex flex-col items-center justify-center text-center hover:bg-white hover:shadow-xl transition-all border border-slate-100 mt-6">
@@ -193,7 +193,7 @@ export default function ImportedRodsProductPage() {
               "Available in multiple sizes and configurations"
             ].map((feature, idx) => (
               <div key={idx} className="p-10 bg-[#fafafa] border border-slate-100 hover:bg-white hover:shadow-2xl transition-all group duration-500">
-                <ChevronRight className="text-slate-300 group-hover:text-orange-600 mb-8 w-10 h-10 transition-colors" />
+                <ChevronRight className="text-slate-300 group-hover:text-blue-600 mb-8 w-10 h-10 transition-colors" />
                 <p className="font-['Poppins'] font-bold uppercase text-xs tracking-widest leading-tight text-slate-700">{feature}</p>
               </div>
             ))}
@@ -209,7 +209,7 @@ export default function ImportedRodsProductPage() {
             <div className="lg:w-5/12 bg-white p-10 lg:p-16 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col justify-between">
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-12">
-                  <div className="w-10 h-[2px] bg-orange-600"></div>
+                  <div className="w-10 h-[2px] bg-blue-600"></div>
                   <h2 className="text-4xl lg:text-[3rem] font-['Poppins'] font-bold uppercase italic tracking-tighter leading-[0.9]">Available Sizes <br /> & Specs</h2>
                 </div>
                 <div className="space-y-2">
@@ -222,7 +222,7 @@ export default function ImportedRodsProductPage() {
                   ].map((spec, i) => (
                     <div key={i} className="group flex items-center justify-between py-5 border-b border-slate-100 hover:bg-slate-50 transition-all px-2">
                       <div className="flex flex-col">
-                        <span className="text-slate-400 uppercase font-black text-[8px] tracking-[0.3em] group-hover:text-orange-600 transition-colors">{spec.label}</span>
+                        <span className="text-slate-400 uppercase font-black text-[8px] tracking-[0.3em] group-hover:text-blue-600 transition-colors">{spec.label}</span>
                         <span className="font-['Poppins'] font-bold text-xl uppercase italic text-slate-800">{spec.val}</span>
                       </div>
                       <div className="px-3 py-1 border border-slate-200 rounded-none"><span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{spec.detail}</span></div>
@@ -245,7 +245,7 @@ export default function ImportedRodsProductPage() {
                   <button 
                     key={index} 
                     onClick={() => setActiveImg(img)} 
-                    className={`aspect-square p-4 bg-white border transition-all duration-300 ${activeImg === img ? 'border-orange-600 shadow-xl' : 'border-slate-200 opacity-60 hover:opacity-100'}`}
+                    className={`aspect-square p-4 bg-white border transition-all duration-300 ${activeImg === img ? 'border-blue-600 shadow-xl' : 'border-slate-200 opacity-60 hover:opacity-100'}`}
                   >
                     <img src={img} className="w-full h-full object-contain" alt="thumbnail" />
                   </button>
@@ -260,7 +260,7 @@ export default function ImportedRodsProductPage() {
       <section className="py-24 bg-white text-center">
         <div className="max-w-screen-2xl mx-auto px-6">
           <h2 className="text-5xl lg:text-[4rem] font-['Poppins'] font-bold uppercase italic tracking-tighter mb-20 leading-[0.8]">
-            Drilling <span className="text-orange-600">Applications</span>
+            Drilling <span className="text-blue-600">Applications</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 text-left">
             {[
@@ -306,11 +306,11 @@ export default function ImportedRodsProductPage() {
       {/* --- SECTION 6: LOCATIONS --- */}
       <section className="py-24 bg-white text-center">
         <div className="max-w-screen-2xl mx-auto px-6">
-          <h2 className="text-4xl lg:text-[2.8rem] font-['Poppins'] font-bold uppercase mb-16 tracking-tighter text-slate-900">Supplying Across <span className="text-orange-600">Tamil Nadu</span></h2>
+          <h2 className="text-4xl lg:text-[2.8rem] font-['Poppins'] font-bold uppercase mb-16 tracking-tighter text-slate-900">Supplying Across <span className="text-blue-600">Tamil Nadu</span></h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-9 gap-4 text-center">
             {["Coimbatore", "Salem", "Chennai", "Madurai", "Trichy", "Erode", "Namakkal", "Tirunelveli"].map((city, index) => (
-              <div key={index} className="py-8 border border-slate-100 flex flex-col items-center gap-3 group hover:border-orange-600 transition-all bg-[#fafafa]">
-                <MapPin className="w-4 h-4 text-slate-300 group-hover:text-orange-600" /> 
+              <div key={index} className="py-8 border border-slate-100 flex flex-col items-center gap-3 group hover:border-blue-600 transition-all bg-[#fafafa]">
+                <MapPin className="w-4 h-4 text-slate-300 group-hover:text-blue-600" /> 
                 <span className="font-semibold text-[9px] uppercase tracking-widest text-slate-500 group-hover:text-slate-900">{city}</span>
               </div>
             ))}
@@ -321,10 +321,10 @@ export default function ImportedRodsProductPage() {
 
       {/* --- SECTION 7: CTA --- */}
       <section className="py-40 relative overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900 to-slate-900 opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900 opacity-50"></div>
         <div className="max-w-screen-2xl mx-auto px-6 text-center relative z-10 text-white">
           <h2 className="text-6xl lg:text-[5.5rem] font-['Poppins'] font-light uppercase italic tracking-tighter mb-8 leading-none">Bulk Orders <br /> & Enquiry</h2>
-          <div className="w-20 h-[1px] bg-orange-600 mx-auto mb-16"></div>
+          <div className="w-20 h-[1px] bg-blue-600 mx-auto mb-16"></div>
           <p className="text-2xl font-['Poppins'] font-bold mb-10 uppercase tracking-[0.4em] opacity-60 italic">Looking for a reliable Imported Drill Rods supplier in Tamil Nadu?</p>
           <p className="text-xl mb-12 italic opacity-80 font-light">Contact Sri Kumar Drill Rods today for competitive pricing and bulk supply support.</p>
           
@@ -332,7 +332,7 @@ export default function ImportedRodsProductPage() {
             <a href={whatsappLink} target="_blank" rel="noreferrer" className="w-full sm:w-auto px-12 py-5 bg-green-600 text-white font-['Poppins'] font-bold uppercase text-[11px] tracking-[0.2em] hover:bg-green-700 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3">
               <MessageCircle size={16} /> Get Price on WhatsApp
             </a>
-            <button onClick={handleCall} className="px-12 py-5 bg-slate-900 text-white font-['Poppins'] font-bold uppercase text-[11px] tracking-[0.2em] hover:bg-orange-600 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3">
+            <button onClick={handleCall} className="px-12 py-5 bg-slate-900 text-white font-['Poppins'] font-bold uppercase text-[11px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3">
               Call Support <PhoneCall size={16} />
             </button>
           </div>

@@ -78,21 +78,21 @@ export default function Aboutus() {
       {/* About Section */}
       <section id="about" className="py-32 bg-slate-50 relative overflow-hidden font-['Inter']">
         
-        {/* Interactive background circles - Adjusted to Brand Orange */}
-        <div className="absolute rounded-full w-96 h-96 bg-orange-500/5 blur-3xl pointer-events-none transition-transform duration-300" style={{ transform: `translate(${cursorPos.x * 0.01}px, ${cursorPos.y * 0.01}px)` }} />
+        {/* Interactive background circles - Adjusted to Brand Blue */}
+        <div className="absolute rounded-full w-96 h-96 bg-blue-500/5 blur-3xl pointer-events-none transition-transform duration-300" style={{ transform: `translate(${cursorPos.x * 0.01}px, ${cursorPos.y * 0.01}px)` }} />
         
         <div className="relative z-10 max-w-[1800px] mx-auto px-6 lg:px-16">
           
           {/* Section 1: Intro */}
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-32">
             <div>
-              <div className="inline-block px-4 py-2 bg-orange-600/10 rounded-full border border-orange-600/20 mb-6">
-                <span className="text-orange-600 font-bold uppercase tracking-widest text-xs">Mining Tools Suppliers in Tamilnadu</span>
+              <div className="inline-block px-4 py-2 bg-blue-600/10 rounded-full border border-blue-600/20 mb-6">
+                <span className="text-blue-600 font-bold uppercase tracking-widest text-xs">Mining Tools Suppliers in Tamilnadu</span>
               </div>
               <h2 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 uppercase italic tracking-tighter leading-none">
-                SRI KUMAR <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">DRILL ROD WORKS</span>
+                SRI KUMAR <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-600">DRILL ROD WORKS</span>
               </h2>
-              <p className="text-xl text-slate-600 leading-relaxed italic font-medium border-l-4 border-orange-500 pl-6">
+              <p className="text-xl text-slate-600 leading-relaxed italic font-medium border-l-4 border-blue-500 pl-6">
                 With years of experience in the industry, we take pride in being one of the most respected mining tools suppliers in Tamilnadu. Our shop is stocked with a wide range of high-quality products sourced from leading brands to ensure durability, performance, and safety on every job site.
               </p>
             </div>
@@ -103,7 +103,7 @@ export default function Aboutus() {
                 </p>
                 <button 
                   onClick={() => navigate('/contactus')}
-                  className="mt-8 flex items-center gap-3 px-8 py-4 bg-orange-600 text-white font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all"
+                  className="mt-8 flex items-center gap-3 px-8 py-4 bg-blue-600 text-white font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all"
                 >
                   Consult an Expert <ChevronRight size={16} />
                 </button>
@@ -114,7 +114,7 @@ export default function Aboutus() {
           <div className="mb-32">
              <div className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 uppercase tracking-tight italic">
-                    Your Trusted Jackhammer <span className="text-orange-600">Spare Parts Distributor</span>
+                    Your Trusted Jackhammer <span className="text-blue-600">Spare Parts Distributor</span>
                 </h2>
                 <p className="max-w-4xl mx-auto text-slate-500 text-lg">
                     When it comes to maintaining your equipment, downtime is not an option. Ensuring critical components are always available when you need them across Tamilnadu's active mining and construction sites.
@@ -124,9 +124,9 @@ export default function Aboutus() {
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                {values.map((value, index) => (
                  <Tilt key={index} glareEnable={true} glareMaxOpacity={0.1} scale={1.02} className="w-full">
-                   <div className="h-full bg-white rounded-2xl p-10 border border-slate-100 shadow-xl hover:border-orange-500/30 transition-all duration-500">
+                   <div className="h-full bg-white rounded-2xl p-10 border border-slate-100 shadow-xl hover:border-blue-500/30 transition-all duration-500">
                      <div className="inline-flex p-4 rounded-xl bg-slate-900 mb-6">
-                       <value.icon className="w-6 h-6 text-orange-500" />
+                       <value.icon className="w-6 h-6 text-blue-500" />
                      </div>
                      <h3 className="text-xl font-black text-slate-900 mb-4 uppercase italic tracking-tighter">{value.title}</h3>
                      <p className="text-slate-500 text-sm leading-relaxed italic">{value.description}</p>
@@ -144,7 +144,7 @@ export default function Aboutus() {
             <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <h2 className="text-4xl md:text-6xl font-black mb-8 uppercase italic tracking-tighter leading-none">
-                        Quality Tapered <br /><span className="text-orange-500">Button Bits Suppliers</span>
+                        Quality Tapered <br /><span className="text-blue-500">Button Bits Suppliers</span>
                     </h2>
                     <p className="text-slate-400 text-lg leading-relaxed mb-8 italic font-medium">
                         As a leading tapered button bits supplier in Tamilnadu, we offer a variety of sizes and angles to match different rock conditions and drilling equipment. From granite quarrying in Tamilnadu's rich mining belts to road construction along state highways.
@@ -161,7 +161,7 @@ export default function Aboutus() {
                             "Every part we supply is tested for quality and compatibility, giving you complete peace of mind."
                         </p>
                     </div>
-                    <p className="text-orange-500 font-bold uppercase tracking-widest text-xs">Consistent performance under high-impact conditions.</p>
+                    <p className="text-blue-500 font-bold uppercase tracking-widest text-xs">Consistent performance under high-impact conditions.</p>
                 </div>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function Aboutus() {
           {/* Vertical Process Roadmap */}
           <div className="mb-32">
             <h3 className="text-4xl md:text-5xl font-black text-center text-slate-900 mb-20 uppercase italic tracking-tighter">
-              Our Service <span className="text-orange-600">Standards</span>
+              Our Service <span className="text-blue-600">Standards</span>
             </h3>
             <div className="relative max-w-5xl mx-auto">
               <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full border-l-2 border-slate-200"></div>
@@ -178,9 +178,9 @@ export default function Aboutus() {
                   <div key={idx} className={`flex items-center w-full ${idx % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
                     <div className="md:w-1/2 relative pl-16 md:pl-0">
                       <div className={`absolute top-0 bg-slate-900 p-4 rounded-xl shadow-xl z-20 ${idx % 2 === 0 ? "md:-right-10" : "md:-left-10"}`}>
-                        <step.icon className="w-6 h-6 text-orange-500" />
+                        <step.icon className="w-6 h-6 text-blue-500" />
                       </div>
-                      <div className={`bg-white p-8 rounded-3xl shadow-2xl border border-slate-50 transition-all duration-500 hover:border-orange-500/20 ${idx % 2 === 0 ? "md:mr-16" : "md:ml-16"}`}>
+                      <div className={`bg-white p-8 rounded-3xl shadow-2xl border border-slate-50 transition-all duration-500 hover:border-blue-500/20 ${idx % 2 === 0 ? "md:mr-16" : "md:ml-16"}`}>
                         <h4 className="text-xl font-black text-slate-900 mb-3 uppercase italic tracking-tighter">{step.title}</h4>
                         <p className="text-slate-500 text-sm italic font-medium leading-relaxed">{step.description}</p>
                       </div>
@@ -192,7 +192,7 @@ export default function Aboutus() {
           </div>
 
           {/* Call to Action */}
-          <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-[3rem] p-12 lg:p-20 text-center text-white shadow-2xl shadow-orange-500/20">
+          <div className="bg-gradient-to-r from-blue-500 to-red-600 rounded-[3rem] p-12 lg:p-20 text-center text-white shadow-2xl shadow-blue-500/20">
             <h3 className="text-4xl md:text-6xl font-black mb-8 uppercase italic tracking-tighter">Ready to Start Your Project?</h3>
             <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto font-medium italic">
                 From pistons and bush kits to retainer locks, let us help you get your equipment back to the site quickly.

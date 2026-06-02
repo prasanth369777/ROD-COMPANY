@@ -61,14 +61,14 @@ export default function ProductGridScroll() {
 
         {/* Info Overlay */}
         <div className="absolute bottom-0 left-0 w-full p-8 z-10 bg-gradient-to-t from-white via-white/90 to-transparent">
-          <p className="text-[9px] font-semibold text-orange-600 uppercase tracking-[0.3em] mb-1">Authentic Component</p>
-          <h4 className="text-xl font-semibold text-slate-900 uppercase tracking-tighter leading-tight italic">
+          <p className="text-[9px] font-semibold text-blue-600 uppercase tracking-[0.3em] mb-1">Authentic Component</p>
+          <h4 className="text-3xl md:text-4xl font-semibold text-slate-900 uppercase tracking-tighter leading-tight italic">
             {item.name}
           </h4>
           
           <div className="mt-4 flex items-center gap-2 overflow-hidden">
             <div className="h-[2px] w-full bg-slate-100 relative">
-                <div className="absolute inset-0 bg-orange-600"></div>
+                <div className="absolute inset-0 bg-blue-600"></div>
             </div>
             <span className="text-[8px] font-semibold text-slate-300 uppercase whitespace-nowrap">Spec_Verified</span>
           </div>
@@ -92,12 +92,12 @@ export default function ProductGridScroll() {
       <div className="max-w-7xl mx-auto px-6 mb-24 relative z-10 flex flex-col items-center">
         <div className="flex items-center gap-4 mb-4">
             <div className="h-[1px] w-12 bg-slate-300"></div>
-            <span className="text-orange-600 font-semibold uppercase tracking-[0.4em] text-[10px]">Industrial Distribution Hub</span>
+            <span className="text-blue-600 font-semibold uppercase tracking-[0.4em] text-[10px]">Industrial Distribution Hub</span>
             <div className="h-[1px] w-12 bg-slate-300"></div>
         </div>
         <h2 className="text-4xl md:text-7xl font-light text-slate-900 tracking-tighter uppercase italic text-center leading-none">
           GLOBAL SPARES <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 font-semibold">CERTIFIED INVENTORY.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-600 font-semibold">CERTIFIED INVENTORY.</span>
         </h2>
       </div>
 

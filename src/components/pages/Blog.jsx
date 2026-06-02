@@ -93,7 +93,7 @@ export default function BlogSectionClassic() {
       <section className="relative py-24 bg-gradient-to-br from-white via-gray-50 to-gray-100 overflow-hidden">
         <div className="text-center mb-16 px-4 relative z-10">
           <h2 className="text-4xl md:text-6xl font-black text-slate-900 mb-4 uppercase italic tracking-tighter">
-            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">Insights</span>
+            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-600">Insights</span>
           </h2>
           <p className="text-slate-500 max-w-2xl mx-auto font-medium italic">
             Sri Kumar Drill Rod Works provides expert guidance on mining tools, 
@@ -133,7 +133,7 @@ export default function BlogSectionClassic() {
                 </div>
                 <button
                   onClick={() => navigate('/contactus')}
-                  className="inline-flex items-center gap-2 text-orange-600 font-black uppercase text-xs tracking-widest hover:text-red-600 transition-colors"
+                  className="inline-flex items-center gap-2 text-blue-600 font-black uppercase text-xs tracking-widest hover:text-red-600 transition-colors"
                 >
                   Read Technical Guide
                   <ExternalLink size={14} />
@@ -143,9 +143,9 @@ export default function BlogSectionClassic() {
           ))}
         </div>
 
-        {/* Floating Circles - Adjusted to Logo Orange */}
+        {/* Floating Circles - Adjusted to Logo Blue */}
         <div
-          className="absolute w-96 h-96 bg-orange-500/5 rounded-full blur-3xl pointer-events-none"
+          className="absolute w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"
           style={{ transform: `translate(${cursorPos.x * 0.01}px, ${cursorPos.y * 0.01}px)` }}
         />
         <div
@@ -158,7 +158,7 @@ export default function BlogSectionClassic() {
       <section className="relative py-32 bg-slate-950 text-white overflow-hidden">
         <div className="text-center mb-20 px-4 relative z-10">
           <h2 className="text-4xl md:text-6xl font-black mb-4 uppercase italic tracking-tighter">
-            Regional <span className="text-orange-500">News</span>
+            Regional <span className="text-blue-500">News</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto italic">
             Stay informed with the latest logistical updates and industry changes in Tamilnadu.
@@ -179,11 +179,11 @@ export default function BlogSectionClassic() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                 />
               </div>
-              <h3 className="text-2xl font-black mb-4 text-orange-500 uppercase italic tracking-tight">{news.title}</h3>
+              <h3 className="text-2xl font-black mb-4 text-blue-500 uppercase italic tracking-tight">{news.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed italic">{news.description}</p>
               
               {/* Logo Glow Border */}
-              <div className="absolute inset-0 pointer-events-none border border-orange-500/0 group-hover:border-orange-500/50 transition-all duration-500"></div>
+              <div className="absolute inset-0 pointer-events-none border border-blue-500/0 group-hover:border-blue-500/50 transition-all duration-500"></div>
             </div>
           ))}
         </div>
@@ -198,7 +198,7 @@ export default function BlogSectionClassic() {
 
       <style>{`
         .shadow-neon {
-          box-shadow: 0 0 15px rgba(249, 115, 22, 0.4), 0 0 30px rgba(239, 68, 68, 0.2);
+          box-shadow: 0 0 15px rgba(59, 130, 246, 0.4), 0 0 30px rgba(239, 68, 68, 0.2);
         }
       `}</style>
     </>

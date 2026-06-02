@@ -96,7 +96,7 @@ export default function IndustrialSolutions() {
       
       {/* MOBILE HEADER */}
       <div className="xl:hidden fixed top-0 left-0 w-full bg-white border-b z-50 p-4 flex justify-between items-center shadow-sm">
-        <h2 className="font-bold text-slate-900 italic uppercase tracking-tighter">SRI KUMAR<span className="text-orange-600">.</span></h2>
+        <h2 className="font-bold text-slate-900 italic uppercase tracking-tighter">SRI KUMAR<span className="text-blue-600">.</span></h2>
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-slate-50 rounded-lg text-slate-900 border border-slate-200 active:scale-95 transition-transform">
           <Menu size={20} />
         </button>
@@ -109,7 +109,7 @@ export default function IndustrialSolutions() {
       `}>
         <div className="mb-10 hidden xl:block">
           <h2 className="text-xl font-black text-slate-900 tracking-tighter uppercase italic">
-            SRI KUMAR<span className="text-orange-600">.</span>
+            SRI KUMAR<span className="text-blue-600">.</span>
           </h2>
           <p className="text-[8px] font-bold text-slate-600 uppercase tracking-[0.3em] mt-1">Industrial Portal</p>
         </div>
@@ -121,7 +121,7 @@ export default function IndustrialSolutions() {
             placeholder="Search parts..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#f8fafc] border-b border-slate-600 py-2 pl-9 pr-4 text-[10px] focus:outline-none focus:border-orange-500 text-slate-600 transition-colors"
+            className="w-full bg-[#f8fafc] border-b border-slate-600 py-2 pl-9 pr-4 text-[10px] focus:outline-none focus:border-blue-500 text-slate-600 transition-colors"
           />
         </div>
 
@@ -135,16 +135,16 @@ export default function IndustrialSolutions() {
               }}
               className={`w-full text-left py-3 rounded-lg transition-all duration-200 group flex items-center justify-between border-l-2
               ${filter === cat.id 
-                ? 'border-orange-500 bg-slate-600 pl-4' 
+                ? 'border-blue-500 bg-slate-600 pl-4' 
                 : 'border-transparent pl-2 text-slate-900 hover:text-slate-900'}`}
             >
               <div className="flex items-center gap-4">
-                <span className={`text-[8px] font-black ${filter === cat.id ? 'text-orange-500' : 'text-slate-900'}`}>
+                <span className={`text-[8px] font-black ${filter === cat.id ? 'text-blue-500' : 'text-slate-900'}`}>
                   0{index + 1}
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-[0.1em]">{cat.name}</span>
               </div>
-              <div className={`w-1 h-1 rounded-full bg-orange-500 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-50'}`}></div>
+              <div className={`w-1 h-1 rounded-full bg-blue-500 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-50'}`}></div>
             </button>
           ))}
         </nav>
@@ -163,8 +163,8 @@ export default function IndustrialSolutions() {
         <div className="w-full max-w-[1600px] p-4 md:p-10 lg:p-12">
           <header className="mb-16 px-2">
             <div className="flex items-center gap-2 mb-4">
-               <div className="h-[1px] w-12 bg-orange-600"></div>
-               <p className="text-orange-600 font-bold uppercase text-[10px] tracking-[0.4em]">
+               <div className="h-[1px] w-12 bg-blue-600"></div>
+               <p className="text-blue-600 font-bold uppercase text-[10px] tracking-[0.4em]">
                  {filter === 'all' ? 'Engineering Catalog' : `Category: ${CATEGORIES.find(c => c.id === filter)?.name || ''}`}
                </p>
             </div>
@@ -183,7 +183,7 @@ export default function IndustrialSolutions() {
               >
                 <div className="mb-5 md:mb-6 flex justify-between items-start px-1 relative z-10">
                   <div className="max-w-[85%]">
-                    <h3 className="text-xs md:text-sm font-normal tracking-tight uppercase truncate leading-none text-slate-900">
+                    <h3 className="text-2xl md:text-3xl font-normal tracking-tight uppercase truncate leading-none text-slate-900">
                       {item.name}
                     </h3>
                     <p className="text-[10px] md:text-[11px] font-light text-slate-400 mt-2 uppercase tracking-tighter">{item.sku}</p>

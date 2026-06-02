@@ -59,7 +59,7 @@ export default function ConnectRodProductPage() {
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7">
               <div className="flex items-center gap-4 mb-10">
-                <div className="h-[1px] w-12 bg-orange-600"></div>
+                <div className="h-[1px] w-12 bg-blue-600"></div>
                 <span className="text-slate-400 font-['Poppins'] font-semibold tracking-[0.4em] uppercase text-[10px]">
                   VT4 Transmission Components
                 </span>
@@ -67,14 +67,14 @@ export default function ConnectRodProductPage() {
               
               <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-['Poppins'] font-light uppercase tracking-tighter leading-[1.1] mb-10 text-slate-900">
                 Connect Rod for <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 font-normal italic">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-600 font-normal italic">
                   Atlas Copco VT 4
                 </span>
               </h1>
 
               <div className="flex items-start gap-6 mb-12">
                  <div className="pt-1">
-                    <ShieldCheck className="text-orange-600 w-6 h-6 stroke-[1px]" />
+                    <ShieldCheck className="text-blue-600 w-6 h-6 stroke-[1px]" />
                  </div>
                  <h2 className="text-xl lg:text-2xl font-['Poppins'] font-light text-slate-700 leading-tight tracking-wide">
                     Heavy-Duty VT4 Compressor Connect Rod Supplier in Tamil Nadu
@@ -87,7 +87,7 @@ export default function ConnectRodProductPage() {
                 </p>
                 
                 <div className="pl-8 flex items-center gap-4 text-slate-400">
-                   <QuoteIcon className="w-6 h-6 opacity-20 text-orange-600" />
+                   <QuoteIcon className="w-6 h-6 opacity-20 text-blue-600" />
                    <p className="italic text-base lg:text-lg leading-relaxed font-light">
                     Our VT4 compressor connect rods are built to withstand high pressure loads and continuous operation in demanding environments.
                    </p>
@@ -97,7 +97,7 @@ export default function ConnectRodProductPage() {
               <div className="flex flex-col sm:flex-row gap-6 mt-16">
                 <button 
                   onClick={() => window.open(whatsappLink, '_blank')}
-                  className="px-12 py-5 bg-slate-900 text-white font-['Poppins'] font-semibold uppercase text-[10px] tracking-[0.3em] hover:bg-orange-600 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3"
+                  className="px-12 py-5 bg-slate-900 text-white font-['Poppins'] font-semibold uppercase text-[10px] tracking-[0.3em] hover:bg-blue-600 transition-all shadow-xl active:scale-95 flex items-center justify-center gap-3"
                 >
                   WhatsApp Pricing <MessageCircle size={16} />
                 </button>
@@ -116,7 +116,7 @@ export default function ConnectRodProductPage() {
                      <img src={activeImg} className="max-h-full w-auto object-contain filter drop-shadow-2xl transition-all duration-700" alt="VT4 Connect Rod Showcase" />
                   </div>
                   <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-[85%] bg-white/90 backdrop-blur-md border border-white/40 py-5 px-6 text-center shadow-lg">
-                     <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-orange-600 block mb-1">Crankshaft Interface</span>
+                     <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-blue-600 block mb-1">Crankshaft Interface</span>
                      <h3 className="text-sm font-['Poppins'] font-light uppercase text-slate-800 tracking-widest leading-none">VT4 Connecting Rod</h3>
                   </div>
                </div>
@@ -137,7 +137,7 @@ export default function ConnectRodProductPage() {
                 The Connect Rod (Connecting Rod) is a vital internal component of the Atlas Copco VT 4 Compressor. It connects the piston to the crankshaft and converts reciprocating motion into rotational force, ensuring smooth and efficient compressor operation. Manufactured using high-grade industrial materials and precision machining standards, this component ensures stable alignment, reduced vibration, and improved compressor durability.
               </p>
               <div className="flex items-center gap-6 p-10 bg-[#fafafa] border border-slate-100 max-w-2xl shadow-sm">
-                <div className="h-10 w-[1px] bg-orange-600"></div>
+                <div className="h-10 w-[1px] bg-blue-600"></div>
                 <p className="text-slate-600 text-sm font-semibold uppercase tracking-widest leading-relaxed">
                   Sri Kumar Drill Rods maintains ready stock for quick dispatch across Tamil Nadu.
                 </p>
@@ -145,7 +145,7 @@ export default function ConnectRodProductPage() {
             </div>
             <div className="lg:col-span-4 grid grid-cols-1 gap-6">
                <div className="bg-[#fafafa] p-10 flex flex-col items-center justify-center text-center border border-slate-100 hover:shadow-xl transition-all group">
-                  <Filter className="text-orange-600 mb-4 w-10 h-10 stroke-[1px] group-hover:scale-110 transition-transform" />
+                  <Filter className="text-blue-600 mb-4 w-10 h-10 stroke-[1px] group-hover:scale-110 transition-transform" />
                   <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400">Mechanical Linkage</span>
                </div>
             </div>
@@ -162,14 +162,14 @@ export default function ConnectRodProductPage() {
           <div className="flex flex-col lg:flex-row items-center gap-16">
             <div className="lg:w-1/2">
                <h2 className="text-4xl lg:text-[4rem] font-['Poppins'] font-light text-white uppercase italic tracking-tighter leading-none mb-8">
-                 Component <br /> <span className="text-orange-600 font-semibold">Showcase</span>
+                 Component <br /> <span className="text-blue-600 font-semibold">Showcase</span>
                </h2>
                <p className="text-slate-400 text-lg font-light leading-relaxed mb-12 max-w-md">
                  Our Atlas Copco VT4 connecting rods undergo rigorous structural integrity tests. View our high-strength forged steel inventory.
                </p>
                <div className="flex items-center gap-4">
                   <div className="text-white font-light text-5xl italic">0{slideIndex + 1}</div>
-                  <div className="h-[1px] w-24 bg-orange-600"></div>
+                  <div className="h-[1px] w-24 bg-blue-600"></div>
                   <div className="text-slate-500 font-semibold uppercase tracking-[0.4em] text-[9px]">Transmission Unit Catalog</div>
                </div>
             </div>
@@ -185,7 +185,7 @@ export default function ConnectRodProductPage() {
                   ))}
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                   <div className="absolute bottom-10 left-10 text-white">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-orange-600 mb-2">Live Registry</p>
+                      <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-blue-600 mb-2">Live Registry</p>
                       <h4 className="text-xl font-light tracking-widest uppercase italic">VT4 Forged Hardware</h4>
                   </div>
                </div>
@@ -216,7 +216,7 @@ export default function ConnectRodProductPage() {
               "Bulk supply available"
             ].map((feature, idx) => (
               <div key={idx} className="p-10 bg-[#fafafa] border border-slate-100 hover:bg-white hover:shadow-2xl transition-all group duration-500">
-                <ChevronRight className="text-slate-300 group-hover:text-orange-600 mb-8 w-10 h-10 transition-colors" />
+                <ChevronRight className="text-slate-300 group-hover:text-blue-600 mb-8 w-10 h-10 transition-colors" />
                 <p className="font-['Poppins'] font-semibold uppercase text-xs tracking-widest leading-tight text-slate-700">{feature}</p>
               </div>
             ))}
@@ -232,7 +232,7 @@ export default function ConnectRodProductPage() {
             <div className="lg:w-5/12 bg-white p-10 lg:p-16 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col justify-between">
               <div className="relative z-10">
                 <div className="flex items-center gap-4 mb-12">
-                  <div className="w-10 h-[1px] bg-orange-600"></div>
+                  <div className="w-10 h-[1px] bg-blue-600"></div>
                   <h2 className="text-4xl lg:text-[2.8rem] font-['Poppins'] font-semibold uppercase italic tracking-tighter leading-[1]">Technical <br /> <span className="font-light">Details</span></h2>
                 </div>
                 <div className="space-y-2">
@@ -246,7 +246,7 @@ export default function ConnectRodProductPage() {
                   ].map((spec, i) => (
                     <div key={i} className="group flex items-center justify-between py-5 border-b border-slate-100 hover:bg-slate-50 transition-all px-2">
                       <div className="flex flex-col">
-                        <span className="text-slate-400 uppercase font-semibold text-[8px] tracking-[0.3em] group-hover:text-orange-600 transition-colors">{spec.label}</span>
+                        <span className="text-slate-400 uppercase font-semibold text-[8px] tracking-[0.3em] group-hover:text-blue-600 transition-colors">{spec.label}</span>
                         <span className="font-['Poppins'] font-semibold text-lg uppercase italic text-slate-800">{spec.val}</span>
                       </div>
                       <div className="px-3 py-1 border border-slate-200 rounded-none"><span className="text-[8px] font-semibold text-slate-400 uppercase tracking-widest">{spec.detail}</span></div>
@@ -265,7 +265,7 @@ export default function ConnectRodProductPage() {
                     <button 
                       key={index} 
                       onClick={() => setActiveImg(img)} 
-                      className={`aspect-square bg-white border transition-all duration-300 overflow-hidden p-2 ${activeImg === img ? 'border-orange-600 shadow-xl scale-95' : 'border-slate-200 opacity-60 hover:opacity-100'}`}
+                      className={`aspect-square bg-white border transition-all duration-300 overflow-hidden p-2 ${activeImg === img ? 'border-blue-600 shadow-xl scale-95' : 'border-slate-200 opacity-60 hover:opacity-100'}`}
                     >
                        <img src={img} className="w-full h-full object-contain" alt="thumbnail" />
                     </button>
@@ -280,7 +280,7 @@ export default function ConnectRodProductPage() {
       <section className="py-24 bg-white">
         <div className="max-w-screen-2xl mx-auto px-6 text-center">
           <h2 className="text-5xl lg:text-[4rem] font-['Poppins'] font-semibold uppercase italic tracking-tighter mb-20 leading-[0.8]">
-            Industry <span className="text-orange-600 font-normal">Applications</span>
+            Industry <span className="text-blue-600 font-normal">Applications</span>
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 text-left">
             {[
@@ -291,7 +291,7 @@ export default function ConnectRodProductPage() {
               "Heavy Equipment Service Centers"
             ].map((app, i) => (
               <div key={app} className="group p-10 bg-[#fafafa] border border-slate-100 hover:bg-white hover:shadow-2xl transition-all duration-500">
-                <span className="font-['Poppins'] font-light text-6xl text-slate-100 group-hover:text-orange-600/10 transition-colors leading-none block mb-6">0{i+1}</span>
+                <span className="font-['Poppins'] font-light text-6xl text-slate-100 group-hover:text-blue-600/10 transition-colors leading-none block mb-6">0{i+1}</span>
                 <p className="font-['Poppins'] font-semibold uppercase text-xs tracking-widest leading-tight text-slate-700">{app}</p>
               </div>
             ))}
@@ -316,7 +316,7 @@ export default function ConnectRodProductPage() {
               "Strong Industry Network"
             ].map((reason, idx) => (
               <div key={idx} className="bg-white p-16 flex flex-col items-center group transition-all text-center">
-                <Award className="w-10 h-10 text-slate-200 group-hover:text-orange-600 transition-colors mb-8 stroke-[1px]" />
+                <Award className="w-10 h-10 text-slate-200 group-hover:text-blue-600 transition-colors mb-8 stroke-[1px]" />
                 <p className="font-['Poppins'] font-semibold uppercase text-[10px] tracking-[0.3em] text-slate-800">{reason}</p>
               </div>
             ))}
@@ -328,11 +328,11 @@ export default function ConnectRodProductPage() {
       {/* --- SECTION 6: LOCATIONS --- */}
       <section className="py-24 bg-white text-center border-b border-slate-50">
         <div className="max-w-screen-2xl mx-auto px-6">
-          <h2 className="text-4xl lg:text-[2.8rem] font-['Poppins'] font-light uppercase italic mb-16 tracking-tighter text-slate-900 text-center">Supplying Across <span className="text-orange-600">Tamil Nadu</span></h2>
+          <h2 className="text-4xl lg:text-[2.8rem] font-['Poppins'] font-light uppercase italic mb-16 tracking-tighter text-slate-900 text-center">Supplying Across <span className="text-blue-600">Tamil Nadu</span></h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-9 gap-4 text-center">
             {["Coimbatore", "Salem", "Chennai", "Madurai", "Trichy", "Erode", "Namakkal", "Tirunelveli", "Hosur"].map((city) => (
-              <div key={city} className="py-8 border border-slate-100 flex flex-col items-center gap-3 group hover:border-orange-600 transition-all bg-[#fafafa]">
-                 <MapPin className="w-4 h-4 text-slate-300 group-hover:text-orange-600 stroke-[1px]" /> 
+              <div key={city} className="py-8 border border-slate-100 flex flex-col items-center gap-3 group hover:border-blue-600 transition-all bg-[#fafafa]">
+                 <MapPin className="w-4 h-4 text-slate-300 group-hover:text-blue-600 stroke-[1px]" /> 
                  <span className="font-['Poppins'] font-semibold text-[9px] uppercase tracking-[0.2em] text-slate-500 group-hover:text-slate-900">{city}</span>
               </div>
             ))}
@@ -343,15 +343,15 @@ export default function ConnectRodProductPage() {
 
       {/* --- SECTION 7: CTA --- */}
       <section className="py-40 relative overflow-hidden bg-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-900 to-slate-900 opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 to-slate-900 opacity-50"></div>
         <div className="max-w-screen-2xl mx-auto px-6 text-center relative z-10 text-white">
-          <h2 className="text-6xl lg:text-[5rem] font-['Poppins'] font-light uppercase italic tracking-tighter mb-8 leading-none">Bulk Orders <br /> <span className="font-semibold text-orange-600">& Enquiry</span></h2>
-          <div className="w-20 h-[1px] bg-orange-600 mx-auto mb-16"></div>
+          <h2 className="text-6xl lg:text-[5rem] font-['Poppins'] font-light uppercase italic tracking-tighter mb-8 leading-none">Bulk Orders <br /> <span className="font-semibold text-blue-600">& Enquiry</span></h2>
+          <div className="w-20 h-[1px] bg-blue-600 mx-auto mb-16"></div>
           <p className="text-2xl font-['Poppins'] font-light mb-10 uppercase tracking-[0.4em] opacity-60 italic leading-snug">Looking for a dependable Atlas Copco VT 4 Compressor Connect Rod Supplier?</p>
           <p className="text-xl mb-12 italic opacity-80 font-light tracking-wide">Contact Sri Kumar Drill Rods today for pricing and bulk supply support.</p>
           
           <div className="flex flex-col sm:flex-row gap-10 justify-center items-center">
-             <button onClick={handleCall} className="w-full sm:w-auto px-16 py-8 bg-white text-slate-900 font-['Poppins'] font-semibold uppercase text-[10px] tracking-[0.4em] hover:bg-orange-600 hover:text-white transition-all shadow-2xl flex items-center justify-center gap-6 active:scale-95">
+             <button onClick={handleCall} className="w-full sm:w-auto px-16 py-8 bg-white text-slate-900 font-['Poppins'] font-semibold uppercase text-[10px] tracking-[0.4em] hover:bg-blue-600 hover:text-white transition-all shadow-2xl flex items-center justify-center gap-6 active:scale-95">
                 <Phone size={18} strokeWidth={1} /> Call Technical Support
              </button>
              <button onClick={() => window.open(whatsappLink, '_blank')} className="w-full sm:w-auto px-16 py-8 border border-white/20 text-white font-['Poppins'] font-semibold uppercase text-[10px] tracking-[0.4em] hover:bg-white hover:text-slate-900 transition-all flex items-center justify-center gap-6">

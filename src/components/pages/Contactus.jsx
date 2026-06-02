@@ -40,15 +40,15 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-10 items-end mb-24">
             <div>
                 <div className="flex items-center gap-4 mb-8">
-                    <div className="h-[2px] w-16 bg-gradient-to-r from-orange-500 to-red-600"></div>
-                    <span className="text-orange-600 font-bold tracking-[0.4em] uppercase text-[10px]">Section 7: Visit Our Shop</span>
+                    <div className="h-[2px] w-16 bg-blue-600"></div>
+                    <span className="text-blue-600 font-bold tracking-[0.4em] uppercase text-[10px]">Section 7: Visit Our Shop</span>
                 </div>
                 <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 uppercase tracking-tighter italic">
                     Building Lasting <br /> 
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 font-semibold">Relationships.</span>
+                    <span className="text-blue-600 font-semibold">Relationships.</span>
                 </h2>
             </div>
-            <div className="max-w-xl lg:pb-4 border-l-2 border-orange-500/30 pl-10">
+            <div className="max-w-xl lg:pb-4 border-l-2 border-blue-500/30 pl-10">
                 <p className="text-xl text-slate-500 italic font-medium leading-relaxed">
                     Managed by experienced professionals who understand your work. Whether you prefer to visit us in person or need technical assistance, we provide solutions that fit your budget and timeline.
                 </p>
@@ -64,7 +64,7 @@ export default function Contact() {
                <div className="space-y-10">
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
-                      <MapPin className="w-6 h-6 text-orange-500" />
+                      <MapPin className="w-6 h-6 text-blue-500" />
                     </div>
                     <div>
                       <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">HQ & Shop Location</h4>
@@ -74,7 +74,7 @@ export default function Contact() {
 
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
-                      <MapPin className="w-6 h-6 text-orange-500" />
+                      <MapPin className="w-6 h-6 text-blue-500" />
                     </div>
                     <div>
                       <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Branch Address 1</h4>
@@ -84,7 +84,7 @@ export default function Contact() {
 
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
-                      <MapPin className="w-6 h-6 text-orange-500" />
+                      <MapPin className="w-6 h-6 text-blue-500" />
                     </div>
                     <div>
                       <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Branch Address 2</h4>
@@ -94,7 +94,7 @@ export default function Contact() {
 
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
-                      <PhoneCall className="w-6 h-6 text-orange-500" />
+                      <PhoneCall className="w-6 h-6 text-blue-500" />
                     </div>
                     <div>
                       <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Direct Technical Line</h4>
@@ -104,7 +104,7 @@ export default function Contact() {
                   
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
-                      <Mail className="w-6 h-6 text-orange-500" />
+                      <Mail className="w-6 h-6 text-blue-500" />
                     </div>
                     <div>
                       <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Inquiries</h4>
@@ -114,27 +114,12 @@ export default function Contact() {
                </div>
             </div>
 
-            <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white border border-white/5 shadow-2xl relative overflow-hidden">
-           
-               <h3 className="text-xl font-bold uppercase tracking-tighter italic mb-6">Support Window</h3>
-               <div className="space-y-4">
-                  <div className="flex justify-between border-b border-white/10 pb-2">
-                     <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Monday - Saturday</span>
-                     <span className="font-bold text-xs">9:00 AM - 6:30 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                     <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Sunday</span>
-                     <span className="text-red-500 font-black text-xs uppercase tracking-widest italic">Site Closed</span>
-                  </div>
-               </div>
-            </div>
-
             {/* --- DIRECT B2B CONTACT BUTTONS --- */}
             <div className="flex flex-col gap-4">
               <a href={whatsappLink} target="_blank" rel="noreferrer" className="w-full py-6 bg-green-600 text-white rounded-2xl font-bold uppercase text-xs tracking-[0.2em] hover:bg-green-700 transition-all shadow-xl flex items-center justify-center gap-4">
                 <MessageCircle size={18} /> Chat on WhatsApp
               </a>
-              <button onClick={handleCall} className="w-full py-6 bg-slate-900 text-white rounded-2xl font-bold uppercase text-xs tracking-[0.2em] hover:bg-orange-600 transition-all shadow-xl flex items-center justify-center gap-4">
+              <button onClick={handleCall} className="w-full py-6 bg-slate-900 text-white rounded-2xl font-bold uppercase text-xs tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl flex items-center justify-center gap-4">
                 Call Support <PhoneCall size={18} />
               </button>
             </div>
@@ -156,7 +141,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-6 py-5 bg-slate-50 border-none rounded-2xl text-slate-900 font-medium focus:ring-2 focus:ring-orange-500 transition-all shadow-inner"
+                    className="w-full px-6 py-5 bg-slate-50 border-none rounded-2xl text-slate-900 font-medium focus:ring-2 focus:ring-blue-500 transition-all shadow-inner"
                     placeholder="Full Name"
                   />
                 </div>
@@ -168,7 +153,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-6 py-5 bg-slate-50 border-none rounded-2xl text-slate-900 font-medium focus:ring-2 focus:ring-orange-500 transition-all shadow-inner"
+                    className="w-full px-6 py-5 bg-slate-50 border-none rounded-2xl text-slate-900 font-medium focus:ring-2 focus:ring-blue-500 transition-all shadow-inner"
                     placeholder="email@company.com"
                   />
                 </div>
@@ -182,7 +167,7 @@ export default function Contact() {
                     value={formData.productCategory}
                     onChange={handleChange}
                     required
-                    className="w-full px-6 py-5 bg-slate-50 border-none rounded-2xl text-slate-900 font-medium focus:ring-2 focus:ring-orange-500 transition-all shadow-inner appearance-none cursor-pointer"
+                    className="w-full px-6 py-5 bg-slate-50 border-none rounded-2xl text-slate-900 font-medium focus:ring-2 focus:ring-blue-500 transition-all shadow-inner appearance-none cursor-pointer"
                   >
                     <option value="">Select Requirement</option>
                     <option value="drill-rods">Rock Drill Spare Parts</option>
@@ -201,14 +186,14 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-6 py-5 bg-slate-50 border-none rounded-3xl text-slate-900 font-medium focus:ring-2 focus:ring-orange-500 transition-all shadow-inner resize-none"
+                  className="w-full px-6 py-5 bg-slate-50 border-none rounded-3xl text-slate-900 font-medium focus:ring-2 focus:ring-blue-500 transition-all shadow-inner resize-none"
                   placeholder="Tell us about your project requirements, budget, or timeline..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-6 bg-slate-900 text-white rounded-2xl font-bold uppercase text-xs tracking-[0.3em] transition-all hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-600 hover:shadow-2xl flex items-center justify-center gap-4 group"
+                className="w-full py-6 bg-slate-900 text-white rounded-2xl font-bold uppercase text-xs tracking-[0.3em] transition-all hover:bg-blue-600 hover:shadow-2xl flex items-center justify-center gap-4 group"
               >
                 Send Direct Message <Send className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </button>
