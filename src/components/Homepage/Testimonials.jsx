@@ -37,14 +37,14 @@ const testimonials = [
 
 function TestimonialCard({ t }) {
   return (
-    <div className="flex-shrink-0 w-[300px] md:w-[350px] lg:w-[450px] group bg-[#111112] border border-white/5 p-6 lg:p-8 relative overflow-hidden transition-all hover:border-blue-600/30">
+    <div className="flex-shrink-0 w-[300px] md:w-[350px] lg:w-[450px] group bg-[#111112] border border-white/5 p-6 lg:p-8 relative overflow-hidden transition-all hover:border-orange-600/30">
       {/* Industrial Quote Icon */}
-      <Quote className="absolute -top-2 -right-2 w-16 h-16 lg:w-20 lg:h-20 text-white/5 group-hover:text-blue-600/5 transition-colors" />
+      <Quote className="absolute -top-2 -right-2 w-16 h-16 lg:w-20 lg:h-20 text-white/5 group-hover:text-orange-600/5 transition-colors" />
       
       <div className="relative z-10">
         <div className="flex items-center gap-1 mb-6">
           {[...Array(t.rating)].map((_, i) => (
-            <Star key={i} className="w-3 h-3 text-blue-600 fill-current" />
+            <Star key={i} className="w-3 h-3 text-orange-600 fill-current" />
           ))}
           <span className="ml-2 text-[10px] font-bold uppercase tracking-widest text-gray-500 italic">
             {t.tag} Verified
@@ -62,7 +62,7 @@ function TestimonialCard({ t }) {
               {t.role} {`//`} {t.company}
             </p>
           </div>
-          <CheckCircle2 className="w-5 h-5 text-blue-600/50" />
+          <CheckCircle2 className="w-5 h-5 text-orange-600/50" />
         </div>
       </div>
     </div>
@@ -82,8 +82,8 @@ export default function Testimonials() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-[2px] w-12 bg-blue-600"></div>
-              <span className="text-blue-600 font-semibold tracking-[0.3em] uppercase text-xs">Field Reports</span>
+              <div className="h-[2px] w-12 bg-orange-600"></div>
+              <span className="text-orange-600 font-semibold tracking-[0.3em] uppercase text-xs">Field Reports</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white uppercase italic tracking-tighter leading-none">
               TRUSTED IN <br /> <span className="text-gray-700">THE FIELD.</span>
@@ -111,7 +111,7 @@ export default function Testimonials() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 mt-12 md:mt-16 flex justify-center">
-            <button className="group flex items-center gap-4 text-gray-500 hover:text-blue-600 transition-all font-bold uppercase text-[10px] tracking-[0.4em]">
+            <button className="group flex items-center gap-4 text-gray-500 hover:text-orange-600 transition-all font-bold uppercase text-[10px] tracking-[0.4em]">
                 View Full Service History <ChevronRight size={14} className="group-hover:translate-x-2 transition-transform" />
             </button>
         </div>

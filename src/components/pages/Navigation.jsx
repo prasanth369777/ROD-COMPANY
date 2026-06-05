@@ -39,7 +39,7 @@ export default function Navigation() {
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-bold text-lg md:text-xl tracking-tighter uppercase">
-                Sri Kumaran <span className="text-blue-500">Rod</span>
+                Sri Kumar drill <span className="text-orange-500">Rod</span>
               </span>
               <span className="text-[8px] md:text-[9px] font-semibold tracking-[0.2em] md:tracking-[0.3em] text-slate-100 uppercase">Industrial Solutions</span>
             </div>
@@ -53,7 +53,7 @@ export default function Navigation() {
                 to={link.path}
                 className={({ isActive }) =>
                   `px-4 py-2 text-[11px] md:text-[12px] font-bold uppercase tracking-widest transition-colors ${
-                    isActive ? "text-blue-500" : "hover:text-blue-500"
+                    isActive ? "text-orange-500" : "hover:text-orange-500"
                   }`
                 }
               >
@@ -65,7 +65,7 @@ export default function Navigation() {
           {/* Action Button */}
           <div className="hidden md:flex items-center">
             <Link to="/contactus">
-              <button className="bg-gradient-to-r from-blue-500 to-black text-white px-6 lg:px-8 py-2.5 md:py-3 rounded-none font-bold text-xs uppercase transition-all transform hover:shadow-[0_10px_20px_rgba(249,115,22,0.3)] active:scale-95">
+              <button className="bg-gradient-to-r from-orange-500 to-black text-white px-6 lg:px-8 py-2.5 md:py-3 rounded-none font-bold text-xs uppercase transition-all transform hover:shadow-[0_10px_20px_rgba(249,115,22,0.3)] active:scale-95">
                 Get Quote
               </button>
             </Link>
@@ -89,13 +89,13 @@ export default function Navigation() {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className="text-slate-300 hover:text-blue-500 font-bold text-[13px] uppercase tracking-widest py-3 border-b border-white/5 last:border-0"
+                className="text-slate-300 hover:text-orange-500 font-bold text-[13px] uppercase tracking-widest py-3 border-b border-white/5 last:border-0"
               >
                 {link.name}
               </Link>
             ))}
             <Link to="/contactus" onClick={() => setIsOpen(false)} className="pt-2">
-              <button className="w-full bg-gradient-to-r from-blue-500 to-red-600 text-white py-3.5 rounded-none font-bold uppercase text-xs tracking-wider">
+              <button className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3.5 rounded-none font-bold uppercase text-xs tracking-wider">
                 Get Quote
               </button>
             </Link>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send, ShieldCheck, MessageCircle, PhoneCall } from 'lucide-react';
+import { Mail, MapPin, Send, MessageCircle, PhoneCall, ShieldCheck } from 'lucide-react';
 
 
 export default function Contact() {
@@ -40,12 +40,12 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-10 items-end mb-24">
             <div>
                 <div className="flex items-center gap-4 mb-8">
-                    <div className="h-[2px] w-16 bg-gradient-to-r from-blue-500 to-red-600"></div>
+                    <div className="h-[2px] w-16 bg-blue-600"></div>
                     <span className="text-blue-600 font-bold tracking-[0.4em] uppercase text-[10px]">Section 7: Visit Our Shop</span>
                 </div>
                 <h2 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 uppercase tracking-tighter italic">
                     Building Lasting <br /> 
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-red-600 font-semibold">Relationships.</span>
+                    <span className="text-blue-600 font-semibold">Relationships.</span>
                 </h2>
             </div>
             <div className="max-w-xl lg:pb-4 border-l-2 border-blue-500/30 pl-10">
@@ -62,15 +62,7 @@ export default function Contact() {
             <div className="bg-white rounded-[2.5rem] p-10 border border-slate-200 shadow-2xl relative overflow-hidden group">
                <h3 className="text-2xl font-bold text-slate-900 mb-10 uppercase tracking-tighter italic">Get In Touch</h3>
                <div className="space-y-10">
-                  <div className="flex items-start gap-5">
-                    <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
-                      <MapPin className="w-6 h-6 text-blue-500" />
-                    </div>
-                    <div>
-                      <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">HQ & Shop Location</h4>
-                      <p className="text-slate-800 font-bold leading-tight uppercase">Industrial Estate Road,<br /> Coimbatore, Tamil Nadu, 641001</p>
-                    </div>
-                  </div>
+                  
 
                   <div className="flex items-start gap-5">
                     <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
@@ -78,7 +70,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Branch Address 1</h4>
-                      <p className="text-slate-800 font-bold leading-tight">No.2, Alamelu Complex, Balaji Nagar, Narasamangalam, Mangal X Road, Vembakkam T.k, Thiruvannamalai D.t - 631702</p>
+                      <p className="text-slate-800 font-bold leading-tight">No:75, GST Road, Opposite Anjaneyar Temple, Kootteripattu & Post, Tindivanam Taluk - 604302.</p>
                     </div>
                   </div>
 
@@ -88,7 +80,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="text-slate-400 font-bold uppercase text-[10px] tracking-widest mb-1">Branch Address 2</h4>
-                      <p className="text-slate-800 font-bold leading-tight">எண்:75, ஜி.எஸ்.டி ரோடு, ஆஞ்சநேயர் கோவில் எதிரில், கூட்டேரிப்பட்டு & அஞ்சல், திண்டிவனம் வட்டம் - 604302.</p>
+                      <p className="text-slate-800 font-bold leading-tight">No.2, Alamelu Complex, Balaji Nagar, Narasamangalam, Mangal X Road, Vembakkam T.k, Thiruvannamalai D.t - 631702</p>
                     </div>
                   </div>
 
@@ -208,7 +200,7 @@ export default function Contact() {
 
               <button
                 type="submit"
-                className="w-full py-6 bg-slate-900 text-white rounded-2xl font-bold uppercase text-xs tracking-[0.3em] transition-all hover:bg-gradient-to-r hover:from-blue-500 hover:to-red-600 hover:shadow-2xl flex items-center justify-center gap-4 group"
+                className="w-full py-6 bg-slate-900 text-white rounded-2xl font-bold uppercase text-xs tracking-[0.3em] transition-all hover:bg-blue-600 hover:shadow-2xl flex items-center justify-center gap-4 group"
               >
                 Send Direct Message <Send className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </button>

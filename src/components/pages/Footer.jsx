@@ -43,7 +43,7 @@ export default function Footer() {
               <img src={Logo} alt="Sri Kumaran Rod Logo" className="h-12 md:h-16 w-auto" />
               <div className="flex flex-col leading-none">
                 <span className="text-white font-bold text-xl md:text-2xl tracking-tighter uppercase">
-                  SRI KUMARAN <span className="text-blue-500">ROD</span>
+                  SRI KUMARAN <span className="text-orange-500">ROD</span>
                 </span>
                 <span className="text-[10px] font-semibold tracking-[0.3em] text-slate-500 uppercase">Industrial Solutions</span>
               </div>
@@ -67,7 +67,7 @@ export default function Footer() {
             <ul className="space-y-3 md:space-y-4">
               {productLinks.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.path} className="text-slate-400 hover:text-blue-500 transition-colors text-xs md:text-sm font-medium uppercase tracking-wider">
+                  <Link to={item.path} className="text-slate-400 hover:text-orange-500 transition-colors text-xs md:text-sm font-medium uppercase tracking-wider">
                     {item.name}
                   </Link>
                 </li>
@@ -81,7 +81,7 @@ export default function Footer() {
             <ul className="space-y-3 md:space-y-4">
               {companyLinks.map((item) => (
                 <li key={item.name}>
-                  <Link to={item.path} className="text-slate-400 hover:text-blue-500 transition-colors text-xs md:text-sm font-medium uppercase tracking-wider">
+                  <Link to={item.path} className="text-slate-400 hover:text-orange-500 transition-colors text-xs md:text-sm font-medium uppercase tracking-wider">
                     {item.name}
                   </Link>
                 </li>
@@ -92,13 +92,13 @@ export default function Footer() {
           {/* Contact Details Column */}
 <div className="lg:col-span-4 bg-slate-900/50 p-6 md:p-8 rounded-3xl border border-white/5 relative overflow-hidden">
   {/* Subtle background glow replacing the icon */}
-  <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-600/10 blur-[60px] pointer-events-none"></div>
+  <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-600/10 blur-[60px] pointer-events-none"></div>
   
   <h4 className="text-white font-bold uppercase tracking-widest mb-6 md:mb-8 text-xs md:sm italic">Technical Hub</h4>
   
   <div className="space-y-6">
     <div className="flex flex-col gap-1">
-      <p className="text-blue-500 text-[10px] font-bold uppercase tracking-widest">Office Address</p>
+      <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest">Office Address</p>
       <p className="text-slate-400 text-xs md:text-sm leading-relaxed font-normal">
         Industrial Estate Road, Coimbatore,<br /> 
         Tamil Nadu - 641001, India
@@ -106,7 +106,7 @@ export default function Footer() {
     </div>
 
     <div className="flex flex-col gap-1">
-      <p className="text-blue-500 text-[10px] font-bold uppercase tracking-widest">Direct Line</p>
+      <p className="text-orange-500 text-[10px] font-bold uppercase tracking-widest">Direct Line</p>
       <p className="text-slate-400 text-xs md:text-sm font-semibold tracking-widest">+91 98765 43210</p>
     </div>
 
@@ -117,9 +117,9 @@ export default function Footer() {
           <input
             type="email"
             placeholder="Engineering Email"
-            className="flex-1 px-3 md:px-4 py-2 md:py-3 bg-slate-950 border border-white/10 rounded-l-xl text-white text-[10px] md:text-xs placeholder-slate-600 focus:outline-none focus:border-blue-500"
+            className="flex-1 px-3 md:px-4 py-2 md:py-3 bg-slate-950 border border-white/10 rounded-l-xl text-white text-[10px] md:text-xs placeholder-slate-600 focus:outline-none focus:border-orange-500"
           />
-          <button className="px-6 md:px-8 py-2 md:py-3 bg-blue-600 text-white rounded-r-xl hover:bg-blue-500 transition-all shadow-lg active:scale-95 font-bold uppercase text-[10px] tracking-widest">
+          <button className="px-6 md:px-8 py-2 md:py-3 bg-orange-600 text-white rounded-r-xl hover:bg-orange-500 transition-all shadow-lg active:scale-95 font-bold uppercase text-[10px] tracking-widest">
             Send
           </button>
         </div>
