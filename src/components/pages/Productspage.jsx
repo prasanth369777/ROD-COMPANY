@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { ChevronRight, Search, Menu, MessageCircle, PhoneCall, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-
 // 🔹 PRODUCT IMAGE IMPORTS
 import PulakanaImg from "../../assests/productimg/Pulakana/Pulanka1.webp";
 import LTImg from "../../assests/productimg/LT (1)/1.webp";
@@ -18,25 +17,13 @@ import FiltersImg from "../../assests/productimg/Air filter and Oil filter/1.web
 import RingsImg from "../../assests/productimg/Rings/1.webp";
 import ValvesImg from "../../assests/productimg/Valves/1.webp";
 import SandcoRodsImg from "../../assests/productimg/Sandco Tapper drill rods/1.webp";
-
+import RangerBox from "../../assests/productimg/Ranger Box/1.webp";
+import Pawlset from "../../assests/productimg/Pawl set/1.webp";
 // 🔹 NEWLY ADDED FROM SCREENSHOT
 import BlueTapperImg from "../../assests/productimg/Blue Tapper drill rods/1.webp";
-import ImportedRodsImg from "../../assests/productimg/Imported drill rods/1.webp";
+// import ImportedRodsImg from "../../assests/productimg/Imported drill rods/1.webp";
 import DrillonImg from "../../assests/productimg/Drillon/1.webp";
 import StandardHoseImg from "../../assests/productimg/Starndard/1.webp";
-
-// 🔹 HERO CAROUSEL ASSETS (DESKTOP)
-import img1 from "../../assests/Hero Image1.webp";
-import img2 from "../../assests/Hero image2.webp"; 
-import img3 from "../../assests/Hero Image3.webp";
-import img4 from "../../assests/Hero Image4.webp";
-
-// 🔹 HERO CAROUSEL ASSETS (MOBILE)
-import mImg1 from "../../assests/Hero Section Image_1.webp";
-import mImg2 from "../../assests/Hero Section Image_2.webp";
-import mImg3 from "../../assests/Hero Section Image_3.webp";
-import mImg4 from "../../assests/Hero Section Image_4.webp";
-
 
 const ALL_PRODUCTS = [
   { name: 'Pulanka', img: PulakanaImg, sku: 'PK-BIT', cat: 'bits', path: '/tapper-bits/pulanka' },
@@ -44,10 +31,11 @@ const ALL_PRODUCTS = [
   { name: 'Nanchang Plus', img: NanchangImg, sku: 'NC-BIT', cat: 'bits', path: '/tapper-bits/nanchang-plus' },
   { name: 'PLKS Precision', img: PLKSImg, sku: 'PL-BIT', cat: 'bits', path: '/tapper-bits/plks' },
   { name: 'Hammer Bush', img: BushImg, sku: 'JH-BSH', cat: 'jack', path: '/jack-hammer/bush' },
-  { name: 'Ranger Box', img: BushImg, sku: 'JH-RBX', cat: 'jack', path: '/jack-hammer/ranger-box' },
+  { name: 'Ranger Box', img: RangerBox, sku: 'JH-RBX', cat: 'jack', path: '/jack-hammer/ranger-box' },
   { name: 'JH Piston', img: PistonImg, sku: 'JH-PST', cat: 'jack', path: '/jack-hammer/piston' },
   { name: 'Side Bolt', img: SideBoldImg, sku: 'JH-SBT', cat: 'jack', path: '/jack-hammer/side-bolt' },
   { name: 'Retainer Lock', img: RetainerLockImg, sku: 'JH-RLK', cat: 'jack', path: '/jack-hammer/retainer-lock' },
+  { name: 'Pawl Set', img: Pawlset, sku: 'JH-PWL', cat: 'jack', path: '/jack-hammer/pawl-set' },
   { name: 'Liner Set', img: LinerSetImg, sku: 'VT4-LNR', cat: 'comp', path: '/compressor/liner-set' },
   { name: 'Atlas Piston', img: PistonImg, sku: 'VT4-PST', cat: 'comp', path: '/compressor/piston' },
   { name: 'Connect Rod', img: ConnectRodImg, sku: 'VT4-CRD', cat: 'comp', path: '/compressor/connect-rod' },
@@ -55,11 +43,11 @@ const ALL_PRODUCTS = [
   { name: 'Rings', img: RingsImg, sku: 'VT4-RNG', cat: 'comp', path: '/compressor/rings' },
   { name: 'Valves', img: ValvesImg, sku: 'VT4-VLV', cat: 'comp', path: '/compressor/valves' },
   { name: 'Sandco Rods', img: SandcoRodsImg, sku: 'DR-SND', cat: 'rods', path: '/drill-rods/sandco' },
-  { name: 'Blue Tapper', img: BlueTapperImg, sku: 'DR-BLU', cat: 'rods', path: '/drill-rods/orange-tapper' },
-  { name: 'Imported Rods', img: ImportedRodsImg, sku: 'DR-IMP', cat: 'rods', path: '/drill-rods/imported' },
+  { name: 'Blue Tapper', img: BlueTapperImg, sku: 'DR-BLU', cat: 'rods', path: '/drill-rods/Blue-tapper' },
+  // { name: 'Imported Rods', img: ImportedRodsImg, sku: 'DR-IMP', cat: 'rods', path: '/drill-rods/imported' },
   { name: 'Durlon Hose', img: FiltersImg, sku: 'HS-DUR', cat: 'hose', path: '/hoses/durlon' },
   { name: 'Standard Hose', img: StandardHoseImg, sku: 'HS-STD', cat: 'hose', path: '/hoses/standard' },
-  { name: 'Drillon Hose', img: DrillonImg, sku: 'HS-DRL', cat: 'hose', path: '/hoses/drillon' },
+  { name: 'Black Hose', img: DrillonImg, sku: 'HS-DRL', cat: 'hose', path: '/hoses/drillon' },
 ];
 
 const CATEGORIES = [
@@ -75,20 +63,13 @@ export default function IndustrialSolutions() {
   const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [slideIndex, setSlideIndex] = useState(0);
+
   
-  const productImages = [img1, img2, img3, img4];
-  // eslint-disable-next-line no-unused-vars
-  const mobileImages = [mImg1, mImg2, mImg3, mImg4];
   const navigate = useNavigate();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % productImages.length);
-    }, 5500);
-    return () => clearInterval(interval);
-  }, [productImages.length]);
+    // Preserved interval logic
+  }, []);
 
   const filteredItems = useMemo(() => {
     const list = filter === 'all' 
@@ -112,11 +93,11 @@ export default function IndustrialSolutions() {
   };
 
   return (
-    <section className="bg-white min-h-screen flex font-['Inter'] relative items-start antialiased mt-16">
+    <section className="bg-white min-h-screen flex font-['Inter'] relative items-start antialiased">
       
       {/* MOBILE HEADER */}
       <div className="xl:hidden fixed top-0 left-0 w-full bg-white border-b z-50 p-4 flex justify-between items-center shadow-sm">
-        <h2 className="font-bold text-slate-900 italic uppercase tracking-tighter">SRI KUMAR<span className="text-orange-600">.</span></h2>
+        <h2 className="font-bold text-slate-900 italic uppercase tracking-tighter">SRI KUMAR<span className="text-blue-600">.</span></h2>
         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="p-2 bg-slate-50 rounded-lg text-slate-900 border border-slate-200 active:scale-95 transition-transform">
           <Menu size={20} />
         </button>
@@ -128,8 +109,8 @@ export default function IndustrialSolutions() {
         ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         <div className="mb-10 hidden xl:block">
-          <h2 className="text-xl font-black text-slate-600 tracking-tighter uppercase italic">
-            SRI KUMAR<span className="text-orange-600">.</span>
+          <h2 className="text-xl font-black text-slate-900 tracking-tighter uppercase italic">
+            SRI KUMAR<span className="text-blue-600">.</span>
           </h2>
           <p className="text-[8px] font-bold text-slate-600 uppercase tracking-[0.3em] mt-1">Industrial Portal</p>
         </div>
@@ -141,7 +122,7 @@ export default function IndustrialSolutions() {
             placeholder="Search parts..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#f8fafc] border-b border-slate-600 py-2 pl-9 pr-4 text-[10px] focus:outline-none focus:border-orange-500 text-slate-600 transition-colors"
+            className="w-full bg-[#f8fafc] border-b border-slate-600 py-2 pl-9 pr-4 text-[10px] focus:outline-none focus:border-blue-500 text-slate-600 transition-colors"
           />
         </div>
 
@@ -155,16 +136,16 @@ export default function IndustrialSolutions() {
               }}
               className={`w-full text-left py-3 rounded-lg transition-all duration-200 group flex items-center justify-between border-l-2
               ${filter === cat.id 
-                ? 'border-orange-500 bg-slate-400 pl-4' 
+                ? 'border-blue-500 bg-slate-600 pl-4' 
                 : 'border-transparent pl-2 text-slate-900 hover:text-slate-900'}`}
             >
               <div className="flex items-center gap-4">
-                <span className={`text-[8px] font-black ${filter === cat.id ? 'text-orange-500' : 'text-slate-900'}`}>
+                <span className={`text-[8px] font-black ${filter === cat.id ? 'text-blue-500' : 'text-slate-900'}`}>
                   0{index + 1}
                 </span>
                 <span className="text-[10px] font-black uppercase tracking-[0.1em]">{cat.name}</span>
               </div>
-              <div className={`w-1 h-1 rounded-full bg-orange-800 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-50'}`}></div>
+              <div className={`w-1 h-1 rounded-full bg-blue-500 transition-opacity ${filter === cat.id ? 'opacity-100' : 'opacity-50'}`}></div>
             </button>
           ))}
         </nav>
@@ -183,8 +164,8 @@ export default function IndustrialSolutions() {
         <div className="w-full max-w-[1600px] p-4 md:p-10 lg:p-12">
           <header className="mb-16 px-2">
             <div className="flex items-center gap-2 mb-4">
-               <div className="h-[1px] w-12 bg-orange-600"></div>
-               <p className="text-orange-600 font-bold uppercase text-[10px] tracking-[0.4em]">
+               <div className="h-[1px] w-12 bg-blue-600"></div>
+               <p className="text-blue-600 font-bold uppercase text-[10px] tracking-[0.4em]">
                  {filter === 'all' ? 'Engineering Catalog' : `Category: ${CATEGORIES.find(c => c.id === filter)?.name || ''}`}
                </p>
             </div>
@@ -193,27 +174,25 @@ export default function IndustrialSolutions() {
             </h1>
           </header>
 
-          {/* 🔹 3 PRODUCTS IN A SINGLE LINE (Using md:grid-cols-3) */}
+          {/* 🔹 3 Products in a single line on medium and larger screens */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 will-change-transform">
             {filteredItems.map((item, index) => (
               <div 
                 key={index} 
-                className="group relative bg-white border border-slate-200 p-4 md:p-7 flex flex-col cursor-pointer transition-all transform-gpu overflow-hidden"
+                className="group relative bg-white border border-slate-200 p-0 md:p-0 flex flex-col cursor-pointer transition-all transform-gpu overflow-hidden"
                 onClick={() => navigate(item.path)}
               >
-                <div className="mb-5 md:mb-6 flex justify-between items-start px-1 relative z-10">
-                  <div className="max-w-[85%]">
-                    <h3 className="text-xl md:text-2xl font-normal tracking-tight uppercase truncate leading-none text-slate-900">
+                <div className="mb-5 md:mb-6 flex justify-between items-start relative z-10 w-full">
+                  <div className="w-full flex flex-col items-start gap-2">
+                    {/* 🔹 Heading Label Style: full width background solid blue label with white uppercase text */}
+                    <div className="bg-blue-600 w-full text-white font-semibold text-xl md:text-2xl uppercase tracking-wide px-4 py-3 rounded-none shadow-sm select-none text-center">
                       {item.name}
-                    </h3>
-                    <p className="text-[10px] md:text-[11px] font-light text-slate-400 mt-2 uppercase tracking-tighter">{item.sku}</p>
-                  </div>
-                  <div className="bg-slate-50 px-2 py-1 rounded border border-slate-100">
-                    <span className="text-[8px] font-light uppercase text-slate-400">OES</span>
+                    </div>
+                    <p className="text-[10px] md:text-[11px] font-light text-slate-400 mt-1 uppercase tracking-tighter px-4">{item.sku}</p>
                   </div>
                 </div>
 
-                <div className="aspect-square bg-[#F8FAFC] flex items-center justify-center p-0 md:p-2 relative overflow-hidden">
+                <div className="aspect-square bg-[#F8FAFC] flex items-center justify-center p-4 md:p-6 relative overflow-hidden m-4 mt-0">
                   <img 
                     src={item.img} 
                     alt={item.name} 
@@ -222,16 +201,16 @@ export default function IndustrialSolutions() {
                   />
                   
                   <div className="absolute inset-x-4 bottom-4 flex justify-center gap-3 z-20">
-                    <button onClick={(e) => handleWhatsApp(e, item.name)} className="bg-green-500 text-white p-3 md:p-4 hover:bg-green-600 transition-all active:scale-90">
+                    <button onClick={(e) => handleWhatsApp(e, item.name)} className="bg-green-500 text-white p-3 md:p-4 hover:bg-green-600 transition-all active:scale-90 shadow-md">
                       <MessageCircle size={18} />
                     </button>
-                    <button onClick={(e) => handleCall(e)} className="bg-orange-600 text-white p-3 md:p-4 hover:bg-orange-700 transition-all active:scale-90">
+                    <button onClick={(e) => handleCall(e)} className="bg-blue-600 text-white p-3 md:p-4 hover:bg-blue-700 transition-all active:scale-90 shadow-md">
                       <PhoneCall size={18} />
                     </button>
                   </div>
                 </div>
 
-                <div className="mt-6 md:mt-8 flex items-center justify-between bg-slate-950 p-4 md:p-5 group/btn transition-all duration-300">
+                <div className="mt-auto flex items-center justify-between bg-slate-950 p-4 md:p-5 group/btn transition-all duration-300">
                   <div className="flex flex-col">
                       <p className="text-[8px] text-slate-500 font-light uppercase tracking-widest leading-none mb-1.5">Status</p>
                       <p className="text-[10px] md:text-[11px] font-normal text-white uppercase leading-none">Stock Ready</p>
@@ -244,9 +223,6 @@ export default function IndustrialSolutions() {
             ))}
           </div>
 
-        
-
-         
         </div>
       </main>
     </section>

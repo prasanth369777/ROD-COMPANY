@@ -3,7 +3,7 @@ import Lenis from "@studio-freight/lenis";
 
 // 🔹 DESKTOP PRODUCT IMAGE IMPORTS
 import img1 from "../../assests/Hero Image1.webp";
-import img2 from "../../assests/Hero image2.webp"; 
+import img2 from "../../assests/Hero Image2.webp";
 import img3 from "../../assests/Hero Image3.webp";
 import img4 from "../../assests/Hero Image4.webp";
 
