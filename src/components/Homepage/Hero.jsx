@@ -32,7 +32,7 @@ export default function CompressorValvesProductPage() {
       lenis.destroy();
       clearInterval(interval);
     };
-  }, []);
+  }, []); // 🔹 FIX: Removed productImages.length from the dependency array
 
   return (
     <div className="bg-white font-['Inter'] text-slate-900 overflow-x-hidden mt-16">
